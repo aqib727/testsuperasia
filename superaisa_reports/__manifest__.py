@@ -17,10 +17,10 @@
     # Check https://github.com/odoo/odoo/blob/13.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     'category': 'Reports',
-    'version': '1.0',
+    'version': '1.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'account', 'stock'],
+    'depends': ['base', 'account', 'stock', 'purchase'],
 
     # always loaded
     'data': [
@@ -29,6 +29,7 @@
         'reports/external_layout_template.xml',
         'reports/invoice_report_inherit.xml',
         'reports/picking_report_inherit.xml',
+        'reports/PO_inherit.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
