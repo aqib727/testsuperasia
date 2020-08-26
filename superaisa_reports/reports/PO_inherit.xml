@@ -14,7 +14,7 @@
     <template id="report_purchase_order_inherit_custom" inherit_id="purchase.report_purchaseorder_document">
 
         <!--        Replace table:-->
-        <xpath expr="//div[@class='page']" position="replace">
+        <xpath expr="//div[hasclass('page')]" position="replace">
 
             <div class="page">
                 <div class="oe_structure"/>
