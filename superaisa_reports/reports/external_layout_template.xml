@@ -28,10 +28,15 @@
                         </div>
 
 <!--                        Enter the address on the right of header for the following objects: -->
-                        <t t-if="o and o._name in ('stock.picking', 'account.move', 'sale.order')">
+                        <t t-if="o and o._name in ('stock.picking', 'account.move', 'sale.order', 'purchase.order')">
                             <div class="col-6" name="div_address" style="text-align:right">
                                 <span>
-                                    <strong>Partner Reference:</strong>
+                                    <t t-if="o._name == 'purchase.order'">
+                                        <strong>Vendor Reference:</strong>
+                                    </t>
+                                    <t t-if="o._name != 'purchase.order'">
+                                      <strong>Partner Reference:</strong>
+                                    </t>
                                 </span>
                                 <!--                            <div t-field="o.move_ids_without_package[0].partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"/>-->
                                 <!--                            <div t-field="o.picking_type_id.warehouse_id.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"/>-->
