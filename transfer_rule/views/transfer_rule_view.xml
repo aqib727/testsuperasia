@@ -108,6 +108,11 @@
             action="action_internal_stock_orderpoint_form"
             name="Internal Reordering Rules" parent="stock.menu_stock_inventory_control" sequence="20"/>
 
+        <menuitem
+            id="menu_internal_stock_reordering_rules_config_iop"
+            action="action_internal_stock_orderpoint_form"
+            name="Run IOP Scheduler" parent="stock.menu_stock_warehouse_mgmt" sequence="140"/>
+
 
     </data>
 </odoo>

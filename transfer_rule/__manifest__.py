@@ -12,7 +12,7 @@
     'author': "Shawaz Jahangiri",
     'website': "http://www.bistasolutions.com",
     'category': 'Inventory',
-    'version': '1.1',
+    'version': '1.2',
     'depends': ['base', 'stock'],
     # always loaded
     'data': [
