@@ -1,12 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <record id="schedule_action_update_attributes_luonto" model="ir.cron">
+        <record id="schedule_action_export_product_superasia" model="ir.cron">
             <field name="name">Product Template: Sync Export Products</field>
             <field name="model_id" ref="product.model_product_template"/>
             <field name="state">code</field>
             <field name="code">
 model.export_product_handshake()
+            </field>
+            <field name="interval_number">3</field>
+            <field name="interval_type">hours</field>
+            <field name="numbercall">-1</field>
+            <field name="nextcall" eval="(DateTime.now() + timedelta(days=1)).strftime('%Y-%m-%d 02:00:00')" />
+            <field name="doall" eval="False"/>
+        </record>
+
+        <record id="schedule_action_export_contacts_superasia" model="ir.cron">
+            <field name="name">Res Partner: Sync Export Contacts</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="state">code</field>
+            <field name="code">
+model.export_contact_handshake()
+            </field>
+            <field name="interval_number">3</field>
+            <field name="interval_type">hours</field>
+            <field name="numbercall">-1</field>
+            <field name="nextcall" eval="(DateTime.now() + timedelta(days=1)).strftime('%Y-%m-%d 02:00:00')" />
+            <field name="doall" eval="False"/>
+        </record>
+
+        <record id="schedule_action_import_orders_superasia" model="ir.cron">
+            <field name="name">Sale Order: Sync Import Orders</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="state">code</field>
+            <field name="code">
+model.import_orders_handshake()
             </field>
             <field name="interval_number">30</field>
             <field name="interval_type">minutes</field>
