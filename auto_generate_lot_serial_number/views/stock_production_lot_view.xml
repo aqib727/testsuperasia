@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_auto_generate_production_lot_form" model="ir.ui.view">
+        <field name="name">stock.auto.generate.production.lot.form</field>
+        <field name="model">stock.production.lot</field>
+        <field name="inherit_id" ref="stock.view_production_lot_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='main_group']" position="inside">
+                <group>
+                    <field name="partner_id" readonly='1'/>
+                    <field name="barcode" readonly='1'/>
+                    <field name="country_id" readonly='1'/>
+                    <field name="company_id" readonly='1'/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="add_search_product_lot_filter">
+        <field name="name">Add Production Lots Filter</field>
+        <field name="model">stock.production.lot</field>
+        <field name="inherit_id" ref="stock.search_product_lot_filter"/>
+        <field name="arch" type="xml">
+            <search string="Product Lots Filter">
+                <field name="partner_id"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_by_vendor" string="Vendor" context="{'group_by':'partner_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>

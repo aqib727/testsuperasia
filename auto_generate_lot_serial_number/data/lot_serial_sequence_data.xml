@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="sequence_auto_generate_lot_serial" model="ir.sequence">
+            <field name="name">Bista Lot/Serial Numbers</field>
+            <field name="code">bista.auto.lot.serial</field>
+            <field name="prefix">SL</field>
+            <field name="padding">4</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

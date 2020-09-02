@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_purchase_auto_generate_lot_serial" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.purchase.lot.serial</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="26"/>
+        <field name="inherit_id" ref="purchase.res_config_settings_view_form_purchase"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@data-key='purchase']" position="inside">
+                <field name="auto_generate_lot_serial" invisible="1"/>
+                <h2 groups="stock.group_production_lot">Lot/Serial No</h2>
+                <div class="row mt16 o_settings_container" groups="stock.group_production_lot">
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_left_pane">
+                            <field name="auto_generate_lot_serial"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="auto_generate_lot_serial"/>
+                            <div class="text-muted">
+                                Auto Generate Lot/Serial Number
+                            </div>
+                            <div class="content-group" attrs="{'invisible': [('auto_generate_lot_serial', '=', False)]}">
+                                <div class="row mt16">
+                                    <label for="digits" class="col-lg-2 o_light_label"/>
+                                    <field name="digits" attrs="{'required': [('auto_generate_lot_serial', '=', True)]}"/>
+                                    <div class="text-muted ml16">
+                                        Number of Digits for Lot/Serial No
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_left_pane"/>
+                        <div class="o_setting_right_pane">
+                            <div class="content-group" attrs="{'invisible': [('auto_generate_lot_serial', '=', False)]}">
+                                <div class="row mt56">
+                                    <label for="prefix" class="col-lg-2 o_light_label"/>
+                                    <field name="prefix" attrs="{'required': [('auto_generate_lot_serial', '=', True)]}"/>
+                                    <div class="text-muted ml16">
+                                        Prefix for Lot/Serial No
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
