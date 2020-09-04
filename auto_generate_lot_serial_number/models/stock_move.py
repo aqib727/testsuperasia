@@ -103,12 +103,17 @@ class StockMove(models.Model):
                         lot_id.removal_date = ml.expiry_date
         return res
 
-class StockPicking(models.Model):
-    _inherit = 'stock.picking'
+class PurchaseOrder(models.Model):
+    _inherit = 'purchase.order'
 
-    def action_cancel(self):
-        res = super(StockPicking, self).action_cancel()
-        for rec in self.move_ids_without_package:
-            stock_production_id = self.env['stock.production.lot'].search([('id', '=', rec.lot_no.id)])
-            stock_production_id.unlink()
+    def button_cancel(self):
+        res = super(PurchaseOrder, self).button_cancel()
+        for rec in self:
+            for pick in rec.picking_ids:
+                if pick.move_ids_without_package:
+                    for move_ids in pick.move_ids_without_package:
+                        stock_production_id = self.env['stock.production.lot'].search([('id', '=', move_ids.lot_no.id)])
+                        stock_production_id.unlink()
+
+        return res
 
