@@ -90,9 +90,8 @@
 <!--                                    <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', o.name, 600, 100)" style="width:300px;height:50px"/>-->
 
                                     <t t-foreach="request.env['product.template'].search([('id', '=', line.product_id.id)])" t-as="obj">
-<!--                                                Using x_studio_unit_barcode since unit_barcode giving error-->
-                                                <t t-if="obj['x_studio_unit_barcode']">
-                                                    <p t-esc="obj['x_studio_unit_barcode']"/>
+                                                <t t-if="obj['unit_barcode']">
+                                                    <p t-esc="obj['unit_barcode']"/>
                                                 </t>
                                     </t>
 

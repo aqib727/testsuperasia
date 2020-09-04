@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+    <!--            Change the check-->
+    <template id="ckca_check_inherit" inherit_id="l10n_ca_check_printing.ckca_check">
+
+        <xpath expr="//div[hasclass('ckca_amount_in_word')]" position="replace">
+
+            <div class="ckca_amount_in_word" style="padding-left: 50px" t-esc="page['amount_in_word']"/>
+        </xpath>
+
+    </template>
+
+</odoo>
