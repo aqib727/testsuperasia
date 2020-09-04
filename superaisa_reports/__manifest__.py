@@ -30,6 +30,7 @@
         'reports/invoice_report_inherit.xml',
         'reports/picking_report_inherit.xml',
         'reports/PO_inherit.xml',
+        'reports/ckca_stub_template_extended.xml'
     ],
     # only loaded in demonstration mode
     'demo': [
