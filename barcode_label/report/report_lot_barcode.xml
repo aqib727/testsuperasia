@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="report_barcode_label"
+                  inherit_id="stock.report_lot_label">
+            <xpath expr="//table[@class='table table-condensed']"
+                   position="replace">
+                <table class="table table-condensed"
+                       style="border-bottom: 0px solid white !important;width: 5in;">
+                    <tr>
+                        <td style="width:45%">
+                            <span style="font-size:17px;"
+                                  t-field="o.product_id.display_name"/>
+                        </td>
+                        <td style="text-align: right; vertical-align: middle; font-size:17px;">
+                            <img t-if="o.name"
+                                 t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', o.name, 600, 190)"
+                                 style="width:136%;height:42%;"/>
+                            LN/SN:
+                            <span t-field="o.name"/>
+                        </td>
+                    </tr>
+                </table>
+            </xpath>
+        </template>
+
+        <record id="stock.action_report_lot_label" model="ir.actions.report">
+<!--            <field name="name"></field>-->
+            <field name="model">stock.production.lot</field>
+            <field name="report_name">barcode_label.report_barcode_label</field>
+            <field name="paperformat_id" ref="barcode_label.lot_report_custom_format"/>
+        </record>
+    </data>
+</odoo>
+
+
+
+
+
