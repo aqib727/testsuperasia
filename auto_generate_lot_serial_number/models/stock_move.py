@@ -53,7 +53,7 @@ class StockMove(models.Model):
                     self.product_id.tracking != 'none':
                 seq = self.env.ref(
                     'auto_generate_lot_serial_number.sequence_auto_generate_lot_serial')
-                seq.write({'prefix': self.env.user.company_id.prefix,
+                seq.sudo().write({'prefix': self.env.user.company_id.prefix,
                            'padding': self.env.user.company_id.digits})
                 lot_vals = {
                     'name': self.env['ir.sequence'].next_by_code(
