@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="view_check_bounce_form" model="ir.ui.view">
+            <field name="name">view.check.bounce.form</field>
+            <field name="model">check.bounce.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group col="4">
+                            <field name="bank_charge"/>
+                            <field name="account_id" required="1"/>
+                            <field name="customer_fees"/>
+                            <field name="account_payment_id" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="invoice_ids" readonly="1"/>
+                        </group>
+                        <footer>
+                            <button name="confirm_check_bounce" type="object" string="Confirm" class="oe_highlight"/>
+                            Or
+                            <button string="Cancel" class="oe_link" special="cancel"/>
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

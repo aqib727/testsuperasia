@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+
+        <record id="product_category_31" model="product.category">
+            <field name="parent_id" ref="product.product_category_1"/>
+            <field name="name">Services</field>
+        </record>
+
+        <record id="bank_charge1" model="product.product">
+            <field name="name">Bank Charge</field>
+            <field name="categ_id" ref="product_category_31"/>
+            <field name="type">service</field>
+            <field name="description">Bank Charge</field>
+        </record>
+
+        <record id="customer_charge1" model="product.product">
+            <field name="name">Customer Charge</field>
+            <field name="categ_id" ref="product_category_31"/>
+            <field name="type">service</field>
+            <field name="description">Customer Charge</field>
+        </record>
+
+    </data>
+</odoo>
