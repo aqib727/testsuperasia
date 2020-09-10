@@ -13,6 +13,27 @@
 <!--    Replace-->
     <template id="report_invoice_document_inherit_custom" inherit_id="account.report_invoice_document">
 
+        <!--    Replace heading:    -->
+        <xpath expr="//h2" position="replace">
+            <h2>
+                <span t-if="o.type == 'out_invoice' and o.state == 'posted'">Invoice</span>
+                <span t-if="o.type == 'out_invoice' and o.state == 'draft'">Draft Invoice</span>
+                <span t-if="o.type == 'out_invoice' and o.state == 'cancel'">Cancelled Invoice</span>
+                <span t-if="o.type == 'out_refund'">Credit Note</span>
+                <span t-if="o.type == 'in_refund'">Vendor Credit Note</span>
+                <span t-if="o.type == 'in_invoice'">Vendor Bill</span>
+                <!-- <span t-if="o.name != '/'" t-field="o.name"/>-->
+
+                <!--            Trying to split the INV name o.name which is commented above: -->
+                <t t-if="o.name != '/'">
+                    <t t-set="inv_split" t-value="o.name.split('/')"/>
+                    <t t-esc="inv_split[0]"/>
+                    <t t-esc="inv_split[2]"/>
+                </t>
+            </h2>
+        </xpath>
+        <!--        -->
+
         <xpath expr="//table[@name='invoice_line_table']" position="replace">
 
             <table class="table table-sm o_main_table" name="invoice_line_table">
