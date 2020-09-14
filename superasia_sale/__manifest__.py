@@ -21,11 +21,12 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['sale_management', 'stock'],
+    'depends': ['sale_management', 'stock', 'google_drive'],
 
     # always loaded
     'data': [
         'data/actions.xml',
         # 'views/templates.xml',
     ],
+    'license': 'OEEL-1',
 }
