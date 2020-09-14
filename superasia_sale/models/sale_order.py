@@ -22,6 +22,7 @@ class SaleOrder(models.Model):
                     'product_id': prod.id,
                     'product_uom_qty': line['qty'],
                     'price_unit': line['unitPrice'],
+                    'name': line['description'],
                 }
                 order_lines.append((0, 0, values))
 
@@ -34,7 +35,6 @@ class SaleOrder(models.Model):
 
         # raise warning if no customer found aka the order was not created
         # else:
-
         return order_id
 
     def read_order_csv(self, filepath):
@@ -44,9 +44,9 @@ class SaleOrder(models.Model):
         return data_lines
 
     def import_orders_handshake(self):
-        filepath = '/home/cindey/odoo_git/super_asia/template_sample.csv'
-
-        data = self.read_order_csv(filepath)
-        order = self.create_handshake_order(data)
-        print("hello")
+        # Use google drive model to get call info
+        # Returns list(orders) of list(order) of dictionaries(rows)
+        orders_data = self.env['google.drive.config'].get_handshake_drive_orders()
+        for order in orders_data:
+            sale_id = self.create_handshake_order(order)
         return True

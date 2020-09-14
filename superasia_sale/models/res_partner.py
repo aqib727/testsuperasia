@@ -4,6 +4,8 @@ import csv
 
 from odoo import api, fields, models, _
 from datetime import datetime, timedelta
+from tempfile import TemporaryDirectory
+from shutil import copyfile
 
 
 class ResPartner(models.Model):
@@ -30,21 +32,21 @@ class ResPartner(models.Model):
 
         return rows
 
-    def create_contact_csv(self):
+    def export_contact_handshake(self):
         partner_ids = self.env['res.partner'].search([])
 
         report_name = 'contacts_{date}'.format(date=datetime.now().strftime("%Y_%m_%d"))
 
         filename = "%s.%s" % (report_name, "csv")
 
-        with open('/home/cindey/odoo_git/super_asia/' + filename, mode='w') as broker_file:
-            fieldnames = ['Name', 'Street', 'Street 2', 'City', 'State', 'Country', 'ZIP',
-                          'Phone', 'Mobile', 'Email', 'Salesperson', 'Payment Term', 'Pricelist']
-            writer = csv.DictWriter(broker_file, fieldnames=fieldnames)
-            writer.writeheader()
-            writer.writerows(self.create_csv_data(partner_ids))
+        with TemporaryDirectory() as temp_dir:
+            file_path = temp_dir + '/' + filename
 
-    def export_contact_handshake(self):
-        print("hello")
-        self.create_contact_csv()
-        return True
+            with open(file_path, mode='w') as handshake_file:
+                fieldnames = ['Name', 'Street', 'Street 2', 'City', 'State', 'Country', 'ZIP',
+                              'Phone', 'Mobile', 'Email', 'Salesperson', 'Payment Term', 'Pricelist']
+                writer = csv.DictWriter(handshake_file, fieldnames=fieldnames)
+                writer.writeheader()
+                writer.writerows(self.create_csv_data(partner_ids))
+
+            uploaded = self.env['google.drive.config'].push_handshake_drive_files(file_path, filename)
