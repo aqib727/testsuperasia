@@ -35,7 +35,7 @@ class AccountMove(models.Model):
 
     bounce_id = fields.Many2one('account.payment', string="Bounce",copy=False)
 
-    @api.constrains('ref', 'type', 'partner_id', 'journal_id', 'invoice_date')
+    @api.constrains('ref', 'type', 'partner_id', 'journal_id')
     def _check_duplicate_supplier_reference(self):
         moves = self.filtered(
             lambda move: move.is_purchase_document() and move.ref)
@@ -60,7 +60,6 @@ class AccountMove(models.Model):
                     AND move2.company_id = journal.company_id
                     AND move2.commercial_partner_id = partner.commercial_partner_id
                     AND move2.type = move.type
-                    AND (move.invoice_date is NULL OR move2.invoice_date = move.invoice_date)
                     AND move2.id != move.id
                 WHERE move.id IN %s
             ''', [tuple(moves.ids)])
@@ -70,7 +69,7 @@ class AccountMove(models.Model):
                 'Duplicated vendor reference detected. You probably encoded twice the same vendor bill/credit note:\n%s') % "\n".join(
                 duplicated_moves.mapped(
                     lambda m: "%(partner)s - %(ref)s" % {
-                        'ref': m.ref, 'partner': m.partner_id.display_name,})
+                        'ref': m.ref, 'partner': m.partner_id.display_name})
             ))
 
 
