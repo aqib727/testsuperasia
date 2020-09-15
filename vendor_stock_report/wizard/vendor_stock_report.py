@@ -65,7 +65,7 @@ class WizVendorStockReport(models.TransientModel):
         #                   report_title, title_format)
 
         existing_product_list = []
-        vendor_list = self.env['product.supplierinfo'].search([('product_tmpl_id.qty_available', '!=', 0.0)],
+        vendor_list = self.env['product.supplierinfo'].search([],
                                                               order='name').mapped('name')
         vendor_list += stock_obj.search([('partner_id', '!=', False),
                                          ('picking_type_code', '=', 'incoming'),
@@ -96,12 +96,9 @@ class WizVendorStockReport(models.TransientModel):
                     else:
                         data.get(vendor).get(pl.picking_id).update({pl.product_id: pl.product_uom_qty})
             if not data.get(vendor):
-                product_tmpl_ids = self.env['product.supplierinfo'].search([('name', '=', vendor.id),
-                                                                            ('product_tmpl_id.qty_available', '!=',
-                                                                             0.0)],
+                product_tmpl_ids = self.env['product.supplierinfo'].search([('name', '=', vendor.id)],
                                                                            order='name').mapped('product_tmpl_id')
-                product_ids = self.env['product.product'].search([('product_tmpl_id', 'in', product_tmpl_ids.ids),
-                                                                  ('product_tmpl_id.qty_available', '!=', 0.0)],
+                product_ids = self.env['product.product'].search([('product_tmpl_id', 'in', product_tmpl_ids.ids)],
                                                                  order='name')
                 data.get(vendor).update({stock_obj: {}})
                 for prod in product_ids:
