@@ -78,10 +78,11 @@ class WizVendorStockReport(models.TransientModel):
         data = {}
         # rows += 2
 
-        # vendor_list = self.env['res.partner'].search([('name','=','10689068 CANADA INC.')])
+        # vendor_list = self.env['res.partner'].search([('name','=','E.B.M')])
         po_move_ids = []
         for vendor in list(set(vendor_list)):
             data.update({vendor: {}})
+            existing_product_tmpl = []
             purchase_order = stock_obj.search([('partner_id', 'in', vendor.ids),
                                                ('picking_type_code', '=', 'incoming'),
                                                ('state', 'not in', ('cancel', 'done'))],
@@ -91,15 +92,18 @@ class WizVendorStockReport(models.TransientModel):
                 if pl.picking_id.purchase_id and not pl.origin_returned_move_id:
                     po_move_ids.append(pl.id)
                     existing_product_list.append(pl.product_id.id)
+                    existing_product_tmpl.append(pl.product_id.product_tmpl_id.id)
                     if pl.picking_id not in data.get(vendor).keys():
                         data.get(vendor).update({pl.picking_id: {pl.product_id: pl.product_uom_qty}})
                     else:
                         data.get(vendor).get(pl.picking_id).update({pl.product_id: pl.product_uom_qty})
-            if not data.get(vendor):
-                product_tmpl_ids = self.env['product.supplierinfo'].search([('name', '=', vendor.id)],
+            # if not data.get(vendor):
+            product_tmpl_ids = self.env['product.supplierinfo'].search([('name', '=', vendor.id),
+                                                                            ('product_tmpl_id', 'not in', existing_product_tmpl)],
                                                                            order='name').mapped('product_tmpl_id')
-                product_ids = self.env['product.product'].search([('product_tmpl_id', 'in', product_tmpl_ids.ids)],
+            product_ids = self.env['product.product'].search([('product_tmpl_id', 'in', product_tmpl_ids.ids)],
                                                                  order='name')
+            if product_ids:
                 data.get(vendor).update({stock_obj: {}})
                 for prod in product_ids:
                     data.get(vendor).get(stock_obj).update({prod: 0.0})
