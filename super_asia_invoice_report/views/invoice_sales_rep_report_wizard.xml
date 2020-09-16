@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="account_invoice_sales_rep_report_view1" model="ir.ui.view">
+            <field name="name">Sales Rep Invoice Report</field>
+            <field name="model">account.invoice.sales.rep.report</field>
+            <field name="arch" type="xml">
+            <form string="Report Options">
+                <field name="type" invisible="1"/>
+                <group>
+                    <group>
+                        <field name="date_from"
+                               attrs="{'required':[('type','!=','age_report')],
+                               'invisible': [('type', '=', 'age_report')]}"/>
+                        <field name="user_id"/>
+                    </group>
+                    <group>
+                        <field name="date_to" required="1"/>
+                        <field name="company_id" options="{'no_create': True}"
+                               groups="base.group_multi_company"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="sales_rep_invoice_report_excel"
+                            string="Print" type="object" default_focus="1"
+                            class="oe_highlight"
+                            attrs="{'invisible': [('type', '!=', 'sal_report')]}"/>
+                    <button name="sales_rep_invoice_aging_report_excel"
+                            string="Print" type="object" default_focus="1"
+                            class="oe_highlight"
+                            attrs="{'invisible': [('type', '!=', 'age_report')]}"/>
+                    <button name="sales_rep_invoice_closing_report_excel"
+                            string="Print" type="object" default_focus="1"
+                            class="oe_highlight"
+                            attrs="{'invisible': [('type', '!=', 'close_report')]}"/>
+                    <button string="Cancel" class="btn btn-secondary"
+                            special="cancel"/>
+                </footer>
+            </form>
+            </field>
+        </record>
+
+        <record id="action_invoice_sales_rep_menu1" model="ir.actions.act_window">
+            <field name="name">Sales Rep Wise Invoice Report</field>
+            <field name="res_model">account.invoice.sales.rep.report</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="account_invoice_sales_rep_report_view1"/>
+            <field name="domain">[('type', '=', 'sal_report')]</field>
+            <field name="context">{'default_type': 'sal_report'}</field>
+            <field name="target">new</field>
+        </record>
+        <!--Super Asia Report report parent menu -->
+        <menuitem id="account_sales_rep_reports_menu1" name="Super Asia Report"
+                  parent="account.menu_finance_reports" sequence="5"/>
+        <!--Invoice report action-->
+        <menuitem id="menuitem_sales_rep_invoice_report1"
+                      action="action_invoice_sales_rep_menu1"
+                      name="Sales Rep Wise Invoice Report"
+                      groups="account.group_account_manager"
+                      parent="account_sales_rep_reports_menu1"
+                      sequence="1"/>
+        <!--aging report action-->
+        <record id="action_invoice_sales_rep_aging_menu1" model="ir.actions.act_window">
+            <field name="name">Sales Rep Wise Aging Report</field>
+            <field name="res_model">account.invoice.sales.rep.report</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="account_invoice_sales_rep_report_view1"/>
+            <field name="domain">[('type', '=', 'age_report')]</field>
+            <field name="context">{'default_type': 'age_report'}</field>
+            <field name="target">new</field>
+        </record>
+        <!--aging report menu-->
+        <menuitem id="menuitem_sales_rep_invoice_aging_report1"
+                      action="action_invoice_sales_rep_aging_menu1"
+                      name="Sales Rep Wise Aging Report"
+                      groups="account.group_account_manager"
+                      parent="account_sales_rep_reports_menu1"
+                      sequence="2"/>
+        <!--Closing report action-->
+        <record id="action_invoice_sales_rep_closing_menu1" model="ir.actions.act_window">
+            <field name="name">Sales Rep Wise Closing Report</field>
+            <field name="res_model">account.invoice.sales.rep.report</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="account_invoice_sales_rep_report_view1"/>
+            <field name="domain">[('type', '=', 'close_report')]</field>
+            <field name="context">{'default_type': 'close_report'}</field>
+            <field name="target">new</field>
+        </record>
+        <!--Closing report menu-->
+        <menuitem id="menuitem_sales_rep_invoice_closing_report1"
+                  action="action_invoice_sales_rep_closing_menu1"
+                  name="Sales Rep Wise Closing Report"
+                  groups="account.group_account_manager"
+                  parent="account_sales_rep_reports_menu1"
+                  sequence="3"/>
+    </data>
+</odoo>

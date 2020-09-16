@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report id="sales_rep_excel_report"
+                model="account.invoice.sales.rep.report"
+                string="Print to XLSX"
+                name="super_asia_invoice_report.sales_rep_excel_report"
+                file="SuperAsia"
+                attachment_use="False"/>
+    </data>
+</odoo>
