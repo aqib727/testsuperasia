@@ -26,7 +26,7 @@
     # always loaded
     'data': [
         'data/actions.xml',
-        # 'views/templates.xml',
+        'views/res_config_settings_views.xml',
     ],
     'license': 'OEEL-1',
 }

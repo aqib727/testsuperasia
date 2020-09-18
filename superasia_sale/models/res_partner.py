@@ -5,7 +5,6 @@ import csv
 from odoo import api, fields, models, _
 from datetime import datetime, timedelta
 from tempfile import TemporaryDirectory
-from shutil import copyfile
 
 
 class ResPartner(models.Model):
@@ -39,14 +38,17 @@ class ResPartner(models.Model):
 
         filename = "%s.%s" % (report_name, "csv")
 
+        folder_id = self.env['ir.config_parameter'].sudo().get_param(
+            'superasia_sale.google_drive_contact_folder_id')
+
         with TemporaryDirectory() as temp_dir:
             file_path = temp_dir + '/' + filename
+            if folder_id:
+                with open(file_path, mode='w') as handshake_file:
+                    fieldnames = ['Name', 'Street', 'Street 2', 'City', 'State', 'Country', 'ZIP',
+                                  'Phone', 'Mobile', 'Email', 'Salesperson', 'Payment Term', 'Pricelist']
+                    writer = csv.DictWriter(handshake_file, fieldnames=fieldnames)
+                    writer.writeheader()
+                    writer.writerows(self.create_csv_data(partner_ids))
 
-            with open(file_path, mode='w') as handshake_file:
-                fieldnames = ['Name', 'Street', 'Street 2', 'City', 'State', 'Country', 'ZIP',
-                              'Phone', 'Mobile', 'Email', 'Salesperson', 'Payment Term', 'Pricelist']
-                writer = csv.DictWriter(handshake_file, fieldnames=fieldnames)
-                writer.writeheader()
-                writer.writerows(self.create_csv_data(partner_ids))
-
-            uploaded = self.env['google.drive.config'].push_handshake_drive_files(file_path, filename)
+                uploaded = self.env['google.drive.config'].push_handshake_drive_files(folder_id, file_path, filename)

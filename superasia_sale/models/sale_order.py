@@ -37,16 +37,11 @@ class SaleOrder(models.Model):
         # else:
         return order_id
 
-    def read_order_csv(self, filepath):
-        with open(filepath, 'r') as csvfile:
-            reader = csv.DictReader(csvfile)
-            data_lines = list(reader)
-        return data_lines
-
     def import_orders_handshake(self):
+        folder_id = self.env['ir.config_parameter'].sudo().get_param('superasia_sale.google_drive_order_folder_id')
         # Use google drive model to get call info
         # Returns list(orders) of list(order) of dictionaries(rows)
-        orders_data = self.env['google.drive.config'].get_handshake_drive_orders()
+        orders_data = self.env['google.drive.config'].get_handshake_drive_orders(folder_id)
         for order in orders_data:
             sale_id = self.create_handshake_order(order)
         return True

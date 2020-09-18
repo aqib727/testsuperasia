@@ -48,17 +48,25 @@ class ProductTemplate(models.Model):
             inv_file_path = temp_dir + '/' + inv_filename
             prod_file_path = temp_dir + '/' + prod_filename
 
-            with open(inv_file_path, mode='w') as handshake_file:
-                fieldnames = ['sku', 'type', 'shelfQty', 'warehouseId']
-                writer = csv.DictWriter(handshake_file, fieldnames=fieldnames)
-                writer.writeheader()
-                writer.writerows(self.create_inventory_csv_data(product_ids))
+            inv_folder_id = self.env['ir.config_parameter'].sudo().get_param(
+                'superasia_sale.google_drive_inventory_folder_id')
+            prod_folder_id = self.env['ir.config_parameter'].sudo().get_param(
+                'superasia_sale.google_drive_product_folder_id')
 
-            with open(prod_file_path, mode='w') as handshake_file:
-                fieldnames = ['Name', 'Internal Reference', 'Description', 'Price']
-                writer = csv.DictWriter(handshake_file, fieldnames=fieldnames)
-                writer.writeheader()
-                writer.writerows(self.create_product_csv_data(product_ids))
+            if inv_folder_id:
+                with open(inv_file_path, mode='w') as handshake_file:
+                    fieldnames = ['sku', 'type', 'shelfQty', 'warehouseId']
+                    writer = csv.DictWriter(handshake_file, fieldnames=fieldnames)
+                    writer.writeheader()
+                    writer.writerows(self.create_inventory_csv_data(product_ids))
 
-            uploaded_inv = self.env['google.drive.config'].push_handshake_drive_files(inv_file_path, inv_filename)
-            uploaded_prod = self.env['google.drive.config'].push_handshake_drive_files(prod_file_path, prod_filename)
+                uploaded_inv = self.env['google.drive.config'].push_handshake_drive_files(inv_folder_id, inv_file_path, inv_filename)
+
+            if prod_folder_id:
+                with open(prod_file_path, mode='w') as handshake_file:
+                    fieldnames = ['Name', 'Internal Reference', 'Description', 'Price']
+                    writer = csv.DictWriter(handshake_file, fieldnames=fieldnames)
+                    writer.writeheader()
+                    writer.writerows(self.create_product_csv_data(product_ids))
+
+                uploaded_prod = self.env['google.drive.config'].push_handshake_drive_files(prod_folder_id, prod_file_path, prod_filename)
