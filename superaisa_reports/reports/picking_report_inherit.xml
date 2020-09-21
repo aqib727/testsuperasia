@@ -111,9 +111,8 @@
                                         <span t-if="o.state == 'done'" t-field="ml.qty_done"/>
 
 <!--                                        Add to counter:-->
-                                        <t t-if="o.picking_type_id.code != 'incoming'" t-set="quantity_total" t-value="quantity_total+ml.qty_done"/>
-                                        <t t-if="o.picking_type_id.code == 'incoming'" t-set="quantity_total" t-value="quantity_total+ml.product_uom_qty"/>
-
+                                        <t t-if="o.picking_type_id.code != 'incoming'" t-set="quantity_total" t-value="quantity_total+ml.qty_done+ml.product_uom_qty"/>
+                                        <t t-if="o.picking_type_id.code == 'incoming'" t-set="quantity_total" t-value="quantity_total+ml.qty_done+ml.product_uom_qty"/>
                                     </td>
                                     <td>
                                         <!--                                        <span t-field="ml.product_id.display_name"/>-->
