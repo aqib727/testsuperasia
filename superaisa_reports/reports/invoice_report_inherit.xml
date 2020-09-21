@@ -89,6 +89,9 @@
                     <t t-set="lines"
                        t-value="o.invoice_line_ids.sorted(key=lambda l: (-l.sequence, l.date, l.move_name, -l.id), reverse=True)"/>
 
+                    <!--Initialize quantity variable-->
+                            <t t-set="quantity_total" t-value="0" />
+
                     <t t-foreach="lines" t-as="line">
                         <t t-set="current_subtotal" t-value="current_subtotal + line.price_subtotal"
                            groups="account.group_show_line_subtotals_tax_excluded"/>
@@ -99,7 +102,9 @@
                             <t t-if="not line.display_type" name="account_invoice_line_accountable">
                                 <td class="text-center">
                                     <span t-field="line.quantity"/>
-<!--                                    <span t-field="line.product_uom_id" groups="uom.group_uom"/>-->
+
+                                    <!-- Add to counter:-->
+                                    <t t-set="quantity_total" t-value="quantity_total+line.quantity"/>
                                 </td>
                                 <td name="account_invoice_line_name">
                                     <span t-field="line.name" t-options="{'widget': 'text'}"/>
@@ -169,6 +174,15 @@
                     </t>
                 </tbody>
             </table>
+
+
+                            <!--Total quantity:-->
+                <strong>Total Quantity: </strong>
+                    <t t-esc="quantity_total"/>
+
+
+<!--            <t t-call="report_aged_receivable_inherit_custom"/>-->
+
 
         </xpath>
     </template>

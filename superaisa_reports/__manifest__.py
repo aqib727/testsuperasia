@@ -30,7 +30,8 @@
         'reports/invoice_report_inherit.xml',
         'reports/picking_report_inherit.xml',
         'reports/PO_inherit.xml',
-        'reports/ckca_check_template_extended.xml'
+        'reports/ckca_check_template_extended.xml',
+        'reports/quotation_report_inherit.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
