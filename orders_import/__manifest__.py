@@ -17,6 +17,7 @@
     'depends': ['base', 'sale'],
     'data': [
         'wizard/order_import_wiz_view.xml',
+        'views/sale_order_line.xml',
     ],
     'installable': True,
     'application': True,

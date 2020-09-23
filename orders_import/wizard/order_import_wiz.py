@@ -144,6 +144,7 @@ class OrdersImport(models.TransientModel):
                         order_lines = (0, 0, {'product_id': product_id,
                                               'name': display_name,
                                               'product_uom_qty': qty,
+                                              'note': val.get('notes'),
                                               'tax_id': [],
                                               'price_unit': unit_price,
                                               'product_uom': uom_id,
