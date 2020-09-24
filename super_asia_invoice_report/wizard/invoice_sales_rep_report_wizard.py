@@ -32,7 +32,7 @@ class AccountSalesRepReport(models.TransientModel):
         readonly=True, default="sal_report", change_default=True)
 
     def generate_xlsx_report(self, data):
-        file_name = 'SuperAsia.xlsx'
+        file_name = 'SuperAsiaSalesReport.xlsx'
         workbook = xlsxwriter.Workbook('/tmp/' + file_name)
         # sheet = workbook.add_worksheet("Vendor Stock Report")
 
@@ -61,26 +61,30 @@ class AccountSalesRepReport(models.TransientModel):
             sheet.write(0, 11, 'Product Category', header_format)
             sheet.write(0, 12, 'Brand', header_format)
             sheet.write(0, 13, 'SKU', header_format)
-            sheet.write(0, 14, 'Unit', header_format)
-            sheet.write(0, 15, 'Amount', header_format)
+            sheet.write(0, 14, 'QTY', header_format)
+            sheet.write(0, 15, 'Size', header_format)
+            sheet.write(0, 16, 'Unit', header_format)
+            sheet.write(0, 17, 'Amount', header_format)
             i = 1
             for inv in invoice_data:
                 sheet.write(i, 0, inv.get('user_id', ''), left_format)
-                sheet.write(i, 1, inv.get('type'), left_format)
-                sheet.write(i, 2, inv.get('date'), center_format)
-                sheet.write(i, 3, inv.get('month'), center_format)
-                sheet.write(i, 4, inv.get('year'), center_format)
-                sheet.write(i, 5, inv.get('number'), center_format)
-                sheet.write(i, 6, inv.get('code_with_customer'), left_format)
+                sheet.write(i, 1, inv.get('type', ''), left_format)
+                sheet.write(i, 2, inv.get('date', ''), center_format)
+                sheet.write(i, 3, inv.get('month', ''), center_format)
+                sheet.write(i, 4, inv.get('year', ''), center_format)
+                sheet.write(i, 5, inv.get('number', ''), center_format)
+                sheet.write(i, 6, inv.get('code_with_customer', ''), left_format)
                 sheet.write(i, 7, inv.get('cust_code', ''), left_format)
-                sheet.write(i, 8, inv.get('customer_name'), left_format)
+                sheet.write(i, 8, inv.get('customer_name', ''), left_format)
                 sheet.write(i, 9, inv.get('city'), left_format)
                 sheet.write(i, 10, inv.get('product', ''), left_format)
                 sheet.write(i, 11, inv.get('category', ''), left_format)
                 sheet.write(i, 12, inv.get('brand', ''), left_format)
                 sheet.write(i, 13, inv.get('sku', ''), center_format)
-                sheet.write(i, 14, inv.get('unit'), center_format)
-                sheet.write(i, 15, inv.get('price_unit'), right_format)
+                sheet.write(i, 14, inv.get('qty', ''), right_format)
+                sheet.write(i, 15, inv.get('size', ''), center_format)
+                sheet.write(i, 16, inv.get('unit', ''), center_format)
+                sheet.write(i, 17, inv.get('price_unit', ''), right_format)
                 i = i + 1
         # Invoice Report End
         # Start Aged Report
@@ -164,14 +168,14 @@ class AccountSalesRepReport(models.TransientModel):
 
             i = 1
             for inv in closing_data:
-                sheet.write(i, 0, inv.get('user_id'), left_format)
-                sheet.write(i, 1, inv.get('type'), left_format)
-                sheet.write(i, 2, inv.get('number'), left_format)
-                sheet.write(i, 3, inv.get('customer_name'), left_format)
-                sheet.write(i, 4, inv.get('date'), right_format)
-                sheet.write(i, 5, inv.get('month'), right_format)
-                sheet.write(i, 6, inv.get('year'), right_format)
-                sheet.write(i, 7, inv.get('close_date', ''), right_format)
+                sheet.write(i, 0, inv.get('user_id', ''), left_format)
+                sheet.write(i, 1, inv.get('type', ''), left_format)
+                sheet.write(i, 2, inv.get('number', ''), left_format)
+                sheet.write(i, 3, inv.get('customer_name', ''), left_format)
+                sheet.write(i, 4, inv.get('date', ''), right_format)
+                sheet.write(i, 5, inv.get('month', ''), right_format)
+                sheet.write(i, 6, inv.get('year', ''), right_format)
+                sheet.write(i, 7, inv.get('close_date', 'Open'), right_format)
                 sheet.write(i, 8, inv.get('close_month', ''), right_format)
                 sheet.write(i, 9, inv.get('close_year', ''), right_format)
                 sheet.write(i, 10, inv.get('diff_days', ''), right_format)
@@ -182,9 +186,9 @@ class AccountSalesRepReport(models.TransientModel):
                                                  file_name, 'rb').read())
         if superasia_file:
             self.write({'report_data': superasia_file})
-        filename = 'SuperAsia.xlsx'
+        filename = 'SuperAsia Sales Report.xlsx'
         return {
-            'name': 'Vendor Stock Report',
+            'name': 'SuperAsia Report',
             'type': 'ir.actions.act_url',
             'url': "web/content/?model=account.invoice.sales.rep.report&id=" + str(
                 self.id) + "&filename_field=filename&field=report_data&download=true&filename=" + filename,
@@ -294,21 +298,23 @@ class AccountSalesRepReport(models.TransientModel):
             if self.type == 'sal_report':
                 for line in inv.invoice_line_ids:
                     data['invoice_data'].append({
-                        'user_id': inv.invoice_user_id.name,
+                        'user_id': inv.invoice_user_id.name or '',
                         'type': 'invoice',#inv.type,
-                        'date': invoice_date,
-                        'month': month,
-                        'year': year,
-                        'number': inv.name,
-                        'code_with_customer': inv.partner_id.name,
+                        'date': invoice_date or '',
+                        'month': month or '',
+                        'year': year or '',
+                        'number': inv.name or '',
+                        'code_with_customer': inv.partner_id.name or '',
                         'cust_code': inv.partner_id.name.split() and inv.partner_id.name.split()[0] or '',
-                        'customer_name': inv.partner_id.name,
-                        'city': inv.partner_id.city,
-                        'product': line.product_id.name,
-                        'category': line.product_id.categ_id.name,
-                        'brand': line.product_id.product_tmpl_id.x_studio_brand,
+                        'customer_name': inv.partner_id.name or '',
+                        'city': inv.partner_id.city or '',
+                        'product': line.product_id.name or '',
+                        'category': line.product_id.categ_id.name or '',
+                        'brand': line.product_id.product_tmpl_id.x_studio_brand or '',
                         'sku': line.product_id.default_code or '',
-                        'unit': line.quantity,
+                        'qty': line.quantity or '',
+                        'size': line.product_id.x_studio_size or '',
+                        'unit': line.product_uom_id.name or '',
                         'price_unit': line.price_unit})
             # Closing Data
             if self.type == 'close_report':
@@ -330,15 +336,24 @@ class AccountSalesRepReport(models.TransientModel):
                     payments_dt = all_payments.filtered(
                         lambda i: inv.id in i.invoice_ids.ids).mapped(
                         'payment_date')
-                    if payments_dt:
 
+                    if payments_dt:
                         close_date = max(payments_dt)
                         closing_date = close_date.strftime("%m/%d/%Y")
+                        # current_date =
                         diff_days = close_date - inv.date
                         vals.update({'close_date': closing_date,
                                      'close_month': close_date.month,
                                      'close_year': close_date.year,
                                      'diff_days': diff_days.days})
+                    else:
+                        curr_date = datetime.today().date()
+                        diff_days = curr_date - inv.date
+                        vals.update({'diff_days': diff_days.days})
+
+
+
+
                 data['closing_data'].append(vals)
             # Closing Data End
             # inv.type,
