@@ -46,7 +46,7 @@ class AccountSalesRepReport(models.TransientModel):
                 {'bg_color': '#5B9DB5', 'font_color': '#FFFFFF', 'bold': True,
                  'align': 'center', 'font_size': 11, 'border': 1})
             sheet = workbook.add_worksheet('Invoice Data')
-            sheet.set_column('A:P', 15)
+            sheet.set_column('A:T', 20)
             sheet.write(0, 0, 'Sales Rep', header_format)
             sheet.write(0, 1, 'Type', header_format)
             sheet.write(0, 2, 'Doc. Date', header_format)
@@ -65,6 +65,8 @@ class AccountSalesRepReport(models.TransientModel):
             sheet.write(0, 15, 'Size', header_format)
             sheet.write(0, 16, 'Unit', header_format)
             sheet.write(0, 17, 'Amount', header_format)
+            sheet.write(0, 18, 'Discount %', header_format)
+            sheet.write(0, 19, 'Untaxed Amount', header_format)
             i = 1
             for inv in invoice_data:
                 sheet.write(i, 0, inv.get('user_id', ''), left_format)
@@ -85,6 +87,8 @@ class AccountSalesRepReport(models.TransientModel):
                 sheet.write(i, 15, inv.get('size', ''), center_format)
                 sheet.write(i, 16, inv.get('unit', ''), center_format)
                 sheet.write(i, 17, inv.get('price_unit', ''), right_format)
+                sheet.write(i, 18, inv.get('discount', ''), right_format)
+                sheet.write(i, 19, inv.get('price_subtotal', ''), right_format)
                 i = i + 1
         # Invoice Report End
         # Start Aged Report
@@ -315,7 +319,9 @@ class AccountSalesRepReport(models.TransientModel):
                         'qty': line.quantity or '',
                         'size': line.product_id.x_studio_size or '',
                         'unit': line.product_uom_id.name or '',
-                        'price_unit': line.price_unit})
+                        'price_unit': line.price_unit or '',
+                        'discount': line.discount or '',
+                        'price_subtotal': line.price_subtotal or ''})
             # Closing Data
             if self.type == 'close_report':
                 all_payments = payment_env.search([
