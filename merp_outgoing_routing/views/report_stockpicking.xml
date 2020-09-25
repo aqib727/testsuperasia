@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_picking_sort_move_line_ids" inherit_id="stock.report_picking">
+        <xpath expr="//t[contains(@t-as, 'move')]" position="attributes">
+            <attribute name="t-foreach">o.sort_printer_picking_list(o.move_ids_without_package.mapped('move_line_ids'))</attribute>
+        </xpath>
+        <xpath expr="//t[contains(@t-as, 'ml')]" position="attributes">
+            <attribute name="t-foreach">move</attribute>
+        </xpath>
+        <xpath expr="//tr[contains(@t-as, 'package')]" position="attributes">
+            <attribute name="t-foreach">o.sort_printer_picking_list(o.package_level_ids)</attribute>
+        </xpath>
+    </template>
+
+</odoo>

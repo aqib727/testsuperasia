@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Update User form -->
+    <record model="ir.ui.view" id="res_user_form">
+        <field name="name">Users Preferences</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form" />
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//group[@name='messaging']" position="after">
+                    <group string="Ventor/mERP Application" name="merp" col="8">
+                    </group>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+</odoo>

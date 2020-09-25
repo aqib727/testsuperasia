@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_picking_form" model="ir.ui.view">
+        <field name="name">stock.picking.form.inherit</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='move_line_ids_without_package']/.." position="after">
+                <page string="To Process" name="operations_to_pick" groups="merp_custom_access_rights.merp_debug">
+                    <field name="strategy_order_r" readonly="1" />
+                    <field name="operations_to_pick" readonly="1">
+                        <tree>
+                            <field name="picking_id"/>
+                            <field name="product_id"/>
+                            <field name="product_uom_id" groups="uom.group_uom"/>
+                            <field name="owner_id" groups="stock.group_tracking_owner"/>
+                            <field name="location_id" groups="stock.group_stock_multi_locations,stock.group_tracking_lot"/>
+                            <field name="location_dest_id" groups="stock.group_stock_multi_locations,stock.group_tracking_lot"/>
+                            <field name="product_qty"/>
+                            <field name="qty_done"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

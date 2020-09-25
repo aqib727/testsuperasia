@@ -1,0 +1,181 @@
+<section class="oe_container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="oe_slogan">Picking and Reservation Strategy</h2>
+        </div>
+        <div class="col-sm-12" style="text-align: center; margin-bottom: 5px">
+            <p style="padding: 5px; font-size: 16px; font-weight: bold; background-color: yellow; display: inline">
+                TO AVOID ANY ISSUES, PLEASE, USE ALWAYS LATEST VERSION FROM
+                <a href="https://github.com/ventor-tech/merp/tree/13.0">
+                    OUR GITHUB REPOSITORY
+                </a>
+                 - https://github.com/ventor-tech/merp/tree/13.0
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="row">
+      <div class="col-sm-12" style="margin-bottom: 16px">
+        <h4 style="font-size: 24px; font-family: 'Lato', 'Open Sans', 'Helvetica', Sans; text-align: center;">
+          <span class="d-none d-sm-inline-block" style="width: 10%; margin: 32px 20px; border-top: solid 1px; vertical-align: middle; opacity: 0.3"></span>
+          <b>Description</b>
+          <span class="d-none d-sm-inline-block" style="width: 10%; margin: 32px 20px; border-top: solid 1px; vertical-align: middle; opacity: 0.3"></span>
+        </h4>
+        <div style="padding:0.2em 0.5em; font-size: 120%;">
+          <p>The app allows creating optimal picking routes in your warehouse and process picking orders and batches in an optimal way. Additionally, you can change reservation priority and make reservations in the way you want, without following FIFO/LIFO methods. Pickers get the shortest pathway, save picking time, and reduce extra walking around the warehouse.</p>
+        </div>
+      </div>
+      <div class="oe_row_img oe_centered">
+        <div class="oe_demo" style="border: none">
+          <a href="images/image2.gif"><img class="img img-responsive" style="display: block; width: 90%; margin: 32px auto" src="images/image2.gif"></a>
+        </div>
+      </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="row">
+      <div class="col-sm-12" style="margin-bottom: 16px">
+        <h4 style="font-size: 24px; font-family: 'Lato', 'Open Sans', 'Helvetica', Sans; text-align: center;">
+          <span class="d-none d-sm-inline-block" style="width: 10%; margin: 32px 20px; border-top: solid 1px; vertical-align: middle; opacity: 0.3"></span>
+          <b>Key points</b>
+          <span class="d-none d-sm-inline-block" style="width: 10%; margin: 32px 20px; border-top: solid 1px; vertical-align: middle; opacity: 0.3"></span>
+        </h4>
+        <div style="margin: 32px 0.5em 16px 0.5em; font-size: 120%;">
+            <ul style="margin-bottom: 0">
+                <li style="margin-bottom: 15px">All products inside outgoing shipments are reserved from locations according to the removal priority field. That means you define locations from where Odoo will reserve products for delivery orders (*for Odoo 12 and higher)</li>
+                <li style="margin-bottom: 15px">All products inside outgoing shipments are sorted according to the removal priority field. That means all product lines inside delivery orders are sorted by the optimal route to pick products from the start location to the destination</li>
+                <li style="margin-bottom: 15px">Works with both Odoo Community and Enterprise (self-hosted or odoo.sh)</li>
+                <li>Fully supportable by the Ventor app to guide pickers through an optimal route</li>
+            </ul>
+        </div>
+      </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="row">
+      <div class="col-sm-12" style="margin-bottom: 16px">
+        <h4 style="font-size: 24px; font-family: 'Lato', 'Open Sans', 'Helvetica', Sans; text-align: center;">
+          <span class="d-none d-sm-inline-block" style="width: 10%; margin: 32px 20px; border-top: solid 1px; vertical-align: middle; opacity: 0.3"></span>
+          <b>Manage</b>
+          <span class="d-none d-sm-inline-block" style="width: 10%; margin: 32px 20px; border-top: solid 1px; vertical-align: middle; opacity: 0.3"></span>
+        </h4>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="oe_row_img oe_centered">
+                <a href="images/image3.png">
+                    <img class="oe_picture oe_screenshot" src="images/image3.png">
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-4 pt-sm-4 pb-sm-4 pl-sm-1 pr-sm-5 pl-5 pr-5">
+            <p>
+              Sort pack operations in picking depending on selected strategy (see list below) and order (ascending or descending):
+            </p>
+            <ul>
+                <li>sort by source locations name</li>
+                <li>sort by location removal strategy priority</li>
+                <li>sort by product name</li>
+            </ul>
+            <p>
+                where removal strategy priority is an integer value that should be used to define order (priority) of warehouse locations.
+            </p>
+            <p>
+                Sorted list of pack operations could now be found on a new tab 'To Process' on picking form.
+            </p>
+            <p>
+                Please, install the <a href="https://apps.odoo.com/apps/modules/13.0/merp_picking_wave/">merp_picking_wave</a> module to sort pack operations in picking waves as well.
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+          <div class="oe_row_img oe_centered">
+              <a href="images/image4.png">
+                <img class="oe_picture oe_screenshot" src="images/image4.png">
+              </a>
+          </div>
+        </div>
+        <div class="col-sm-4 pt-sm-4 pb-sm-4 pl-sm-1 pr-sm-5 pl-5 pr-5">
+            <p>
+                Sort quants to be reserved depending on selected rule (see list below) in addition to standard FIFO/LIFO/FEFO rules:
+            </p>
+            <ul>
+                <li>outgoing routing (see above): by location name and removal strategy priority</li>
+                <li>by quantity: first reverse quants in location that contain a sufficient amount of product (and higher priority  according to outgoing routing settings)</li>
+                <li>or default (out-of-the-box) strategy</li>
+            </ul>
+            <p>
+                Thus, the module allows users to calculate the most effective route (based on your settings) to collect all ordered products from the entire warehouse to save your time.
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="oe_row_img oe_centered">
+                <a href="images/image5.png">
+                  <img class="oe_picture oe_screenshot" src="images/image5.png">
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-4 pt-sm-4 pb-sm-4 pl-sm-1 pr-sm-5 pl-5 pr-5">
+            <p>
+                Sorts list of pack operations in picking report in accordance with available strategies.
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12"  style="text-align: center; margin-top: 32px">
+            <p>
+                DOWNLOAD VENTOR APP - https://ventor.app
+            </p>
+            <a class="btn"
+               role="button"
+               href="https://www.youtube.com/channel/UCifgh537ZIoK-4VL_JKk2mA"
+               style="display: block-inline;
+                      margin: 32px 10px 16px;
+                      border-radius: 10px;
+                      font-size: 19px;
+                      font-family: 'Montserrat';
+                      font-weight: 700;
+                      color: #fff;
+                      padding: 16px 45px;
+                      background-color: RGB(213, 0, 6)">
+                VISIT OUR YOUTUBE CHANNEL
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="row">
+      <div class="col-sm-12">
+          <h2 class="oe_slogan">Notes</h2>
+          <div style="padding:0.2em 0.5em; font-size: 120%;">
+              <p>The <b>routing feature was designed to work only with the "Ventor" application</b> that can be downloaded from:</p>
+              <ol>
+                  <li>
+                      https://ventor.app website - website - the version obtained from here is suitable for all types of organizations
+                  </li>
+                  <li>
+                      Google Play - perfect for one-man-company, not possible to customize the app on demand - https://play.google.com/store/apps/details?id=com.xpansa.merp.warehouse
+                  </li>
+              </ol>
+              <p><b>Custom reservation works independently from the "Ventor" mobile app.</b> (*the feature available for Odoo 12 and higher)</p>
+              <p>
+                  "Ventor" works both on regular mobile phones with Android 4.1+ and with professional barcode scanners. VentorTech (https://ventor.tech/) is a company specialized in building Personalized Inventory and Product Management Systems. For all questions contact <a href="mailto:hello@ventor.tech">hello@ventor.tech</a>.
+              </p>
+          </div>
+          <div class="oe_picture">
+              <a href="https://ventor.tech/">
+                  <img class="img img-responsive" style="display: block; width: 50%; margin: auto" src="images/image6.png">
+              </a>
+          </div>
+      </div>
+    </div>
+</section>
