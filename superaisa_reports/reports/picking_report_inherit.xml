@@ -104,7 +104,7 @@
 <!--                            Initialize quantity variable-->
                             <t t-set="quantity_total" t-value="0" />
 
-                            <t t-foreach="o.move_line_ids.sorted(key=lambda ml: ml.location_id.name, reverse=True)" t-as="ml">
+                            <t t-foreach="o.move_line_ids" t-as="ml">
                                 <tr>
                                     <td>
                                         <span t-if="o.state != 'done'" t-field="ml.product_uom_qty"/>
