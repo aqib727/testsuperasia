@@ -17,7 +17,7 @@ class AccountSalesRepReport(models.TransientModel):
     _name = 'account.invoice.sales.rep.report'
     _description = 'XLS Report Temp1'
 
-    user_id = fields.Many2one('res.users', string='User', required=True)
+    user_id = fields.Many2many('res.users', string='User', required=True)
     date_from = fields.Date(string='Start Date')
     date_to = fields.Date(string='End Date')
     company_id = fields.Many2one('res.company', string='Company', required=True,
@@ -293,7 +293,7 @@ class AccountSalesRepReport(models.TransientModel):
             ('date', '<=', self.date_to),
             ('state', '!=', 'cancel'),
             ('company_id', '=', self.company_id.id),
-            ('invoice_user_id', '=', self.user_id.id)])
+            ('invoice_user_id', '=', self.user_id.ids)])
         for inv in invoice_ids:
             year = inv.date.year
             month = inv.date.month

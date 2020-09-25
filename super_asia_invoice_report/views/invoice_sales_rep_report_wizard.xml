@@ -12,7 +12,7 @@
                         <field name="date_from"
                                attrs="{'required':[('type','!=','age_report')],
                                'invisible': [('type', '=', 'age_report')]}"/>
-                        <field name="user_id"/>
+                        <field name="user_id" widget="many2many_tags"/>
                     </group>
                     <group>
                         <field name="date_to" required="1"/>
