@@ -19,6 +19,6 @@
         'views/res_config.xml',
         'views/stock.xml',
         'views/picking.xml',
-        'views/report_stockpicking.xml',
+        # 'views/report_stockpicking.xml',
     ],
 }

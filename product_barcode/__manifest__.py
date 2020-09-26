@@ -17,6 +17,7 @@
     'data': [
         'views/product_view.xml',
         'views/stock_barcode_templates.xml',
+        'views/stock_location.xml',
     ],
     # only loaded in demonstration mode
     'demo': [],
