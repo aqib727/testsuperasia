@@ -438,6 +438,7 @@ client_action_custom.include({
         });}
         if (data && data[1] === 'extra_lot') {
                    self.do_warn(_t("The scanned Lot is not part of the order."));
+                    location.reload();
             return $.when({linesActions: linesActions});}
             })
     },
