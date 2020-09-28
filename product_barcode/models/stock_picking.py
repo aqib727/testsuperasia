@@ -36,8 +36,7 @@ class StockPicking(models.Model):
                 'sequence',
             ])
             picking['move_line_ids'] = sorted(picking['move_line_ids'],
-                                              key=lambda i: i['sequence'],
-                                              reverse=True)
+                                              key=lambda i: i['sequence'])
             product_ids = tuple(set([move_line_id['product_id'][0] for move_line_id in picking['move_line_ids']]))
             tracking_and_barcode_per_product_id = {}
             for res in self.env['product.product'].search_read([('id', 'in', product_ids)], ['tracking', 'barcode']):
@@ -111,6 +110,6 @@ class StockPicking(models.Model):
 
 class StockMove(models.Model):
     _inherit = 'stock.move.line'
-    _order = 'sequence desc'
+    _order = 'sequence asc'
 
     sequence = fields.Integer(string='Sequence', related='location_id.sequence')
