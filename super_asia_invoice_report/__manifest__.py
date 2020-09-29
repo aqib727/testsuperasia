@@ -12,7 +12,7 @@
     'summary': 'Superasia Invoice Report',
     'author': "Bista Solutions",
     'website': 'http://www.bistasolutions.com',
-    'depends': ['base','account'],
+    'depends': ['base','account', 'sale'],
     'data': [
         'views/invoice_sales_rep_report_wizard.xml',
         'views/superasia_report.xml',
