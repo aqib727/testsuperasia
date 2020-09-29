@@ -1,60 +1,69 @@
 <odoo>
-  <data>
-    <!-- explicit list view definition -->
-<!--
-    <record model="ir.ui.view" id="font_reduce.list">
-      <field name="name">font_reduce list</field>
-      <field name="model">font_reduce.font_reduce</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
-        </tree>
-      </field>
-    </record>
--->
+    <data>
+        <!-- explicit list view definition -->
 
-    <!-- actions opening views on models -->
-<!--
-    <record model="ir.actions.act_window" id="font_reduce.action_window">
-      <field name="name">font_reduce window</field>
-      <field name="res_model">font_reduce.font_reduce</field>
-      <field name="view_mode">tree,form</field>
-    </record>
--->
+        <record model="ir.ui.view" id="product_template_frozen_food_form_view">
+            <field name="name">product.template.frozen.food.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <field name="categ_id" position="after">
+                    <field name="is_frozen"/>
+                </field>
+            </field>
+        </record>
 
-    <!-- server action to the one above -->
-<!--
-    <record model="ir.actions.server" id="font_reduce.action_server">
-      <field name="name">font_reduce server</field>
-      <field name="model_id" ref="model_font_reduce_font_reduce"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": model._name,
-        }
-      </field>
-    </record>
--->
+        <record model="ir.ui.view" id="product_template_frozen_food_tree_view">
+            <field name="name">product.template.frozen.food.tree</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_tree_view"/>
+            <field name="arch" type="xml">
+                <field name="uom_id" position="after">
+                    <field name="is_frozen"/>
+                </field>
+            </field>
+        </record>
 
-    <!-- Top menu item -->
-<!--
-    <menuitem name="font_reduce" id="font_reduce.menu_root"/>
--->
-    <!-- menu categories -->
-<!--
-    <menuitem name="Menu 1" id="font_reduce.menu_1" parent="font_reduce.menu_root"/>
-    <menuitem name="Menu 2" id="font_reduce.menu_2" parent="font_reduce.menu_root"/>
--->
-    <!-- actions -->
-<!--
-    <menuitem name="List" id="font_reduce.menu_1_list" parent="font_reduce.menu_1"
-              action="font_reduce.action_window"/>
-    <menuitem name="Server to list" id="font_reduce" parent="font_reduce.menu_2"
-              action="font_reduce.action_server"/>
--->
-  </data>
+       <!-- actions opening views on models -->
+        <!--
+            <record model="ir.actions.act_window" id="font_reduce.action_window">
+              <field name="name">font_reduce window</field>
+              <field name="res_model">font_reduce.font_reduce</field>
+              <field name="view_mode">tree,form</field>
+            </record>
+        -->
+
+        <!-- server action to the one above -->
+        <!--
+            <record model="ir.actions.server" id="font_reduce.action_server">
+              <field name="name">font_reduce server</field>
+              <field name="model_id" ref="model_font_reduce_font_reduce"/>
+              <field name="state">code</field>
+              <field name="code">
+                action = {
+                  "type": "ir.actions.act_window",
+                  "view_mode": "tree,form",
+                  "res_model": model._name,
+                }
+              </field>
+            </record>
+        -->
+
+        <!-- Top menu item -->
+        <!--
+            <menuitem name="font_reduce" id="font_reduce.menu_root"/>
+        -->
+        <!-- menu categories -->
+        <!--
+            <menuitem name="Menu 1" id="font_reduce.menu_1" parent="font_reduce.menu_root"/>
+            <menuitem name="Menu 2" id="font_reduce.menu_2" parent="font_reduce.menu_root"/>
+        -->
+        <!-- actions -->
+        <!--
+            <menuitem name="List" id="font_reduce.menu_1_list" parent="font_reduce.menu_1"
+                      action="font_reduce.action_window"/>
+            <menuitem name="Server to list" id="font_reduce" parent="font_reduce.menu_2"
+                      action="font_reduce.action_server"/>
+        -->
+    </data>
 </odoo>

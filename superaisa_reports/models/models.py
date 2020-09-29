@@ -14,3 +14,9 @@ from odoo import models, fields, api
 #     def _compute_batch_payment_count(self):
 #         for x in self:
 #             x.count = len(x.payment_ids)
+
+
+class ProductTemplate(models.Model):
+    _inherit = 'product.template'
+
+    is_frozen = fields.Boolean('Frozen Item', default=False)

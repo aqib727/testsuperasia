@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <report
+            id="report_frozen_picking"
+            model="stock.picking"
+            string="Picking Operations (Frozen)"
+            report_type="qweb-pdf"
+            name="superaisa_reports.frozen_picking_operations"
+            file="superaisa_reports.frozen_picking_operations"
+            print_report_name="'Frozen Picking Operations - %s - %s' % (object.partner_id.name or '', object.name)"
+            />
+</odoo>
+
+

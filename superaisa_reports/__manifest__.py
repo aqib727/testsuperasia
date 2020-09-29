@@ -25,6 +25,7 @@
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
+        'views/views.xml',
         'reports/batch_payment_inherit.xml',
         'reports/external_layout_template.xml',
         'reports/invoice_report_inherit.xml',
@@ -32,6 +33,8 @@
         'reports/PO_inherit.xml',
         'reports/ckca_check_template_extended.xml',
         'reports/quotation_report_inherit.xml',
+        # 'reports/frozen_picking_report_inherit.xml',
+        # 'reports/report.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
