@@ -10,6 +10,8 @@ from tempfile import TemporaryDirectory
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
+    handshake_id = fields.Char(string='Handshake Customer ID')
+
     def create_csv_data(self, partner_ids):
         rows = []
         for partner in partner_ids:
