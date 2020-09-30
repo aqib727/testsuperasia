@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mass_picking_validation" model="ir.ui.view">
+        <field name="name">stock.mass.validation.view.form</field>
+        <field name="model">mass.picking.validation.wiz</field>
+        <field name="arch" type="xml">
+            <form string="Multiple transfer?">
+                <group>
+                    <p>
+                        By clicking on <i>apply</i>
+                        Odoo will process all the <i>reserved</i> quantities.
+                    </p>
+                </group>
+                <footer>
+                    <button name="mass_picking_transfer" string="_Apply" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_view_mass_picking_validation" model="ir.actions.act_window">
+        <field name="name">Multiple transfer?</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mass.picking.validation.wiz</field>
+        <field name="view_mode">form</field>
+         <field name="view_id" ref="view_mass_picking_validation"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

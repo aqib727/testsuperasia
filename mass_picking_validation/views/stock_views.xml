@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--    <data>-->
+
+    <!--        <act_window-->
+    <!--            id="action_mass_validation"-->
+    <!--            res_model="mass.picking.validation.wiz"-->
+    <!--            binding_model="stock.picking"-->
+    <!--            target="new"-->
+    <!--            multi="True"-->
+    <!--            key2="client_action_multi"-->
+    <!--            view_mode="form"-->
+    <!--            name="Mass Validate"/>-->
+
+    <record id="action_mass_validation" model="ir.actions.act_window">
+        <field name="name">Validate</field>
+        <field name="res_model">mass.picking.validation.wiz</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="stock.model_stock_picking" />
+    </record>
+
+<!--     Action script for mass unreserve picking-->
+    <record id="mass_picking_unreserve_action" model="ir.actions.server">
+        <field name="name">Unreserve</field>
+        <field name="state">code</field>
+        <field name="model_id" ref="stock.model_stock_picking"/>
+         <field name="binding_model_id" ref="stock.model_stock_picking"/>
+        <field name="code">
+            if records:
+            records.mass_picking_unreserve()
+        </field>
+    </record>
+
+<!--    <record id="mass_picking_unreserve_action" model="ir.actions.server">-->
+<!--            <field name="name">Mass Unreserve</field>-->
+<!--            <field name="model_id" ref="stock.model_stock_picking"/>-->
+<!--            <field name="binding_model_id" ref="stock.model_stock_picking"/>-->
+<!--            <field name="state">code</field>-->
+<!--            <field name="code">-->
+<!--            if records:-->
+<!--            records.mass_picking_unreserve()-->
+<!--        </field>-->
+<!--        </record>-->
+
+
+    <!-- Action script for mass reserve picking -->
+    <record id="mass_picking_reserve_action" model="ir.actions.server">
+        <field name="name">Reserve</field>
+        <field name="state">code</field>
+        <field name="model_id" ref="stock.model_stock_picking"/>
+         <field name="binding_model_id" ref="stock.model_stock_picking"/>
+        <field name="code">
+            if records:
+            records.mass_picking_reserve()
+        </field>
+    </record>
+    <!--    </data>-->
+</odoo>
