@@ -197,8 +197,15 @@
                 </p>
                 <p t-field="o.note"/>
             </div>
+        </xpath>
+    </template>
+    <template id="report_frozen_picking_operation_inherit_custom" inherit_id="stock.report_picking">
+<!--        <xpath expr="//div[hasclass('page')]" position="replace">-->
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
 
-            <div class="page" style="page-break-inside: avoid">
+                    <div class="page">
                         <div class="row justify-content-end mb16" style="padding-top:25px">
                             <div class="col-4" name="right_box">
                                 <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', o.name, 600, 100)"
@@ -290,7 +297,8 @@
                                 <t t-foreach="o.move_ids_without_package.sorted(key=lambda m: m.product_id.id)"
                                    t-as="move">
                                     <!-- In case you come accross duplicated lines, ask NIM or LAP -->
-                                    <t t-foreach="o.move_line_ids.sorted(key=lambda ml: ml.sequence)" t-as="ml">
+                                    <t t-foreach="move.move_line_ids.sorted(key=lambda ml: ml.location_id.id)"
+                                       t-as="ml">
 
                                         <tr t-if="ml.product_id.is_frozen">
 
@@ -400,7 +408,13 @@
                         </p>
                         <p t-field="o.note"/>
                     </div>
-        </xpath>
-    </template>
+
+
+                </t>
+            </t>
+        </t>
+<!--        </xpath>-->
+</template>
+
 
 </odoo>
