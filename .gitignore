@@ -19,3 +19,7 @@ openerp/filestore
 # maintenance migration scripts
 openerp/addons/base/maintenance
 
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
