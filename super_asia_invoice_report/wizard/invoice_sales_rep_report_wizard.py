@@ -293,7 +293,7 @@ class AccountSalesRepReport(models.TransientModel):
                                           'amt_out_std': amt_out_std})
         # End Aged Data
         invoice_ids = self.env['account.move'].search([
-            ('type', '=', 'out_invoice'),
+            ('type', 'in', ['out_invoice', 'out_refund']),
             ('date', '>=', self.date_from),
             ('date', '<=', self.date_to),
             ('state', '!=', 'cancel'),
@@ -306,9 +306,15 @@ class AccountSalesRepReport(models.TransientModel):
             # Invoice Data
             if self.type == 'sal_report':
                 for line in inv.invoice_line_ids:
+                    price_subtotal = 0.0
+                    if inv.type == 'out_refund':
+                        price_subtotal = line.price_subtotal * -1
+                    else:
+                        price_subtotal = line.price_subtotal
                     data['invoice_data'].append({
                         'user_id': inv.invoice_user_id.name or '',
-                        'type': 'invoice',  # inv.type,
+                        'type': dict(inv._fields['type'].selection).get(
+                            inv.type),
                         'date': invoice_date or '',
                         'month': month or '',
                         'year': year or '',
@@ -327,7 +333,8 @@ class AccountSalesRepReport(models.TransientModel):
                         'unit': line.product_uom_id.name or '',
                         'price_unit': line.price_unit or '',
                         'discount': line.discount or '',
-                        'price_subtotal': line.price_subtotal or ''})
+                        'price_subtotal': price_subtotal, })
+
             # Closing Data
             if self.type == 'close_report':
                 all_payments = payment_env.search([
