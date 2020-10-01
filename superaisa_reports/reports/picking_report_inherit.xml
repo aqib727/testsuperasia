@@ -41,7 +41,10 @@
                         <p t-field="o.scheduled_date"/>
                     </div>
                 </div>
-
+                <div class="row mt48 mb32" t-if="o.picking_type_id.code != 'incoming'">
+                    <strong>P.O#</strong>
+                    <p t-field="o.sale_id.client_order_ref"/>
+                </div>
                 <div class="row justify-content-end mb16">
                     <div name="right_box">
                         <table style="text-align: left">
@@ -74,24 +77,24 @@
                             <th>
                                 <strong>Quantity</strong>
                             </th>
-                            <th name="th_product">
-                                <strong>Product</strong>
-                            </th>
+<!--                            <th name="th_product">-->
+<!--                                <strong>Product</strong>-->
+<!--                            </th>-->
                             <th>
                                 <strong>Sales Description</strong>
                             </th>
                             <th>
                                 <strong>U.O.M.</strong>
                             </th>
-                            <th name="th_from" t-if="o.picking_type_id.code != 'incoming'" align="left" groups="stock.group_stock_multi_locations">
+                            <th name="th_from" t-if="o.picking_type_id.code != 'incoming'" groups="stock.group_stock_multi_locations">
                                 <strong>From</strong>
                             </th>
                             <th name="th_to" t-if="o.picking_type_id.code != 'outgoing'" groups="stock.group_stock_multi_locations">
                                 <strong>To</strong>
                             </th>
-                            <!--                            <th name="th_serial_number" class="text-center" t-if="has_serial_number">-->
-                            <!--                                <strong>Lot/Serial Number</strong>-->
-                            <!--                            </th>-->
+                            <th name="th_serial_number" t-if="has_serial_number">
+                                <strong>Lot/Serial Number</strong>
+                            </th>
                             <!--                            <th name="th_barcode" class="text-center" t-if="has_barcode">-->
                             <!--                                <strong>Product Barcode</strong>-->
                             <!--                            </th>-->
@@ -114,12 +117,12 @@
                                         <t t-if="o.picking_type_id.code != 'incoming'" t-set="quantity_total" t-value="quantity_total+ml.qty_done+ml.product_uom_qty"/>
                                         <t t-if="o.picking_type_id.code == 'incoming'" t-set="quantity_total" t-value="quantity_total+ml.qty_done+ml.product_uom_qty"/>
                                     </td>
-                                    <td>
-                                        <!--                                        <span t-field="ml.product_id.display_name"/>-->
-                                        <span t-field="ml.product_id.name"/>
-                                        <br/>
-                                        <!--                                        <span t-field="ml.product_id.description_picking"/>-->
-                                    </td>
+<!--                                    <td>-->
+<!--                                        &lt;!&ndash;                                        <span t-field="ml.product_id.display_name"/>&ndash;&gt;-->
+<!--                                        <span t-field="ml.product_id.name"/>-->
+<!--                                        <br/>-->
+<!--                                        &lt;!&ndash;                                        <span t-field="ml.product_id.description_picking"/>&ndash;&gt;-->
+<!--                                    </td>-->
                                     <td>
 <!--                                        Sales Description-->
                                         <span t-field="ml.product_id.description_sale"/>
@@ -143,6 +146,9 @@
                                                 <span t-field="ml.result_package_id"/>
                                             </t>
                                         </div>
+                                    </td>
+                                    <td>
+                                        <span t-field="ml.lot_id"/>
                                     </td>
 
                                 </tr>
@@ -270,9 +276,9 @@
                                     <th>
                                         <strong>Quantity</strong>
                                     </th>
-                                    <th name="th_product">
-                                        <strong>Product</strong>
-                                    </th>
+<!--                                    <th name="th_product">-->
+<!--                                        <strong>Product</strong>-->
+<!--                                    </th>-->
                                     <th>
                                         <strong>Sales Description</strong>
                                     </th>
@@ -287,18 +293,20 @@
                                         groups="stock.group_stock_multi_locations">
                                         <strong>To</strong>
                                     </th>
+                                    <th name="th_product">
+                                        <strong>Lot/Serial Number</strong>
+                                    </th>
                                     <th style="width:15px"><strong>Frozen</strong></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <!--                            Initialize quantity variable-->
-                                <t t-set="quantity_total" t-value="0"/>
+                                <t t-set="qty_total" t-value="0"/>
 
-                                <t t-foreach="o.move_ids_without_package.sorted(key=lambda m: m.product_id.id)"
-                                   t-as="move">
+<!--                                <t t-foreach="o.move_ids_without_package.sorted(key=lambda m: m.product_id.id)"-->
+<!--                                   t-as="move">-->
                                     <!-- In case you come accross duplicated lines, ask NIM or LAP -->
-                                    <t t-foreach="move.move_line_ids.sorted(key=lambda ml: ml.location_id.id)"
-                                       t-as="ml">
+                                    <t t-foreach="o.move_line_ids.sorted(key=lambda ml: ml.sequence)" t-as="ml">
 
                                         <tr t-if="ml.product_id.is_frozen">
 
@@ -310,18 +318,18 @@
 
                                                 <!--                                        Add to counter:-->
                                                 <t t-if="o.picking_type_id.code != 'incoming'"
-                                                   t-set="quantity_total"
-                                                   t-value="quantity_total+ml.qty_done+ml.product_uom_qty"/>
+                                                   t-set="qty_total"
+                                                   t-value="qty_total+ml.qty_done+ml.product_uom_qty"/>
                                                 <t t-if="o.picking_type_id.code == 'incoming'"
-                                                   t-set="quantity_total"
-                                                   t-value="quantity_total+ml.qty_done+ml.product_uom_qty"/>
+                                                   t-set="qty_total"
+                                                   t-value="qty_total+ml.qty_done+ml.product_uom_qty"/>
                                             </td>
                                             <!--                                                Product Name:-->
-                                            <td>
-                                                <!--                                        <span t-field="ml.product_id.display_name"/>-->
-                                                <span t-field="ml.product_id.name"/>
-                                                <!--                                        <span t-field="ml.product_id.description_picking"/>-->
-                                            </td>
+<!--                                            <td>-->
+<!--                                                &lt;!&ndash;                                        <span t-field="ml.product_id.display_name"/>&ndash;&gt;-->
+<!--                                                <span t-field="ml.product_id.name"/>-->
+<!--                                                &lt;!&ndash;                                        <span t-field="ml.product_id.description_picking"/>&ndash;&gt;-->
+<!--                                            </td>-->
                                             <!--                                                Sales Description:-->
                                             <td>
                                                 <span t-field="ml.product_id.description_sale"/>
@@ -348,6 +356,11 @@
                                                 </div>
                                             </td>
                                             <td>
+                                                <!--                                        <span t-field="ml.product_id.display_name"/>-->
+                                                <span t-field="ml.lot_id"/>
+                                                <!--                                        <span t-field="ml.product_id.description_picking"/>-->
+                                            </td>
+                                            <td>
         <!--                                        <span t-esc="ml.product_id.is_frozen" />-->
                                                 <t t-if="ml.product_id.is_frozen" >
                                                     <input type="checkbox" id="checkbox104_anything_you_give" checked="checked"/>
@@ -355,14 +368,14 @@
                                             </td>
                                         </tr>
                                     </t>
-                                </t>
+<!--                                </t>-->
                             </tbody>
                         </table>
 
                         <!--Total quantity:-->
                         <strong>Total Quantity:</strong>
                         <!--                    <t t-esc="quantity_total"/>-->
-                        <span t-esc="'%.0f'% quantity_total"/>
+                        <span t-esc="'%.0f'% qty_total"/>
 
 
                         <table class="table table-sm"
