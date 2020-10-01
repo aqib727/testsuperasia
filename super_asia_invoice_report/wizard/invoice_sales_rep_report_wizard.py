@@ -20,7 +20,8 @@ class AccountSalesRepReport(models.TransientModel):
     user_id = fields.Many2many('res.users', string='User', required=True)
     date_from = fields.Date(string='Start Date')
     date_to = fields.Date(string='End Date')
-    company_id = fields.Many2one('res.company', string='Company', required=True,
+    company_id = fields.Many2one('res.company', string='Company',
+                                 required=True,
                                  default=lambda self: self.env.company)
     report_data = fields.Binary()
 
@@ -28,7 +29,7 @@ class AccountSalesRepReport(models.TransientModel):
         ('sal_report', 'Sales Rep Wise Invoice Report'),
         ('age_report', 'Sales Rep Wise Aging Report'),
         ('close_report', 'Sales Rep Wise Closing Report'),
-        ], string='Report Type', required=True, store=True, index=True,
+    ], string='Report Type', required=True, store=True, index=True,
         readonly=True, default="sal_report", change_default=True)
 
     def generate_xlsx_report(self, data):
@@ -75,7 +76,8 @@ class AccountSalesRepReport(models.TransientModel):
                 sheet.write(i, 3, inv.get('month', ''), center_format)
                 sheet.write(i, 4, inv.get('year', ''), center_format)
                 sheet.write(i, 5, inv.get('number', ''), center_format)
-                sheet.write(i, 6, inv.get('code_with_customer', ''), left_format)
+                sheet.write(i, 6, inv.get('code_with_customer', ''),
+                            left_format)
                 sheet.write(i, 7, inv.get('cust_code', ''), left_format)
                 sheet.write(i, 8, inv.get('customer_name', ''), left_format)
                 sheet.write(i, 9, inv.get('city'), left_format)
@@ -100,7 +102,8 @@ class AccountSalesRepReport(models.TransientModel):
             yellow_format = workbook.add_format(
                 {'bg_color': '#FFFF00', 'font_color': '#000000', 'bold': True,
                  'align': 'right', 'font_size': 11, 'border': 1})
-            red_format = workbook.add_format({'align': 'right','font_color': '#FF0000', 'border': 1})
+            red_format = workbook.add_format(
+                {'align': 'right', 'font_color': '#FF0000', 'border': 1})
             sheet1 = workbook.add_worksheet('Aged Data')
             sheet1.set_column('A:G', 15)
             sheet1.set_column('H:H', 20)
@@ -129,7 +132,7 @@ class AccountSalesRepReport(models.TransientModel):
                     sheet1.write(i, 3, inv.get('m2'), red_format)
                 else:
                     sheet1.write(i, 3, inv.get('m2'), right_format)
-                if inv.get('m3') and inv.get('m3')> 0:
+                if inv.get('m3') and inv.get('m3') > 0:
                     sheet1.write(i, 4, inv.get('m3'), yellow_format)
                 elif inv.get('m3') and inv.get('m3') < 0:
                     sheet1.write(i, 4, inv.get('m3'), red_format)
@@ -187,7 +190,7 @@ class AccountSalesRepReport(models.TransientModel):
             # End Closing Report
         workbook.close()
         superasia_file = base64.b64encode(open('/tmp/' +
-                                                 file_name, 'rb').read())
+                                               file_name, 'rb').read())
         if superasia_file:
             self.write({'report_data': superasia_file})
         filename = 'SuperAsia Sales Report.xlsx'
@@ -229,7 +232,7 @@ class AccountSalesRepReport(models.TransientModel):
                             WHEN aml.date_maturity < current_date - interval '120' day
                             THEN sum(aml.debit-aml.credit)
                             END as m5
-                
+
                     FROM 
                         account_move_line aml
                         left join account_move am on aml.move_id=am.id
@@ -275,8 +278,10 @@ class AccountSalesRepReport(models.TransientModel):
             self._cr.execute(query)
             aged_data = self._cr.dictfetchall()
             for adata in aged_data:
-                amt_out_std = (adata.get('m1') or 0.0) + (adata.get('m2') or 0.0) + \
-                              (adata.get('m3') or 0.0) + (adata.get('m4') or 0.0) + \
+                amt_out_std = (adata.get('m1') or 0.0) + (
+                            adata.get('m2') or 0.0) + \
+                              (adata.get('m3') or 0.0) + (
+                                          adata.get('m4') or 0.0) + \
                               (adata.get('m5') or 0.0)
                 data['aged_data'].append({'rep': self.user_id.name,
                                           'name': adata.get('name'),
@@ -303,13 +308,14 @@ class AccountSalesRepReport(models.TransientModel):
                 for line in inv.invoice_line_ids:
                     data['invoice_data'].append({
                         'user_id': inv.invoice_user_id.name or '',
-                        'type': 'invoice',#inv.type,
+                        'type': 'invoice',  # inv.type,
                         'date': invoice_date or '',
                         'month': month or '',
                         'year': year or '',
                         'number': inv.name or '',
                         'code_with_customer': inv.partner_id.name or '',
-                        'cust_code': inv.partner_id.name.split() and inv.partner_id.name.split()[0] or '',
+                        'cust_code': inv.partner_id.name.split() and
+                                     inv.partner_id.name.split()[0] or '',
                         'customer_name': inv.partner_id.name or '',
                         'city': inv.partner_id.city or '',
                         'product': line.product_id.name or '',
@@ -357,9 +363,6 @@ class AccountSalesRepReport(models.TransientModel):
                         diff_days = curr_date - inv.date
                         vals.update({'diff_days': diff_days.days})
 
-
-
-
                 data['closing_data'].append(vals)
             # Closing Data End
             # inv.type,
@@ -371,7 +374,6 @@ class AccountSalesRepReport(models.TransientModel):
     def sales_rep_invoice_report_excel(self):
         data = self.invoice_report()
         return self.generate_xlsx_report(data)
-
 
     def sales_rep_invoice_aging_report_excel(self):
         data = self.invoice_report()
