@@ -88,7 +88,8 @@ class GoogleDrive(models.Model):
                 auth_headers = {"Authorization": auth_token}
                 data_lines = []
 
-                if download_url:
+                # If there is a download url and the document has not been 'deleted'
+                if download_url and not child_response.get('explicitlyTrashed'):
                     try:
                         req = requests.get(download_url, headers=auth_headers, timeout=TIMEOUT)
                         req.raise_for_status()
