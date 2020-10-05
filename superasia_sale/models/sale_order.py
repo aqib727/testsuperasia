@@ -21,6 +21,7 @@ class SaleOrder(models.Model):
             # Find product by SKU, partner by customer id
             partner = self.env['res.partner'].search([('handshake_id', '=', line['customer_id'])], limit=1)
             prod = self.env['product.product'].search([('default_code', '=', line['sku'])], limit=1)
+            salesperson = self.env['res.users'].search([('name', '=', line['rep'])], limit=1)
             order_id = line.get('orderID')
 
             if prod and partner:
@@ -54,6 +55,7 @@ class SaleOrder(models.Model):
                     'partner_id': orders[order].get('customer'),
                     'order_line': orders[order].get('order_lines'),
                     'handshake_order_id': order,
+                    'user_id': salesperson.id or '',
                 }])
                 sale_order_ids += sale_order_id
 
