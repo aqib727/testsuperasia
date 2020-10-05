@@ -93,12 +93,12 @@ class StockPicking(models.Model):
         else:
             return (True, 'incoming_transfer')
 
-    def check_lot_on_barcode_scanned(self, barcode=None):
+    def check_lot_on_barcode_scanned(self, barcode=None, qty=None):
         '''This methodu used to check the lot/serial number is part of order or not.'''
         ml_id = self.move_line_ids_without_package.filtered(
             lambda
                 rec: rec.move_id and rec.lot_id.name == barcode)
-        if self.picking_type_code in ('outgoing', 'internal'):
+        if self.picking_type_code in ('outgoing', 'internal', 'incoming'):
             if ml_id:
                 return (True, 'existing_lot')
             else:
