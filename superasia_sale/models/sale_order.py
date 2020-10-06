@@ -18,13 +18,28 @@ class SaleOrder(models.Model):
         orders = {}
         sale_order_ids = []
         for line in data:
-            # Find product by SKU, partner by customer id
-            partner = self.env['res.partner'].search([('handshake_id', '=', line['customer_id'])], limit=1)
-            prod = self.env['product.product'].search([('default_code', '=', line['sku'])], limit=1)
-            salesperson = self.env['res.users'].search([('name', '=', line['rep'])], limit=1)
+            partner, prod, salesperson = '', '', ''
             order_id = line.get('orderID')
 
-            if prod and partner:
+            # Find product by SKU, partner by customer id, rep by name
+            if line.get('sku'):
+                prod = self.env['product.product'].search([('default_code', '=', line.get('sku'))], limit=1)
+
+            # Only set sales person and partner once
+            if order_id and order_id not in orders:
+                if line.get('customer_id'):
+                    partner = self.env['res.partner'].search([('handshake_id', '=', line.get('customer_id'))], limit=1)
+                elif not partner:
+                    _logger.error("Failed to find customer with '%s' ID: order %s not imported",
+                                  line.get('customer_id'), line.get('orderID'))
+                # Don't need to log error, set salesperson to odoobot if none found
+                if line.get('rep'):
+                    salesperson = self.env['res.users'].search([('name', '=', line.get('rep'))], limit=1)
+            elif not order_id:
+                _logger.error("Order ID is not in file: '%s' order not imported",
+                              line.get('orderID'))
+
+            if prod and order_id:
                 values = {
                     'product_id': prod.id,
                     'product_uom_qty': line.get('qty'),
@@ -38,13 +53,11 @@ class SaleOrder(models.Model):
                     orders[order_id] = {
                         'order_lines': [(0, 0, values)],
                         'customer': partner.id,
+                        'salesperson': salesperson.id or '',
                     }
             elif not prod:
                 _logger.error("Failed to find product with '%s' ID: order %s not imported",
-                              line['customer_id'], line['orderID'])
-            elif not partner:
-                _logger.error("Failed to find customer with '%s' ID: order %s not imported",
-                              line['customer_id'], line['orderID'])
+                              line.get('sku'), line.get('orderID'))
 
         for order in orders:
             # Check to make sure the order is unique
@@ -55,7 +68,7 @@ class SaleOrder(models.Model):
                     'partner_id': orders[order].get('customer'),
                     'order_line': orders[order].get('order_lines'),
                     'handshake_order_id': order,
-                    'user_id': salesperson.id or '',
+                    'user_id': orders[order].get('salesperson'),
                 }])
                 sale_order_ids += sale_order_id
 
