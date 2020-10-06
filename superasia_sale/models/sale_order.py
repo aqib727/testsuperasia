@@ -29,9 +29,6 @@ class SaleOrder(models.Model):
             if order_id and order_id not in orders:
                 if line.get('customer_id'):
                     partner = self.env['res.partner'].search([('handshake_id', '=', line.get('customer_id'))], limit=1)
-                elif not partner:
-                    _logger.error("Failed to find customer with '%s' ID: order %s not imported",
-                                  line.get('customer_id'), line.get('orderID'))
                 # Don't need to log error, set salesperson to odoobot if none found
                 if line.get('rep'):
                     salesperson = self.env['res.users'].search([('name', '=', line.get('rep'))], limit=1)
@@ -52,7 +49,7 @@ class SaleOrder(models.Model):
                 else:
                     orders[order_id] = {
                         'order_lines': [(0, 0, values)],
-                        'customer': partner.id,
+                        'customer': partner.id or '',
                         'salesperson': salesperson.id or '',
                     }
             elif not prod:
@@ -62,15 +59,19 @@ class SaleOrder(models.Model):
         for order in orders:
             # Check to make sure the order is unique
             existing_order = self.env['sale.order'].search([('handshake_order_id', '=', order)])
+            partner = orders[order].get('customer')
 
-            if not existing_order:
+            if not existing_order and partner:
                 sale_order_id = self.env['sale.order'].create([{
-                    'partner_id': orders[order].get('customer'),
+                    'partner_id': partner,
                     'order_line': orders[order].get('order_lines'),
                     'handshake_order_id': order,
                     'user_id': orders[order].get('salesperson'),
                 }])
                 sale_order_ids += sale_order_id
+            elif not partner:
+                _logger.error("Failed to find customer with '%s' ID or it does not exist: order %s not imported",
+                              partner, order)
 
         return sale_order_ids
 
