@@ -81,7 +81,7 @@ class StockPicking(models.Model):
         move_line_id = self.move_line_ids_without_package.filtered(
             lambda
                 rec: rec.move_id and rec.product_id.id == product)
-        if self.picking_type_code in ('outgoing', 'internal'):
+        if self.picking_type_code in ('outgoing', 'internal', 'incoming'):
             if move_line_id:
                 return (True, 'existing_line')
             else:

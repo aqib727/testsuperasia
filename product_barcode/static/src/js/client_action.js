@@ -106,9 +106,10 @@ client_action_custom.include({
                 params.lot_id ||
                 params.lot_name ||
                 params.force_update
-                ) {
+                )
+                {
                 if (this.actionParams.model === 'stock.picking') {
-                    line.qty_done += params.product.qty || 1;
+                    line.qty_done += params.product.qty;
                     if (params.package_id) {
                         line.package_id = params.package_id;
                     }
@@ -163,19 +164,23 @@ client_action_custom.include({
                         method: 'check_product_on_barcode_scanned',
                         args: [this.actionParams.pickingId, product.id],
                     }).then(function (data){
-                                    if (data && data[1] === 'incoming_transfer') {
+                                    if (data && data[1] === 'existing_line') {
                             if (product) {
             if (product.tracking !== 'none') {
                 self.currentStep = 'lot';
             }
-            var idOrVirtualId = self.scannedLines[self.scannedLines.length - 1];
-                var p_edit_line = _.find(self._getLines(self.currentState), function (line) {
-                    return line.virtual_id === idOrVirtualId || line.id === idOrVirtualId;
-                });
-                if (p_edit_line){
+//            var idOrVirtualId = self.scannedLines[self.scannedLines.length - 1];
+//                console.log('-----------------idOrVirtualId---------------', idOrVirtualId)
+//                console.log('-----------------------------------------------', self._getLines(self.currentState))
+////                var p_edit_line = _.find(self._getLines(self.currentState), function (line) {
+////                    console.log('---------p_edit_line-----------',p_edit_line)
+////                    return line.virtual_id === idOrVirtualId || line.id === idOrVirtualId;
+////                });
+//                if (p_edit_line){
+//                    console.log('----------------p_edit_line----------------',p_edit_line)
+//                     product.qty = p_edit_line.product_uom_qty;
+//                }
 
-                     product.qty = p_edit_line.product_uom_qty;
-                }
             var res = self._incrementLines({'product': product, 'barcode': barcode, 'force_update': true});
             if (res.isNewLine) {
                 if (self.actionParams.model === 'stock.inventory') {
@@ -205,6 +210,13 @@ client_action_custom.include({
 
                 });
                 if (match_product && match_product.product_uom_qty > 0){
+                    var currentPage = self.pages[self.currentPageIndex];
+                    var currentLine = _.find(currentPage.lines, function(line){
+                        return line.id === res.id
+                    });
+                    if (currentLine && currentLine.product_uom_qty){
+                        currentLine.qty_done = currentLine.product_uom_qty
+                    }
                     linesActions.push([self.linesWidget.incrementProduct, [res.id || res.virtualId, match_product.product_uom_qty, self.actionParams.model]]);
                     }
                 else{
@@ -216,41 +228,41 @@ client_action_custom.include({
             self.scannedLines.push(res.id || res.virtualId);
             return $.when({linesActions: linesActions});
         } }
-            if (data && data[1] === 'existing_line') {
-                            if (product) {
-            if (product.tracking !== 'none') {
-                self.currentStep = 'lot';
-            }
-            var res = self._incrementLines({'product': product, 'barcode': barcode});
-            if (res.isNewLine) {
-                if (self.actionParams.model === 'stock.inventory') {
-                    // FIXME sle: add owner_id, prod_lot_id, owner_id, product_uom_id
-                    return self._rpc({
-                        model: 'product.product',
-                        method: 'get_theoretical_quantity',
-                        args: [
-                            res.lineDescription.product_id.id,
-                            res.lineDescription.location_id.id,
-                        ],
-                    }).then(function (theoretical_qty) {
-                        res.lineDescription.theoretical_qty = theoretical_qty;
-                        linesActions.push([self.linesWidget.addProduct, [res.lineDescription, self.actionParams.model]]);
-                        self.scannedLines.push(res.id || res.virtualId);
-                        return $.when({linesActions: linesActions});
-                    });
-                } else {
-                    linesActions.push([self.linesWidget.addProduct, [res.lineDescription, self.actionParams.model]]);
-                }
-            } else {
-                if (product.tracking === 'none') {
-                    linesActions.push([self.linesWidget.incrementProduct, [res.id || res.virtualId, product.qty || 1, self.actionParams.model]]);
-                } else {
-                    linesActions.push([self.linesWidget.incrementProduct, [res.id || res.virtualId, 0, self.actionParams.model]]);
-                }
-            }
-            self.scannedLines.push(res.id || res.virtualId);
-            return $.when({linesActions: linesActions});
-        } }
+//            if (data && data[1] === 'existing_line') {
+//                            if (product) {
+//            if (product.tracking !== 'none') {
+//                self.currentStep = 'lot';
+//            }
+//            var res = self._incrementLines({'product': product, 'barcode': barcode});
+//            if (res.isNewLine) {
+//                if (self.actionParams.model === 'stock.inventory') {
+//                    // FIXME sle: add owner_id, prod_lot_id, owner_id, product_uom_id
+//                    return self._rpc({
+//                        model: 'product.product',
+//                        method: 'get_theoretical_quantity',
+//                        args: [
+//                            res.lineDescription.product_id.id,
+//                            res.lineDescription.location_id.id,
+//                        ],
+//                    }).then(function (theoretical_qty) {
+//                        res.lineDescription.theoretical_qty = theoretical_qty;
+//                        linesActions.push([self.linesWidget.addProduct, [res.lineDescription, self.actionParams.model]]);
+//                        self.scannedLines.push(res.id || res.virtualId);
+//                        return $.when({linesActions: linesActions});
+//                    });
+//                } else {
+//                    linesActions.push([self.linesWidget.addProduct, [res.lineDescription, self.actionParams.model]]);
+//                }
+//            } else {
+//                if (product.tracking === 'none') {
+//                    linesActions.push([self.linesWidget.incrementProduct, [res.id || res.virtualId, product.qty || 1, self.actionParams.model]]);
+//                } else {
+//                    linesActions.push([self.linesWidget.incrementProduct, [res.id || res.virtualId, 0, self.actionParams.model]]);
+//                }
+//            }
+//            self.scannedLines.push(res.id || res.virtualId);
+//            return $.when({linesActions: linesActions});
+//        } }
         if (data && data[1] === 'extra_line') {
                    self.do_warn(_t("The scanned product is not a part of the order."));
             return $.when({linesActions: linesActions});
@@ -457,14 +469,14 @@ client_action_custom.include({
                 errorMessage = _t('The scanned serial number is already used.');
                 return Promise.reject(errorMessage);
             }
-            var idOrVirtualId = self.scannedLines[self.scannedLines.length - 1];
-                var edit_line = _.find(self._getLines(self.currentState), function (line) {
-                    return line.virtual_id === idOrVirtualId || line.id === idOrVirtualId;
-                });
-                if (edit_line){
-
-                     product.qty = edit_line.product_uom_qty;
-                }
+//            var idOrVirtualId = self.scannedLines[self.scannedLines.length - 1];
+//                var edit_line = _.find(self._getLines(self.currentState), function (line) {
+//                    return line.virtual_id === idOrVirtualId || line.id === idOrVirtualId;
+//                });
+//                if (edit_line){
+//
+//                     product.qty = edit_line.product_uom_qty;
+//                }
             var res = self._incrementLines({
                 'product': product,
                 'barcode': lot_info.product.barcode,
@@ -479,10 +491,18 @@ client_action_custom.include({
                     self.scannedLines.push(res.lineDescription.id || res.lineDescription.virtual_id);
                 }
                 var match_line = _.find(self._getLines(self.currentState), function (line) {
+
                     return line.id === res.id;
 
                 });
                 if (match_line && match_line.product_uom_qty > 0){
+                    var currentPage = self.pages[self.currentPageIndex];
+                    var currentLine = _.find(currentPage.lines, function(line){
+                        return line.id === res.id
+                    });
+                    if (currentLine && currentLine.product_uom_qty){
+                        currentLine.qty_done = currentLine.product_uom_qty
+                    }
                     linesActions.push([self.linesWidget.incrementProduct, [res.id || res.virtualId, match_line.product_uom_qty, self.actionParams.model]]);
 
                 }
