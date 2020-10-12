@@ -28,7 +28,8 @@
                         </div>
 
 <!--                        Enter the address on the right of header for the following objects: -->
-                        <t t-if="o and o._name in ('stock.picking', 'account.move', 'sale.order', 'purchase.order')">
+<!--                        <t t-if="o and o._name in ('stock.picking', 'account.move', 'sale.order', 'purchase.order')">-->
+                        <t t-if="o and o._name in ('stock.picking', 'sale.order', 'purchase.order')">
                             <div class="col-6" name="div_address" style="text-align:right">
                                 <span>
                                     <t t-if="o._name == 'purchase.order'">
@@ -38,19 +39,38 @@
                                       <strong>Partner Reference:</strong>
                                     </t>
                                 </span>
-                                <!--                            <div t-field="o.move_ids_without_package[0].partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"/>-->
-                                <!--                            <div t-field="o.picking_type_id.warehouse_id.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"/>-->
+                                <!--                            <div t-field="o.move_ids_without_package[0].partner_id" t-options="{'widget': 'contact', 'fields': ['address', 'name', 'phone'], 'no_marker': True, 'phone_icons': True}"/>-->
+                                <!--                            <div t-field="o.picking_type_id.warehouse_id.partner_id" t-options="{'widget': 'contact', 'fields': ['address', 'name', 'phone'], 'no_marker': True, 'phone_icons': True}"/>-->
                                 <div t-field="o.partner_id"
-                                     t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;name&quot;, 'address', &quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"/>
+                                     t-options="{'widget': 'contact', 'fields': ['name', 'address', 'phone'], 'no_marker': True, 'phone_icons': True}"/>
                             </div>
                         </t>
+                        <t t-if="o and o._name in ('account.move')">
+                            <div class="col-6" name="div_address" style="text-align:right">
+                                <span>
+                                    <t>
+                                        <strong>Partner Reference:</strong>
+                                    </t>
+                                </span>
+                                <!--                            <div t-field="o.move_ids_without_package[0].partner_id" t-options="{'widget': 'contact', 'fields': ['address', 'name', 'phone'], 'no_marker': True, 'phone_icons': True}"/>-->
+                                <!--                            <div t-field="o.picking_type_id.warehouse_id.partner_id" t-options="{'widget': 'contact', 'fields': ['address', 'name', 'phone'], 'no_marker': True, 'phone_icons': True}"/>-->
+<!--                                <div t-field="o.partner_id"-->
+<!--                                     t-options="{'widget': 'contact', 'fields': ['name', 'address', 'phone'], 'no_marker': True, 'phone_icons': True}"/>-->
+                                <strong style="font-size: 1.3em"><div t-field="o.partner_id"
+                                             t-options="{'widget': 'contact', 'fields': ['name']}"/></strong>
+                                <div t-field="o.partner_id"
+                                     t-options="{'widget': 'contact', 'fields': ['address', 'phone'], 'no_marker': True, 'phone_icons': True}"/>
+
+                            </div>
+                        </t>
+
                     </div>
                 </div>
 
 <!--            remove address from invoice-->
             <t t-set="address">
 <!--                <address t-field="o.partner_id"-->
-<!--                         t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: True}"/>-->
+<!--                         t-options="{'widget': 'contact', 'fields': ['address', 'name'], 'no_marker': True}"/>-->
 <!--                <div t-if="o.partner_id.vat" class="mt16">-->
 <!--                    <t t-if="o.company_id.country_id.vat_label" t-esc="o.company_id.country_id.vat_label"-->
 <!--                       id="inv_tax_id_label"/>-->

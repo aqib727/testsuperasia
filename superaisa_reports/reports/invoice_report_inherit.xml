@@ -12,8 +12,8 @@
 
 <!--    Replace-->
     <template id="report_invoice_document_inherit_custom" inherit_id="account.report_invoice_document">
-
         <!--    Replace heading:    -->
+
         <xpath expr="//h2" position="replace">
             <h2>
                 <span t-if="o.type == 'out_invoice' and o.state == 'posted'">Invoice</span>
@@ -55,7 +55,7 @@
 <!--                            <span>Quantity</span>-->
 <!--                        </th>-->
                         <th name="th_description" class="text-left">
-                            <span>Description</span>
+                            <span>Sales Description</span>
                         </th>
                         <th name="th_UPC" class="text-center">
                             <span>UPC</span>
@@ -107,7 +107,7 @@
                                     <t t-set="quantity_total" t-value="quantity_total+line.quantity"/>
                                 </td>
                                 <td name="account_invoice_line_name">
-                                    <span t-field="line.name" t-options="{'widget': 'text'}"/>
+                                    <span t-field="line.product_id.description_sale" t-options="{'widget': 'text'}"/>
                                 </td>
 <!--                                <td name="account_invoice_line_name">-->
 
