@@ -3,6 +3,7 @@
 import csv
 
 from odoo import api, fields, models, _
+from decimal import Decimal, ROUND_HALF_UP
 from datetime import datetime, timedelta
 
 from tempfile import TemporaryDirectory
@@ -31,9 +32,9 @@ class ProductTemplate(models.Model):
                 prod.invalidate_cache()
                 amount = prod.sudo().with_context(allowed_company_ids=[wh.company_id.id], warehouse=wh.id).qty_available
                 rows.append({
-                    'sku': prod.name or '',
+                    'sku': prod.default_code or '',
                     'type': prod.type or '',
-                    'shelfQty': amount or 0.0,
+                    'shelfQty': Decimal(amount).to_integral_value(rounding=ROUND_HALF_UP) if amount else 0,
                     'warehouseId': wh.name or '',
                 })
         return rows
