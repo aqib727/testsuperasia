@@ -49,7 +49,7 @@ class SaleOrder(models.Model):
                 else:
                     orders[order_id] = {
                         'order_lines': [(0, 0, values)],
-                        'customer': partner.id or False,
+                        'customer': partner.id if partner else False,
                         'salesperson': salesperson.id if salesperson else False,
                     }
             elif not prod:
