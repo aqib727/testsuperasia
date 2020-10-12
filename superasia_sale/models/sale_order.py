@@ -18,7 +18,7 @@ class SaleOrder(models.Model):
         orders = {}
         sale_order_ids = []
         for line in data:
-            partner, prod, salesperson = '', '', ''
+            partner, prod, salesperson = '', '', False
             order_id = line.get('orderID')
 
             # Find product by SKU, partner by customer id, rep by name
@@ -49,8 +49,8 @@ class SaleOrder(models.Model):
                 else:
                     orders[order_id] = {
                         'order_lines': [(0, 0, values)],
-                        'customer': partner.id or '',
-                        'salesperson': salesperson.id or '',
+                        'customer': partner.id or False,
+                        'salesperson': salesperson.id if salesperson else False,
                     }
             elif not prod:
                 _logger.error("Failed to find product with '%s' ID: order %s not imported",
