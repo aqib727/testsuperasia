@@ -306,6 +306,12 @@ client_action_custom.include({
         this.currentStep = 'lot';
         var errorMessage;
         var self = this;
+        // Bypass this step if needed.
+        if (self.productsByBarcode[barcode]) {
+            return self._step_product(barcode, linesActions);
+        } else if (self.locationsByBarcode[barcode]) {
+            return self._step_destination(barcode, linesActions);
+        }
         return this._rpc({
                         model: 'stock.picking',
                         method: 'check_lot_on_barcode_scanned',
@@ -313,12 +319,7 @@ client_action_custom.include({
                     }).then(function (data){
                                     if (data && data[1] === 'existing_lot') {
 
-        // Bypass this step if needed.
-        if (self.productsByBarcode[barcode]) {
-            return self._step_product(barcode, linesActions);
-        } else if (self.locationsByBarcode[barcode]) {
-            return self._step_destination(barcode, linesActions);
-        }
+
 
         var getProductFromLastScannedLine = function () {
             if (self.scannedLines.length) {
@@ -512,7 +513,8 @@ client_action_custom.include({
                 linesActions.push([self.linesWidget.setLotName, [res.id || res.virtualId, barcode]]);
             }
             return Promise.resolve({linesActions: linesActions});
-        });}
+        });
+        }
         if (data && data[1] === 'extra_lot') {
                    self.do_warn(_t("The scanned Lot is not part of the order."));
                    location.reload();
