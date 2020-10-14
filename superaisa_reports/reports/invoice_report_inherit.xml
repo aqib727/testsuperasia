@@ -101,7 +101,7 @@
                         <tr t-att-class="'bg-200 font-weight-bold o_line_section' if line.display_type == 'line_section' else 'font-italic o_line_note' if line.display_type == 'line_note' else ''">
                             <t t-if="not line.display_type" name="account_invoice_line_accountable">
                                 <td class="text-center">
-                                    <span t-field="line.quantity"/>
+                                    <span t-esc="'%.0f'% line.quantity"/>
 
                                     <!-- Add to counter:-->
                                     <t t-set="quantity_total" t-value="quantity_total+line.quantity"/>
@@ -178,7 +178,7 @@
 
                             <!--Total quantity:-->
                 <strong>Total Quantity: </strong>
-                    <t t-esc="quantity_total"/>
+                    <t t-esc="'%.0f'% quantity_total"/>
 
 
 <!--            <t t-call="report_aged_receivable_inherit_custom"/>-->
