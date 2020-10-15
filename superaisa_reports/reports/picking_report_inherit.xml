@@ -237,8 +237,9 @@
                         </div>
                         <!--</div>-->
 
-                        <div class="row"></div>
-
+                        <div class="mt0">
+                            <h1>Frozen Items</h1>
+                        </div>
                         <h1 t-field="o.name" class="mt0 float-left"/>
                         <div class="row mt48 mb32">
                             <div t-if="o.origin" class="col-auto" name="div_origin">
