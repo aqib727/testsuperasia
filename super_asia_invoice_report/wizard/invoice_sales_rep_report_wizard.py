@@ -20,8 +20,7 @@ class AccountSalesRepReport(models.TransientModel):
     user_id = fields.Many2many('res.users', string='User', required=True)
     date_from = fields.Date(string='Start Date')
     date_to = fields.Date(string='End Date')
-    company_id = fields.Many2one('res.company', string='Company',
-                                 required=True,
+    company_id = fields.Many2one('res.company', string='Company', required=True,
                                  default=lambda self: self.env.company)
     report_data = fields.Binary()
 
@@ -29,7 +28,7 @@ class AccountSalesRepReport(models.TransientModel):
         ('sal_report', 'Sales Rep Wise Invoice Report'),
         ('age_report', 'Sales Rep Wise Aging Report'),
         ('close_report', 'Sales Rep Wise Closing Report'),
-    ], string='Report Type', required=True, store=True, index=True,
+        ], string='Report Type', required=True, store=True, index=True,
         readonly=True, default="sal_report", change_default=True)
 
     def generate_xlsx_report(self, data):
@@ -76,8 +75,7 @@ class AccountSalesRepReport(models.TransientModel):
                 sheet.write(i, 3, inv.get('month', ''), center_format)
                 sheet.write(i, 4, inv.get('year', ''), center_format)
                 sheet.write(i, 5, inv.get('number', ''), center_format)
-                sheet.write(i, 6, inv.get('code_with_customer', ''),
-                            left_format)
+                sheet.write(i, 6, inv.get('code_with_customer', ''), left_format)
                 sheet.write(i, 7, inv.get('cust_code', ''), left_format)
                 sheet.write(i, 8, inv.get('customer_name', ''), left_format)
                 sheet.write(i, 9, inv.get('city'), left_format)
@@ -102,8 +100,7 @@ class AccountSalesRepReport(models.TransientModel):
             yellow_format = workbook.add_format(
                 {'bg_color': '#FFFF00', 'font_color': '#000000', 'bold': True,
                  'align': 'right', 'font_size': 11, 'border': 1})
-            red_format = workbook.add_format(
-                {'align': 'right', 'font_color': '#FF0000', 'border': 1})
+            red_format = workbook.add_format({'align': 'right','font_color': '#FF0000', 'border': 1})
             sheet1 = workbook.add_worksheet('Aged Data')
             sheet1.set_column('A:G', 15)
             sheet1.set_column('H:H', 20)
@@ -117,41 +114,90 @@ class AccountSalesRepReport(models.TransientModel):
             sheet1.write(0, 7, 'Amount Outstanding', header_format1)
 
             i = 1
+            m1_total = 0
+            m2_total = 0
+            m3_total = 0
+            m4_total = 0
+            m5_total = 0
+            amount_total = 0
             for inv in aged_data:
-                sheet1.write(i, 0, inv.get('rep'), left_format)
+                sheet1.write(i, 0, inv.get('sales_name'), left_format)
                 sheet1.write(i, 1, inv.get('name'), left_format)
                 if inv.get('m1') and inv.get('m1') > 0:
                     sheet1.write(i, 2, inv.get('m1'), yellow_format)
+                    if inv.get('m1') != None:
+                        m1_total += inv.get('m1')
                 elif inv.get('m1') and inv.get('m1') < 0:
                     sheet1.write(i, 2, inv.get('m1'), red_format)
+                    if inv.get('m1') != None:
+                        m1_total += inv.get('m1')
                 else:
                     sheet1.write(i, 2, inv.get('m1'), right_format)
+                    if inv.get('m1') != None:
+                        m1_total += inv.get('m1')
+
                 if inv.get('m2') and inv.get('m2') > 0:
                     sheet1.write(i, 3, inv.get('m2'), yellow_format)
+                    if inv.get('m2') != None:
+                        m2_total += inv.get('m2')
                 elif inv.get('m2') and inv.get('m2') < 0:
                     sheet1.write(i, 3, inv.get('m2'), red_format)
+                    if inv.get('m2') != None:
+                        m2_total += inv.get('m2')
                 else:
                     sheet1.write(i, 3, inv.get('m2'), right_format)
-                if inv.get('m3') and inv.get('m3') > 0:
+                    if inv.get('m2') != None:
+                        m2_total += inv.get('m2')
+
+                if inv.get('m3') and inv.get('m3')> 0:
                     sheet1.write(i, 4, inv.get('m3'), yellow_format)
+                    if inv.get('m3') != None:
+                        m3_total += inv.get('m3')
                 elif inv.get('m3') and inv.get('m3') < 0:
                     sheet1.write(i, 4, inv.get('m3'), red_format)
+                    if inv.get('m3') != None:
+                        m3_total += inv.get('m3')
                 else:
                     sheet1.write(i, 4, inv.get('m3'), right_format)
+                    if inv.get('m3') != None:
+                        m3_total += inv.get('m3')
+
                 if inv.get('m4') and inv.get('m4') > 0:
                     sheet1.write(i, 5, inv.get('m4'), yellow_format)
+                    if inv.get('m4') != None:
+                        m4_total += inv.get('m4')
                 elif inv.get('m4') and inv.get('m4') < 0:
                     sheet1.write(i, 5, inv.get('m4'), red_format)
+                    if inv.get('m4') != None:
+                        m4_total += inv.get('m4')
                 else:
                     sheet1.write(i, 5, inv.get('m4'), right_format)
+                    if inv.get('m4') != None:
+                        m4_total += inv.get('m4')
+
                 if inv.get('m5') and inv.get('m5') > 0:
                     sheet1.write(i, 6, inv.get('m5'), yellow_format)
+                    if inv.get('m5') != None:
+                        m5_total += inv.get('m5')
                 elif inv.get('m5') and inv.get('m5') < 0:
                     sheet1.write(i, 6, inv.get('m5'), red_format)
+                    if inv.get('m5') != None:
+                        m5_total += inv.get('m5')
                 else:
                     sheet1.write(i, 6, inv.get('m5'), right_format)
+                    if inv.get('m5') != None:
+                        m5_total += inv.get('m5')
                 sheet1.write(i, 7, inv.get('amt_out_std'), right_format)
+                if inv.get('amt_out_std') != None:
+                    amount_total += inv.get('amt_out_std')
                 i = i + 1
+            sheet1.write(i, 0, 'Total', header_format1)
+            sheet1.write(i, 2, m1_total, header_format1)
+            sheet1.write(i, 3, m2_total, header_format1)
+            sheet1.write(i, 4, m3_total, header_format1)
+            sheet1.write(i, 5, m4_total, header_format1)
+            sheet1.write(i, 6, m5_total, header_format1)
+            sheet1.write(i, 7, amount_total, header_format1)
         # End Aged Report
         # Start Closing Report
         closing_data = data.get('closing_data')
@@ -190,7 +236,7 @@ class AccountSalesRepReport(models.TransientModel):
             # End Closing Report
         workbook.close()
         superasia_file = base64.b64encode(open('/tmp/' +
-                                               file_name, 'rb').read())
+                                                 file_name, 'rb').read())
         if superasia_file:
             self.write({'report_data': superasia_file})
         filename = 'SuperAsia Sales Report.xlsx'
@@ -209,9 +255,14 @@ class AccountSalesRepReport(models.TransientModel):
         payment_env = self.env['account.payment']
         # Start Aged Data
         if self.type == 'age_report':
+            user_str = 'in %s' % str(tuple(self.user_id.ids))
+            if len(self.user_id.ids) == 1:
+                user_str = '= %s'% self.user_id.id
             query = """
-                SELECT i.name,sum(m5) as m5, sum(m4) as m4,sum(m3) as m3, sum(m2) as m2, sum(m1) as m1 from
-                    (SELECT cust.name as name,
+                SELECT i.name,sum(m5) as m5, sum(m4) as m4,sum(m3) as m3, sum(m2) as m2, sum(m1) as m1, 
+                (select (select rp.name from res_partner rp where rp.id=ru.partner_id) 
+                from res_users as ru where ru.id = i.sales_name) as sales_name 
+                from(SELECT cust.name as name,
                         CASE 
                             WHEN aml.date_maturity <= current_date - interval '1' day 
                             AND aml.date_maturity >= current_date - interval '30' day
@@ -231,8 +282,8 @@ class AccountSalesRepReport(models.TransientModel):
                         CASE 
                             WHEN aml.date_maturity < current_date - interval '120' day
                             THEN sum(aml.debit-aml.credit)
-                            END as m5
-
+                            END as m5,
+                            am.invoice_user_id as sales_name
                     FROM 
                         account_move_line aml
                         left join account_move am on aml.move_id=am.id
@@ -240,7 +291,7 @@ class AccountSalesRepReport(models.TransientModel):
                         left join account_account ac on aml.account_id=ac.id
                         left join account_account_type act on ac.user_type_id=act.id
                     WHERE
-                    am.invoice_user_id=%s
+                    am.invoice_user_id %s
                     AND act.type='receivable'
                     AND aml.reconciled=False
                     AND am.company_id=%s
@@ -249,10 +300,11 @@ class AccountSalesRepReport(models.TransientModel):
                     AND aml.date <= '%s'
                     GROUP BY
                         cust.id,
-                        aml.date_maturity) as i
-                GROUP BY
-                    i.name
-                """ % (self.user_id.id, self.company_id.id, self.date_to)
+                        aml.date_maturity, am.invoice_user_id) as i
+                    GROUP BY
+                    i.name,
+                    i.sales_name
+                """ % (user_str, self.company_id.id, self.date_to)
             # query = """
             # SELECT
             #     cust.name
@@ -278,12 +330,11 @@ class AccountSalesRepReport(models.TransientModel):
             self._cr.execute(query)
             aged_data = self._cr.dictfetchall()
             for adata in aged_data:
-                amt_out_std = (adata.get('m1') or 0.0) + (
-                            adata.get('m2') or 0.0) + \
-                              (adata.get('m3') or 0.0) + (
-                                          adata.get('m4') or 0.0) + \
+
+                amt_out_std = (adata.get('m1') or 0.0) + (adata.get('m2') or 0.0) + \
+                              (adata.get('m3') or 0.0) + (adata.get('m4') or 0.0) + \
                               (adata.get('m5') or 0.0)
-                data['aged_data'].append({'rep': self.user_id.name,
+                data['aged_data'].append({'sales_name': adata.get('sales_name'),
                                           'name': adata.get('name'),
                                           'm1': adata.get('m1'),
                                           'm2': adata.get('m2'),
@@ -313,15 +364,13 @@ class AccountSalesRepReport(models.TransientModel):
                         price_subtotal = line.price_subtotal
                     data['invoice_data'].append({
                         'user_id': inv.invoice_user_id.name or '',
-                        'type': dict(inv._fields['type'].selection).get(
-                            inv.type),
+                        'type': dict(inv._fields['type'].selection).get(inv.type),
                         'date': invoice_date or '',
                         'month': month or '',
                         'year': year or '',
                         'number': inv.name or '',
                         'code_with_customer': inv.partner_id.name or '',
-                        'cust_code': inv.partner_id.name.split() and
-                                     inv.partner_id.name.split()[0] or '',
+                        'cust_code': inv.partner_id.name.split() and inv.partner_id.name.split()[0] or '',
                         'customer_name': inv.partner_id.name or '',
                         'city': inv.partner_id.city or '',
                         'product': line.product_id.name or '',
@@ -333,7 +382,7 @@ class AccountSalesRepReport(models.TransientModel):
                         'unit': line.product_uom_id.name or '',
                         'price_unit': line.price_unit or '',
                         'discount': line.discount or '',
-                        'price_subtotal': price_subtotal, })
+                        'price_subtotal': price_subtotal,})
 
             # Closing Data
             if self.type == 'close_report':
@@ -370,6 +419,9 @@ class AccountSalesRepReport(models.TransientModel):
                         diff_days = curr_date - inv.date
                         vals.update({'diff_days': diff_days.days})
 
+
+
+
                 data['closing_data'].append(vals)
             # Closing Data End
             # inv.type,
@@ -381,6 +433,7 @@ class AccountSalesRepReport(models.TransientModel):
     def sales_rep_invoice_report_excel(self):
         data = self.invoice_report()
         return self.generate_xlsx_report(data)
+
 
     def sales_rep_invoice_aging_report_excel(self):
         data = self.invoice_report()
