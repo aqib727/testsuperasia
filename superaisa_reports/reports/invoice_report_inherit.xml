@@ -124,7 +124,7 @@
 
                                     <t t-foreach="request.env['product.template'].search([('id', '=', line.product_id.id)])" t-as="obj">
                                                 <t t-if="obj['unit_barcode']">
-                                                    <p t-esc="obj['unit_barcode']"/>
+                                                    <t t-esc="obj['unit_barcode']"/>
                                                 </t>
                                     </t>
 
