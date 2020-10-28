@@ -7,4 +7,12 @@
                 Add product</button>
         </t>
     </t>
+    <t t-extend="stock_barcode_settings_widget">
+        <t t-jquery=".o_print_picking" t-operation="after">
+            <button t-if="widget.model == 'stock.picking'"
+                    class="btn-lg btn btn-dark text-uppercase o_check_availability">Check Availability</button>
+            <button t-if="widget.model == 'stock.picking'"
+                    class="btn-lg btn btn-dark text-uppercase o_unreserve">Unreserve</button>
+        </t>
+    </t>
 </templates>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="stock_picking_view_form_inherit_stock_barcode_inherited" model="ir.ui.view">
+            <field name="name">stock.picking.form.inherit</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock_barcode.stock_picking_view_form_inherit_stock_barcode"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_assign']"
+                       position="attributes">
+                    <attribute name="barcode_trigger">check-availability
+                    </attribute>
+                </xpath>
+                <xpath expr="//button[@name='do_unreserve']"
+                       position="attributes">
+                    <attribute name="barcode_trigger">do-unreserve</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
