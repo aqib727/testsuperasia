@@ -45,7 +45,9 @@ picking_client_action_custom.include({
                     'model': 'stock.picking',
                     'method': 'action_assign',
                     'args': [[self.actionParams.pickingId]],
-                })
+                }).then(function () {
+                    return self.trigger_up('reload');
+                });
             });
         });
     },
@@ -57,7 +59,9 @@ picking_client_action_custom.include({
                     'model': 'stock.picking',
                     'method': 'do_unreserve',
                     'args': [[self.actionParams.pickingId]],
-                })
+                }).then(function () {
+                    return self.trigger_up('reload');
+                });
             });
         });
     },
