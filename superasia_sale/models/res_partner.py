@@ -36,9 +36,7 @@ class ResPartner(models.Model):
     def export_contact_handshake(self):
         partner_ids = self.env['res.partner'].search([])
 
-        report_name = 'contacts_{date}'.format(date=datetime.now().strftime("%Y_%m_%d"))
-
-        filename = "%s.%s" % (report_name, "csv")
+        filename = "contacts_odoo.csv"
 
         folder_id = self.env['ir.config_parameter'].sudo().get_param(
             'superasia_sale.google_drive_contact_folder_id')
