@@ -9,6 +9,12 @@ from odoo import api, fields, models, SUPERUSER_ID, _
 _logger = logging.getLogger(__name__)
 
 
+class SaleOrderLine(models.Model):
+    _inherit = 'sale.order.line'
+
+    handshake_notes = fields.Text(string="Notes", help="Notes from Handshake Orders")
+
+
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
@@ -42,6 +48,7 @@ class SaleOrder(models.Model):
                     'product_uom_qty': line.get('qty'),
                     'price_unit': line.get('unit_price'),
                     'name': line.get('description'),
+                    'handshake_notes': line.get('notes'),
                 }
                 # Build the order dictionary, key = order id
                 if orders.get(order_id):

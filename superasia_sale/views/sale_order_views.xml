@@ -8,6 +8,10 @@
             <xpath expr="//page[@name='other_information']//group[@name='sales_person']" position="inside">
                 <field name="handshake_order_id"/>
             </xpath>
+
+            <xpath expr="//field[@name='order_line']//tree//field[@name='name']" position="after">
+                <field name="handshake_notes"/>
+            </xpath>
         </field>
     </record>
 </odoo>
