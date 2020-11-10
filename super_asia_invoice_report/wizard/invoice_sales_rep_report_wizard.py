@@ -347,7 +347,7 @@ class AccountSalesRepReport(models.TransientModel):
             ('type', 'in', ['out_invoice', 'out_refund']),
             ('date', '>=', self.date_from),
             ('date', '<=', self.date_to),
-            ('state', '!=', 'cancel'),
+            ('state', 'not in', ('draft', 'cancel')),
             ('company_id', '=', self.company_id.id),
             ('invoice_user_id', '=', self.user_id.ids)])
         for inv in invoice_ids:
