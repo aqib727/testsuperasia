@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api, _
+from odoo.exceptions import UserError
 
 
 class StockPicking(models.Model):
@@ -41,6 +42,11 @@ class StockPicking(models.Model):
             tracking_and_barcode_per_product_id = {}
             for res in self.env['product.product'].search_read([('id', 'in', product_ids)], ['tracking', 'barcode']):
                 tracking_and_barcode_per_product_id[res.pop("id")] = res
+            if not tracking_and_barcode_per_product_id:
+                product = self.env['product.product'].browse(product_ids)
+                for products in product:
+                    if not products.active:
+                        raise UserError(_("The following products are Archive. \n %s") % (products.display_name))
 
             for move_line_id in picking['move_line_ids']:
                 id = move_line_id.pop('product_id')[0]
