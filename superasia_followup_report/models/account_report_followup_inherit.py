@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from odoo import fields, models, api
+from odoo import fields, models
 from odoo.tools.translate import _
 from odoo.tools.misc import format_date, formatLang, get_lang
-from odoo.tools import append_content_to_html, DEFAULT_SERVER_DATE_FORMAT, html2plaintext
+import datetime
 
 class AccountFollowupReport(models.AbstractModel):
     _inherit = 'account.followup.report'
@@ -14,24 +14,13 @@ class AccountFollowupReport(models.AbstractModel):
         Return the name of the report
         """
         return _('Statement')
-        
+
     def _get_columns_name(self, options):
-        """
-        Override
-        Return the name of the columns of the follow-ups report
-        """
-        headers = [{},
-                   {'name': _('Invoice Date'), 'class': 'date', 'style': 'text-align:center; white-space:nowrap;'},
-                   {'name': _('Due Date'), 'class': 'date', 'style': 'text-align:center; white-space:nowrap;'},
-                #    {'name': _('Source Document'), 'style': 'text-align:center; white-space:nowrap;'},
-                #    {'name': _('Communication'), 'style': 'text-align:right; white-space:nowrap;'},
-                   {'name': _('Expected Date'), 'class': 'date', 'style': 'white-space:nowrap;'},
-                   {'name': _('Excluded'), 'class': 'date', 'style': 'white-space:nowrap;'},
-                   {'name': _('Balance'), 'class': 'number o_price_total', 'style': 'text-align:right; white-space:nowrap;'},
-                   {'name': _('Total Due'), 'class': 'number o_price_total', 'style': 'text-align:right; white-space:nowrap;'},
-                  ]
-        if self.env.context.get('print_mode'):
-            headers = headers[:3] + headers[5:]  # Remove the 'Expected Date' and 'Excluded' columns
+        headers = super(AccountFollowupReport, self)._get_columns_name(options)
+
+        headers = headers[:3] + headers[5:]
+        headers[1]['name'] = _('Invoice Date')
+        headers.append({'name': _('Balance'), 'class': 'number o_price_total', 'style': 'text-align:right; white-space:nowrap;'})
         return headers
 
     def _get_lines(self, options, line_id=None):
@@ -63,7 +52,6 @@ class AccountFollowupReport(models.AbstractModel):
             balance = 0
             for aml in aml_recs:
                 amount = aml.amount_residual_currency if aml.currency_id else aml.amount_residual
-                # balance = aml.amount_residual_currency if aml.currency_id else aml.amount_residual
                 date_due = format_date(self.env, aml.date_maturity or aml.date, lang_code=lang_code)
                 total += not aml.blocked and amount or 0
                 balance += not aml.blocked and amount or 0
@@ -85,12 +73,10 @@ class AccountFollowupReport(models.AbstractModel):
                 columns = [
                     format_date(self.env, aml.date, lang_code=lang_code),
                     date_due,
-                    # aml.move_id.invoice_origin or '',
-                    # move_line_name,
                     (expected_pay_date and expected_pay_date + ' ') + (aml.internal_note or ''),
                     {'name': '', 'blocked': aml.blocked},
-                    balance_total,
                     amount,
+                    balance_total,
                 ]
                 if self.env.context.get('print_mode'):
                     columns = columns[:2] + columns[4:]
@@ -113,7 +99,7 @@ class AccountFollowupReport(models.AbstractModel):
                 'style': 'border-top-style: double',
                 'unfoldable': False,
                 'level': 3,
-                'columns': [{'name': v} for v in [''] * (2 if self.env.context.get('print_mode') else 4) + [total >= 0 and _('Total Due') or '', total_due]],
+                'columns': [{'name': v} for v in [''] * (1 if self.env.context.get('print_mode') else 3) + [total >= 0 and _('Total Due') or '', total_due]],
             })
             if total_issued > 0:
                 total_issued = formatLang(self.env, total_issued, currency_obj=currency)
@@ -124,7 +110,7 @@ class AccountFollowupReport(models.AbstractModel):
                     'class': 'total',
                     'unfoldable': False,
                     'level': 3,
-                    'columns': [{'name': v} for v in [''] * (2 if self.env.context.get('print_mode') else 4) + [_('Total Overdue'), total_issued]],
+                    'columns': [{'name': v} for v in [''] * (1 if self.env.context.get('print_mode') else 3) + [_('Total Overdue'), total_issued]],
                 })
             # Add an empty line after the total to make a space between two currencies
             line_num += 1
@@ -142,17 +128,55 @@ class AccountFollowupReport(models.AbstractModel):
             lines.pop()
         return lines
 
-    def get_html(self, options, line_id=None, additional_context=None):
-        """
-        Override
-        Compute and return the content in HTML of the followup for the partner_id in options
-        """
-        if additional_context is None:
-            additional_context = {}
-            additional_context['followup_line'] = self.get_followup_line(options)
-        partner = self.env['res.partner'].browse(options['partner_id'])
-        additional_context['partner'] = partner
-        additional_context['lang'] = partner.lang or get_lang(self.env).code
-        additional_context['invoice_address_id'] = self.env['res.partner'].browse(partner.address_get(['invoice'])['invoice'])
-        additional_context['today'] = fields.date.today().strftime(DEFAULT_SERVER_DATE_FORMAT)
+    def get_new_lines(self, options, line_id=None):
+        partner = options.get('partner_id') and self.env['res.partner'].browse(options['partner_id']) or False
+        if not partner:
+            return []
+
+        res = {}
+        today = fields.Date.today()
+        for l in partner.unreconciled_aml_ids.filtered(lambda l: l.company_id == self.env.company):
+            if l.company_id == self.env.company:
+                if self.env.context.get('print_mode') and l.blocked:
+                    continue
+                currency = l.currency_id or l.company_id.currency_id
+                if currency not in res:
+                    res[currency] = []
+                res[currency].append(l)
+        for currency, aml_recs in res.items():
+            days_0_29 = 0
+            days_30_39 = 0
+            days_40_49 = 0
+            days_50_59 = 0
+            days_60_plus = 0
+            for aml in aml_recs:
+                amount = aml.amount_residual_currency if aml.currency_id else aml.amount_residual  
+                date_due = aml.date_maturity or aml.date
+                is_overdue = today > aml.date_maturity if aml.date_maturity else today > aml.date
+                if is_overdue:
+                    days_overdue = today - date_due
+                    if days_overdue <= datetime.timedelta(days = 29):
+                        days_0_29 += amount
+                    elif days_overdue <= datetime.timedelta(days = 39):
+                        days_30_39 += amount
+                    elif days_overdue <= datetime.timedelta(days = 49):
+                        days_40_49 += amount
+                    elif days_overdue <= datetime.timedelta(days = 59):
+                        days_50_59 += amount
+                    else:
+                        days_60_plus += amount
+            days_0_29 = formatLang(self.env, days_0_29, currency_obj=currency)
+            days_30_39 = formatLang(self.env, days_30_39, currency_obj=currency)
+            days_40_49 = formatLang(self.env, days_40_49, currency_obj=currency)
+            days_50_59 = formatLang(self.env, days_50_59, currency_obj=currency)
+            days_60_plus = formatLang(self.env, days_60_plus, currency_obj=currency)
+            line = {
+                'values': [days_0_29, days_30_39, days_40_49, days_50_59, days_60_plus],
+                'columns': ['0 - 29', '30 - 39', '40 - 49', '50 - 59', '60+'],
+                }
+        return line
+
+    def get_html(self, options, line_id=None, additional_context={}):
+        
+        additional_context['outstanding_line'] = self.get_new_lines(options)
         return super(AccountFollowupReport, self).get_html(options, line_id=line_id, additional_context=additional_context)
