@@ -50,7 +50,7 @@
 <!--            remove address from invoice-->
             <t t-set="address">
 <!--                <address t-field="o.partner_id"-->
-<!--                         t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: True}"/>-->
+<!--                         t-options="{'widget': 'contact', 'fields': ['address', 'name'], 'no_marker': True}"/>-->
 <!--                <div t-if="o.partner_id.vat" class="mt16">-->
 <!--                    <t t-if="o.company_id.country_id.vat_label" t-esc="o.company_id.country_id.vat_label"-->
 <!--                       id="inv_tax_id_label"/>-->

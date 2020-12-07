@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.module.category" id="accounting_access_right">
+            <field name="name">Account View Access</field>
+            <field name="description">User access level for Accounting</field>
+            <field name="sequence">26</field>
+        </record>
+        <!-- Group who can see only Own records. -->
+        <record id="group_own_customer" model="res.groups">
+            <field name="name">Own Customer Only</field>
+            <field name="category_id"
+                ref="accounting_access_right" />
+        </record>
+    </data>
+</odoo>

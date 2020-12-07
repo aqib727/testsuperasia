@@ -22,6 +22,7 @@ class MassPickingValidationWiz(models.TransientModel):
         for rec in do_order:
             rec.action_confirm()
             rec.action_assign()
+
             # rec.button_validate()
             # unreserved_lines = rec.move_line_ids_without_package.filtered\
             #     (lambda ml: ml.reserved_availability <= 0)
@@ -44,6 +45,7 @@ class MassPickingValidationWiz(models.TransientModel):
         order_not_ready = picking_ids.filtered(lambda r: r.state != 'assigned').mapped('name')
         if order_not_ready:
             msg += "You cannot process the Orders that are in Draft state, Waiting state, Done state or Cancelled state. Check for the reference \n" + ",".join(map(str, order_not_ready)) + '\n'
+
 
 
 
