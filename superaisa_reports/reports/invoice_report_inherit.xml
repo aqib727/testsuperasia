@@ -23,13 +23,13 @@
                 <span t-if="o.type == 'out_refund'">Credit Note</span>
                 <span t-if="o.type == 'in_refund'">Vendor Credit Note</span>
                 <span t-if="o.type == 'in_invoice'">Vendor Bill</span>
-                <!-- <span t-if="o.name != '/'" t-field="o.name"/>-->
+                 <span t-if="o.name != '/'" t-field="o.name"/>
                 <!--Trying to split the INV name o.name which is commented above: -->
-                <t t-if="o.name != '/'">
-                    <t t-set="inv_split" t-value="o.name.split('/')"/>
-                    <t t-esc="inv_split[0]"/>
-                    <t t-esc="inv_split[2]"/>
-                </t>
+<!--                <t t-if="o.name != '/'">-->
+<!--                    <t t-set="inv_split" t-value="o.name.split('/')"/>-->
+<!--                    <t t-esc="inv_split[0]"/>-->
+<!--                    <t t-esc="inv_split[2]"/>-->
+<!--                </t>-->
             </h2>
         </xpath>
         <!--        -->
