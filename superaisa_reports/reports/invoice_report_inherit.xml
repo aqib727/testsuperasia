@@ -15,7 +15,8 @@
         <!--    Replace heading:    -->
 
         <xpath expr="//h2" position="replace">
-            <h2>
+<!--            <h2>-->
+            <h2 style="padding-top:20px">
                 <span t-if="o.type == 'out_invoice' and o.state == 'posted'">Invoice</span>
                 <span t-if="o.type == 'out_invoice' and o.state == 'draft'">Draft Invoice</span>
                 <span t-if="o.type == 'out_invoice' and o.state == 'cancel'">Cancelled Invoice</span>
