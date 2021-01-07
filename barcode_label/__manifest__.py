@@ -17,6 +17,7 @@
     'data': [
         'data/lot_report_paperformat.xml',
         'report/report_lot_barcode.xml',
+        'report/report_barcode_custom.xml',
     ],
     # only loaded in demonstration mode
     'demo': [],
