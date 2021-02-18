@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="stock_landed_cost_add_totals_field">
+        <field name="name">stock.landed.cost.add.totals.field</field>
+        <field name="model">stock.landed.cost</field>
+        <field name="inherit_id" ref="stock_landed_costs.view_stock_landed_cost_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="/form/sheet/notebook/page[2]/field/tree/field[@name='quantity']" position="replace">
+                <field name="quantity" readonly="1" sum="quantity_sum"/>
+            </xpath>
+            <xpath expr="/form/sheet/notebook/page[2]/field/tree/field[@name='former_cost']" position="replace">
+                <field name="former_cost" readonly="1" widget="monetary" sum="former_cost_sum"/>
+            </xpath>
+            <xpath expr="/form/sheet/notebook/page[2]/field/tree/field[@name='final_cost']" position="replace">
+                <field name="final_cost" readonly="1" widget="monetary" sum="final_cost_sum"/>
+            </xpath>
+            <xpath expr="/form/sheet/notebook/page[2]/field/tree/field[@name='additional_landed_cost']" position="replace">
+                <field name="additional_landed_cost" sum="additional_landed_cost_sum"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
