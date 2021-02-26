@@ -18,7 +18,6 @@
         'views/product_view.xml',
         'views/stock_barcode_templates.xml',
         'views/stock_location.xml',
-        'views/stock_picking_views.xml',
     ],
     'qweb': [
         "static/src/xml/qweb_templates.xml",],

@@ -14,6 +14,7 @@
     <template id="report_invoice_document_inherit_custom" inherit_id="account.report_invoice_document">
         <!--    Replace heading:    -->
 
+        <!--    Replace heading:    -->
         <xpath expr="//h2" position="replace">
             <h2>
                 <span t-if="o.type == 'out_invoice' and o.state == 'posted'">Invoice</span>
@@ -23,7 +24,8 @@
                 <span t-if="o.type == 'in_refund'">Vendor Credit Note</span>
                 <span t-if="o.type == 'in_invoice'">Vendor Bill</span>
                 <!-- <span t-if="o.name != '/'" t-field="o.name"/>-->
-                <!--Trying to split the INV name o.name which is commented above: -->
+
+                <!--            Trying to split the INV name o.name which is commented above: -->
                 <t t-if="o.name != '/'">
                     <t t-set="inv_split" t-value="o.name.split('/')"/>
                     <t t-esc="inv_split[0]"/>
@@ -55,6 +57,9 @@
 <!--                        </th>-->
                         <th name="th_description" class="text-left">
                             <span>Sales Description</span>
+                        </th>
+                        <th name="th_UPC" class="text-center">
+                            <span>UPC</span>
                         </th>
                         <th name="th_UPC" class="text-center">
                             <span>UPC</span>
@@ -100,15 +105,7 @@
                         <tr t-att-class="'bg-200 font-weight-bold o_line_section' if line.display_type == 'line_section' else 'font-italic o_line_note' if line.display_type == 'line_note' else ''">
                             <t t-if="not line.display_type" name="account_invoice_line_accountable">
                                 <td class="text-center">
-<!--                                    <span t-esc="'%.0f'% line.quantity"/>-->
-                                    <t t-if="round(line.quantity) == line.quantity">
-                                        <span t-if="o.state != 'done'"
-                                              t-esc="'%.0f'% line.quantity"/>
-                                    </t>
-                                    <t t-if="not round(line.quantity) == line.quantity">
-                                        <span t-if="o.state != 'done'"
-                                          t-esc="line.quantity"/>
-                                    </t>
+                                    <span t-field="line.quantity"/>
 
                                     <!-- Add to counter:-->
                                     <t t-set="quantity_total" t-value="quantity_total+line.quantity"/>
@@ -125,6 +122,19 @@
                                     <t t-foreach="request.env['product.template'].search([('id', '=', line.product_id.id)])" t-as="obj">
                                                 <t t-if="obj['unit_barcode']">
                                                     <t t-esc="obj['unit_barcode']"/>
+                                                </t>
+                                    </t>
+
+                                </td>
+<!--                                <td name="account_invoice_line_name">-->
+
+<!--                                Insert the UPC here-->
+                                <td class="text-center" style="min-width:40mm">
+<!--                                    <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', o.name, 600, 100)" style="width:300px;height:50px"/>-->
+
+                                    <t t-foreach="request.env['product.template'].search([('id', '=', line.product_id.id)])" t-as="obj">
+                                                <t t-if="obj['unit_barcode']">
+                                                    <p t-esc="obj['unit_barcode']"/>
                                                 </t>
                                     </t>
 

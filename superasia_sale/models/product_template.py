@@ -42,8 +42,8 @@ class ProductTemplate(models.Model):
     def export_product_handshake(self):
         product_ids = self.env['product.template'].search([])
 
-        inv_filename = "inventory_%s.%s" % (datetime.now().strftime("%Y_%m_%d"), "csv")
-        prod_filename = "products_%s.%s" % (datetime.now().strftime("%Y_%m_%d"), "csv")
+        inv_filename = "inventory_odoo.csv"
+        prod_filename = "products_odoo.csv"
 
         with TemporaryDirectory() as temp_dir:
             inv_file_path = temp_dir + '/' + inv_filename
