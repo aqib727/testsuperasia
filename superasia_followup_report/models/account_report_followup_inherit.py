@@ -3,6 +3,8 @@
 from odoo import fields, models
 from odoo.tools.translate import _
 from odoo.tools.misc import format_date, formatLang, get_lang
+from json import loads
+import json
 import datetime
 
 class AccountFollowupReport(models.AbstractModel):
@@ -20,6 +22,8 @@ class AccountFollowupReport(models.AbstractModel):
 
         headers = headers[:3] + headers[5:]
         headers[1]['name'] = _('Invoice Date')
+        del headers[-1]
+        headers.append({'name': _('Amount'), 'class': 'number o_price_total', 'style': 'text-align:right; white-space:nowrap;'})
         headers.append({'name': _('Balance'), 'class': 'number o_price_total', 'style': 'text-align:right; white-space:nowrap;'})
         return headers
 
@@ -51,7 +55,7 @@ class AccountFollowupReport(models.AbstractModel):
             total_issued = 0
             balance = 0
             for aml in aml_recs:
-                amount = aml.amount_residual_currency if aml.currency_id else aml.amount_residual
+                amount = -aml.price_total or 0
                 date_due = format_date(self.env, aml.date_maturity or aml.date, lang_code=lang_code)
                 total += not aml.blocked and amount or 0
                 balance += not aml.blocked and amount or 0
@@ -90,6 +94,43 @@ class AccountFollowupReport(models.AbstractModel):
                     'unfoldable': False,
                     'columns': [type(v) == dict and v or {'name': v} for v in columns],
                 })
+                payments = json.loads(aml.move_id.invoice_payments_widget) or False
+                if payments:
+                    for payment in payments['content']:
+                        amount = payment['amount']
+                        date_due = format_date(self.env, payment['date'], lang_code=lang_code)
+                        total -= amount or 0
+                        total_issued -= amount or 0
+                        balance -= amount or 0
+                        move_line_name = self._format_aml_name(aml.name, aml.move_id.ref, aml.move_id.name)
+                        if self.env.context.get('print_mode'):
+                            move_line_name = {'name': move_line_name, 'style': 'text-align:right; white-space:normal;'}
+                        amount = formatLang(self.env, amount, currency_obj=currency)
+                        balance_total = formatLang(self.env, balance, currency_obj=currency)
+                        line_num += 1
+                        columns = [
+                            '',
+                            date_due,
+                            '',
+                            {'name': '', 'blocked': aml.blocked},
+                            amount,
+                            balance_total,
+                        ]
+                        if self.env.context.get('print_mode'):
+                            columns = columns[:2] + columns[4:]
+                        lines.append({
+                            'id': aml.id,
+                            'account_move': aml.move_id,
+                            'name': payment['name'].split(' ', 1)[1],
+                            'caret_options': 'followup',
+                            'style': 'color: red',
+                            'move_id': aml.move_id.id,
+                            'type': is_payment and 'payment' or 'unreconciled_aml',
+                            'unfoldable': False,
+                            'columns': [type(v) == dict and v or {'name': v} for v in columns],
+                        })
+                        
+                
             total_due = formatLang(self.env, total, currency_obj=currency)
             line_num += 1
             lines.append({
