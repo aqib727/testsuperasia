@@ -26,7 +26,6 @@
     # always loaded
     'data': [
         'views/report_followup_custom.xml',
-        # 'views/customer_statements_followup_inherit.xml'
     ],
     'license': 'OEEL-1',
 }
