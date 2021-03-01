@@ -55,7 +55,7 @@ class AccountFollowupReport(models.AbstractModel):
             total_issued = 0
             balance = 0
             for aml in aml_recs:
-                amount = -aml.credit or aml.debit or 0
+                amount = -aml.credit or aml.debit or aml.amount_residual_currency or 0
                 date_due = format_date(self.env, aml.date_maturity or aml.date, lang_code=lang_code)
                 total += not aml.blocked and amount or 0
                 balance += not aml.blocked and amount or 0
@@ -215,7 +215,7 @@ class AccountFollowupReport(models.AbstractModel):
                 'values': [days_0_29, days_30_39, days_40_49, days_50_59, days_60_plus],
                 'columns': ['0 - 29', '30 - 39', '40 - 49', '50 - 59', '60+'],
                 }
-        return line
+            return line
 
     def get_html(self, options, line_id=None, additional_context={}):
         
