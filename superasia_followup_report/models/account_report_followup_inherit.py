@@ -118,10 +118,14 @@ class AccountFollowupReport(models.AbstractModel):
                         ]
                         if self.env.context.get('print_mode'):
                             columns = columns[:2] + columns[4:]
+                        try:
+                            credit_name = credit.credit_move_id.name.split(' ', 1)[1]
+                        except IndexError:
+                            credit_name = credit.credit_move_id.name
                         lines.append({
                             'id': aml.id,
                             'account_move': aml.move_id,
-                            'name': credit.credit_move_id.name.split(' ', 1)[1] or credit.credit_move_id.name,
+                            'name': credit_name,
                             'caret_options': 'followup',
                             'style': 'color: red',
                             'move_id': credit.credit_move_id.id,
