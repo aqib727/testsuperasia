@@ -121,7 +121,7 @@ class AccountFollowupReport(models.AbstractModel):
                         lines.append({
                             'id': aml.id,
                             'account_move': aml.move_id,
-                            'name': credit.credit_move_id.name.split(' ', 1)[1],
+                            'name': credit.credit_move_id.name.split(' ', 1)[1] or credit.credit_move_id.name,
                             'caret_options': 'followup',
                             'style': 'color: red',
                             'move_id': credit.credit_move_id.id,
