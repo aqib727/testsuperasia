@@ -7,4 +7,5 @@
 ##############################################################################
 
 # from . import superasia_sales_rep_report_excel
-from . import invoice_sales_rep_report_wizard
+# from . import invoice_sales_rep_report_wizard
+from . import new_invoice_sales_rep_report_wizard
