@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api, _
+from odoo.exceptions import UserError
 
 
 class StockPicking(models.Model):
@@ -38,11 +39,19 @@ class StockPicking(models.Model):
             picking['move_line_ids'] = sorted(picking['move_line_ids'],
                                               key=lambda i: i['sequence'])
             product_ids = tuple(set([move_line_id['product_id'][0] for move_line_id in picking['move_line_ids']]))
+            print('-----------------product_ids----------------', product_ids)
             tracking_and_barcode_per_product_id = {}
             for res in self.env['product.product'].search_read([('id', 'in', product_ids)], ['tracking', 'barcode']):
                 tracking_and_barcode_per_product_id[res.pop("id")] = res
 
+            archive_products = self.move_line_ids.filtered(
+                lambda p: p.product_id.active == False)
+            if archive_products:
+                raise UserError(
+                    _("The following products are Archived. Please Unarchive to process. \n %s") % (
+                        archive_products.mapped('display_name')))
             for move_line_id in picking['move_line_ids']:
+
                 id = move_line_id.pop('product_id')[0]
                 move_line_id['product_id'] = {"id": id, **tracking_and_barcode_per_product_id[id]}
                 id, name = move_line_id.pop('location_id')

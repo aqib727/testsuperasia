@@ -6,7 +6,7 @@
 #
 ##############################################################################
 
-from odoo import fields, models
+from odoo import fields, models, api
 
 
 class ProductionLot(models.Model):
@@ -40,6 +40,13 @@ class StockMove(models.Model):
     expiry_date = fields.Datetime(string='Expiry Date')
     lot_no = fields.Many2one('stock.production.lot', string='Lot/Serial Number')
 
+    @api.model
+    def create(self, vals):
+        if 'origin_returned_move_id' in vals:
+            original_stock_move = self.env['stock.move'].browse(vals.get('origin_returned_move_id'))
+            if original_stock_move:
+                vals.update({'lot_no': original_stock_move.move_line_ids.lot_id.id})
+        return super(StockMove, self).create(vals)
 
     def _prepare_move_line_vals(self, quantity=None, reserved_quant=None):
         result = super(StockMove, self) \
@@ -50,7 +57,7 @@ class StockMove(models.Model):
         '''
         if self.env.user.company_id.auto_generate_lot_serial:
             if self.picking_type_id.code == 'incoming' and \
-                    self.product_id.tracking != 'none':
+                    self.product_id.tracking != 'none' and self.picking_type_id.return_picking_type_id:
                 seq = self.env.ref(
                     'auto_generate_lot_serial_number.sequence_auto_generate_lot_serial')
                 seq.sudo().write({'prefix': self.env.user.company_id.prefix,
