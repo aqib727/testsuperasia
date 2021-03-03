@@ -120,7 +120,7 @@ class AccountFollowupReport(models.AbstractModel):
                             columns = columns[:2] + columns[4:]
                         try:
                             credit_name = credit.credit_move_id.name.split(' ', 1)[1]
-                        except IndexError:
+                        except:
                             credit_name = 'Payment'
                         lines.append({
                             'id': aml.id,
