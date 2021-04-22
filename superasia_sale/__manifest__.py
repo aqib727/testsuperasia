@@ -31,12 +31,13 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['sale_management', 'stock', 'google_drive', 'contacts'],
+    # 'depends': ['sale_management', 'stock', 'google_drive', 'contacts'],
+    'depends': ['sale_management', 'stock', 'contacts'],
 
     # always loaded
     'data': [
         'data/actions.xml',
-        'views/res_config_settings_views.xml',
+        # 'views/res_config_settings_views.xml',
         'views/res_partner_views.xml',
         'views/sale_order_views.xml',
     ],
