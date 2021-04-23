@@ -20,6 +20,7 @@
         'views/stock_location.xml',
         'views/stock_picking_views.xml',
         'wizard/stock_backorder_confirmation_views.xml',
+
     ],
     'qweb': [
         "static/src/xml/qweb_templates.xml",],

@@ -117,7 +117,8 @@
 <!--                        <th class="text-right" t-if="display_discount">-->
 <!--                            <span>Subtotal</span>-->
 <!--                        </th>-->
-                        <th class="text-right" t-if="display_discount">
+<!--                        <th class="text-right" t-if="display_discount">-->
+                        <th class="text-right">
                             <span>Per Unit Price</span>
                         </th>
                         <th name="th_subtotal" class="text-right">
@@ -235,6 +236,15 @@
                                     <span>$</span><span t-esc="'%.2f'% per_unit_price" />
 
                                 </td>
+<!--                                Per unit price no discount-->
+                                <td class="text-right" t-if="not display_discount">
+                                    <!--Per unit price:-->
+                                    <span t-set="net_prices_no_disc" t-value="line.price_unit - (line.price_unit * line.discount/100)" />
+                                    <span t-set="per_unit_price_no_disc" t-value="net_prices_no_disc / (line.product_uom_id.factor_inv)" />
+                                    <span>$</span><span t-esc="'%.2f'% per_unit_price_no_disc" />
+
+                                </td>
+
 <!--                                Amount-->
                                 <td class="text-right o_price_total">
                                     <span class="text-nowrap" t-field="line.price_subtotal"

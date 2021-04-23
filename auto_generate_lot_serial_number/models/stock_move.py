@@ -6,7 +6,9 @@
 #
 ##############################################################################
 
+
 from odoo import fields, models, api, _
+
 
 class ProductionLot(models.Model):
     _inherit = 'stock.production.lot'
@@ -39,6 +41,7 @@ class StockMove(models.Model):
     expiry_date = fields.Datetime(string='Expiry Date', required=True)
     lot_no = fields.Many2one('stock.production.lot', string='Lot/Serial Number')
 
+
     def check_expiry_date_field(self):
         if not self.expiry_date:
             raise UserError(_("Please check that the field 'Journal' is set on the Bank Statement"))
@@ -56,8 +59,10 @@ class StockMove(models.Model):
         if 'origin_returned_move_id' in vals:
             original_stock_move = self.env['stock.move'].browse(vals.get('origin_returned_move_id'))
             if original_stock_move:
+
                 for moves in original_stock_move:
                     vals.update({'lot_no': moves.move_line_ids.lot_id.id})
+
         return super(StockMove, self).create(vals)
 
     def _prepare_move_line_vals(self, quantity=None, reserved_quant=None):

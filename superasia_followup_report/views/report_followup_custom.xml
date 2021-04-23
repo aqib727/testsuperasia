@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+<data>
+        
+<template id="template_followup_report_inherit_saf" inherit_id="account_reports.main_template">
+    <xpath expr="//table[hasclass('o_account_reports_table')]" position="after"> 
+        <strong>Average Days Outstanding</strong>
+        <div class="table-responsive">
+            <table class="o_account_reports_table" width="100%">
+                <thead>
+                    <tr>
+                        <t t-foreach="outstanding_line['columns']" t-as="column">
+                            <th t-raw="column"/>
+                        </t>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <t t-foreach="outstanding_line['values']" t-as="value">
+                            <td class="'o_account_report_column_value'" t-raw="value"/>
+                        </t>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </xpath>
+</template>
+
+<template id="followup_filter_info_template_inh_saf" inherit_id="account_followup.followup_filter_info_template">
+    <xpath expr="//t[3]" position="replace">
+        <t t-if="context.get('snailmail_layout')" t-set="contact_widget_fields" t-value="['address']"/>
+    </xpath>
+    <xpath expr="//t[4]" position="replace">
+        <t t-else="" t-set="contact_widget_fields" t-value="['address', 'phone']"/>     
+    </xpath>
+    <xpath expr="//div[hasclass('fallback_header')]" position="replace">
+        <div class="row fallback_header">
+            <div class="col-5 offset-7" style='margin-top: -100px;'>
+                <div style="font-size: 20px;">
+                    <strong t-field="partner_addr.self.display_name"/>
+                </div>
+                <div t-field="partner_addr.self"
+                    t-options='{"widget": "contact", "fields": contact_widget_fields, "no_marker": True}'/>
+                <span t-field="partner_addr.vat"/>
+            </div>
+        </div>
+    </xpath>
+</template>
+
+</data>
+</odoo>

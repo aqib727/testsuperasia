@@ -188,7 +188,9 @@ class AccountSalesRepReport(models.TransientModel):
                     if inv.get('m5') != None:
                         m5_total += inv.get('m5')
                 sheet1.write(i, 7, inv.get('amt_out_std'), right_format)
-                if inv.get('m1') != None:
+
+                if inv.get('amt_out_std') != None:
+
                     amount_total += inv.get('amt_out_std')
                 i = i + 1
             sheet1.write(i, 0, 'Total', header_format1)

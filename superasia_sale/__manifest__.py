@@ -8,6 +8,7 @@
 
     'description': """
         CIC - Task ID: 2287562
+
         The client is a food distributor of various grocery items. 
         The client uses HandShake, a sales order management app for wholesale. 
         HandShake’s front-end is used by the client’s salesperson on a mobile 
@@ -17,6 +18,7 @@
         The client wants to integrate HandShake with Odoo, by doing an 
         import/export of csv files from a network folder for data update 
         between the systems. 
+
     """,
 
     'author': "PS-US Odoo",
@@ -29,12 +31,13 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['sale_management', 'stock', 'google_drive', 'contacts'],
+    # 'depends': ['sale_management', 'stock', 'google_drive', 'contacts'],
+    'depends': ['sale_management', 'stock', 'contacts'],
 
     # always loaded
     'data': [
         'data/actions.xml',
-        'views/res_config_settings_views.xml',
+        # 'views/res_config_settings_views.xml',
         'views/res_partner_views.xml',
         'views/sale_order_views.xml',
     ],
