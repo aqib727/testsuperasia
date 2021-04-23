@@ -152,7 +152,7 @@ Thanks
  
 </img>
 
-<p style="font-size:22px">Are you Retailer? Looking of Catalog, New Arrivals &amp; Best Pricing</p>
+<p style="font-size:22px;font-family: 'Raleway', sans-serif;">Are you Retailer? Looking of Catalog, New Arrivals &amp; Best Pricing</p>
                                      </div>
 
                             <div class="">
@@ -170,8 +170,8 @@ Thanks
 
                                 <div class="justify-content-center opportunitylinadd_details row">
 
-                                    <div class="col-md-8 col-sm-12 d-md-flex justify-content-end">
-                                        <form class="b2b_acc_signup_form mx-auto w-md-50" method="POST" action="/b2baccountactivation" enctype="multipart/form-data">
+                                    <div class="d-md-flex mr-lg-4 offset-lg-8">
+                                        <form class="b2b_acc_signup_form mx-5 mx-lg-0" method="POST" action="/b2baccountactivation" enctype="multipart/form-data">
 
                                             <div class="form-row">
                                                 <div class="name">Business Name*</div>
@@ -256,24 +256,17 @@ Thanks
                                                     </div>
                                                 </div>
                                             </div>
-
-                                        <div class="row row-space mt-3">
-                                            <div class="col-12 text-center">
-
-      <button class="btn custom_them_primary font-weight-bold text-white" style="color: #ac1520;" type="submit">Submit</button>
-          
+                                            <div class="form-row">
+                                                <div class="name"></div>
+                                                <div class="value text-center">
+                                                    <div class="input-group-desc">
+                                                        <button class="btn custom_them_primary font-weight-bold ml-lg-4 ml-md-4 text-white" style="color: #ac1520;" type="submit">Submit</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </form>
-                                        <div class="align-items-center d-flex flex-column my-md-auto">
-                                            <a href="/web/login" style="color: #ac1520;font-size: calc(1em + 5px);" class="pb-2 text-sm-center"> Already an existing user? </a>
-
-                                            <p><b>OR</b></p>
-                                            <br/>
-
-        <button class="btn custom_them_primary font-weight-bold text-white" onclick="location.href='/shop';">Checkout as Guest</button>
-
-                                        
+                                        <div class="align-items-center d-flex flex-column my-md-auto offset-lg-1 p-2">
+                                            <button class="btn custom_them_primary font-weight-bold text-white" onclick="location.href='/web/login';"> Login as Existing User </button>
                                         </div>
                                     </div>
 
@@ -322,10 +315,10 @@ Thanks
                         }
                     </style>
 
-<div class="justify-content-center opportunitylinadd_details row">
+<div class="opportunitylinadd_details row">
 
-        <div class="col-md-8 col-sm-12 d-md-flex justify-content-end">
-            <form class="b2b_acc_signup_form mx-auto w-md-50" method="POST" action="/b2caccountactivation" enctype="multipart/form-data">
+        <div class="d-md-flex d-lg-flex">
+            <form class="b2b_acc_signup_form offset-lg-4 offset-md-4 offset-1" method="POST" action="/b2caccountactivation" enctype="multipart/form-data">
 
                                 <div class="form-row">
                                     <div class="name">Name*</div>
@@ -387,20 +380,20 @@ Thanks
                                     </div>
                                 </div>
 
-                        <div class="row row-space mt-3">
-                        <div class="col-12 text-center">
 
-      <button class="btn custom_them_primary font-weight-bold text-white" style="color: #ac1520;" type="submit">Submit</button>
-          
-                                                </div>
-                                            </div>
-                                        </form>
-                                        <div class="align-items-center d-flex flex-column my-md-auto">
-                                            <a href="/web/login" style="color: #ac1520;font-size: calc(1em + 5px);" class="pb-2 text-sm-center"> Already an existing user? </a>
 
-                                            <p><b>OR</b></p>
-                                            <br/>
-
+                                <div class="form-row">
+                                    <div class="name"></div>
+                                    <div class="value">
+                                        <div class="input-group-desc text-center">
+                                            <button class="btn custom_them_primary font-weight-bold text-white" style="color: #ac1520;" type="submit">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+            </form>
+                                        <div class="align-items-center d-flex flex-column my-md-auto offset-lg-1">
+                                            <button class="btn custom_them_primary font-weight-bold text-white" onclick="location.href='/web/login';"> Login as Existing User </button>
+                                            <p class="p-2"><b>OR</b></p>
         <button class="btn custom_them_primary font-weight-bold text-white" onclick="location.href='/shop';">Checkout as Guest</button>
                                         </div>
                                     </div>

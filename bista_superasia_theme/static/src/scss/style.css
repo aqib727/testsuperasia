@@ -1,4 +1,30 @@
+a.nav-link span{
+font-family: "Raleway", sans-serif !important;
+}
+
+video {
+  object-fit: cover;
+  width: 100% !important;
+  height: 35.1vh;
+  position: inherit;
+  top: 0;
+  left: 0;
+}
+
+
+
+
+
+
+.navbar-text{
+font-size: .9rem;
+}
+.o_portal_my_doc_table > tbody > tr > td > a{
+font-weight:bolder;
+font-size: .9rem;
+}
 /* Set Limited text in search box suggestion */
+
 #select2-drop{
     width: auto !important;
 }
@@ -251,57 +277,7 @@ font-weight: 600 !important;
 font-family: "Raleway", sans-serif;
 }
 
-/*
 
-.vid_header {
-  position: relative;
-  background-color: black;
-  height: 75vh;
-  min-height: 25rem;
-  width: 100%;
-  overflow: hidden;
-}
-
-.vid_header video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  z-index: 0;
-  -ms-transform: translateX(-50%) translateY(-50%);
-  -moz-transform: translateX(-50%) translateY(-50%);
-  -webkit-transform: translateX(-50%) translateY(-50%);
-  transform: translateX(-50%) translateY(-50%);
-}
-
-.vid_header .container {
-  position: relative;
-  z-index: 2;
-}
-
-.vid_header .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: black;
-  opacity: 0.5;
-  z-index: 1;
-}
-
-@media (pointer: coarse) and (hover: none) {
-  .vid_header {
-    background: url('/bista_superasia_theme/static/src/img/slide/superasia.png') black no-repeat center center scroll;
-  }
-  .vid_header video {
-    display: visible;
-  }
-}
-*/
 
 
 
@@ -428,7 +404,7 @@ width:auto !important;
 
 /*.c-no{height:150px;}*/
 .grey-bg{background:#ebebeb;}
-.counter-Txt{text-align:center; font-size:20px; font-weight:bold; text-transform:uppercase;}
+.counter-Txt{text-align:center; font-size:20px; text-transform:capitalize;}
 .counter-Txt span{display:block; font-size:36px}
 @media(min-width:320px) and (max-width:767px){
 .c-no{height:100%;}
@@ -1004,10 +980,10 @@ li.active {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 }
-.flex-column a{
+/*.flex-column a{
   color: #ffffff;
   font-size: 1.5rem;
-}
+}*/
 .retailer-login{
   border-radius: 50PX;
   border: 5px solid #202020;
@@ -1016,6 +992,7 @@ li.active {
   text-align: center;
   text-transform: uppercase;
   line-height: 2.2em;
+  color:white;
 }
 .banner-heading{
   text-transform: uppercase;
@@ -1039,8 +1016,13 @@ li.active {
 }
 .banner-subheading-mali{
     color: #ffffff;
-    font-size: 18px;
-    line-height: 2.0rem;
+    /*font-size: 18px;
+    line-height: 2.0rem;*/
+    line-height: 1.5rem;
+    font-family: "Raleway", sans-serif;
+    font-weight: 600;
+    font-size:1.2rem;
+
 }
 .input-group .form-control:first-child{
     border-bottom-right-radius: 0;
@@ -1084,9 +1066,9 @@ li.active {
   padding: 0 1.5rem;
 }
 .dropdown-item:focus, .dropdown-item:hover, .dropdown-item.active, .dropdown-item:active {
-    color: #fff;
+    /*color: #fff;*/
     text-decoration: none;
-    background-color: transparent;
+/*    background-color: transparent;*/
 }
 .hover-flag-dropdown:hover .dropdown-menu-toggle{
         display: block;
@@ -1225,7 +1207,7 @@ padding-left: 10% !important;
     font-size: 2.5rem;
   }
   .section-title p{
-    color: #202020!important;
+    color: white !important;
   }
   .responsive-vision-statement{
     padding-left: 0!important;
@@ -1580,6 +1562,9 @@ margin-left: 15%;
 }
 }
 @media (max-width: 768px) {
+.vision_content{padding: 3rem!important;}
+.section-title h1{letter-spacing: 0px !important;font-size: 1.5rem !important;}
+video {width:100% !important;}
 .banner-heading-mali{
 font-size: 2rem;
 }
@@ -1637,7 +1622,7 @@ font-size: 2rem;
   background-size: contain;
 }    
 .responsive-vision-statement{
-    padding-top: 5rem;
+    padding-top: 2rem;
   }
 .left-fixed-sidebar {
     /*height: 8vw;*/
@@ -1705,12 +1690,14 @@ font-size: 2rem;
   align-items: center;
 }
 section {
-  padding: 60px 0;
+  padding: 50px 0;
 }
 
 .section-bg-new {
-  background: url('../img/vision-statement.jpg') no-repeat;
-  padding-bottom: 48px;
+  /*background: url('../img/vision-statement.jpg') no-repeat;*/
+  /*padding-bottom: 48px;*/
+  padding-bottom: 0px;
+  padding-top: 0px;
   background-size: cover;
 }
 .vision-font{
@@ -1722,12 +1709,12 @@ section {
 .section-title {
   text-transform: uppercase;
   text-align: center;
-  padding-bottom: 30px;
+  /*padding-bottom: 30px;*/
 }
 .section-title h1{
   color: #FFFFFF;
   text-transform: uppercase;
-  font-size: 4rem;
+  font-size: calc(0px + 3.5vw);
   word-break: break-word;
   font-weight: bolder;
   letter-spacing: -2px;
@@ -1907,7 +1894,7 @@ body[data-aos-duration="400"] [data-aos] {
 # Products Catalog Section
 --------------------------------------------------------------*/
 .products-catalog{
-  background: #F8F8F8;
+  background: #F5F5F5;
 }
 .products-catalog a{
   font-size: inherit;
@@ -2319,10 +2306,6 @@ margin-top: -7rem!important;
   z-index: 999;
   left: 125px;
   top: 60px;*/
-}
-.range{
-  padding-top: 40px;
-  padding-bottom: 60px;
 }
 .diamond-shape{
   width: 60px;
@@ -2786,10 +2769,14 @@ padding-top: 10%;
   text-transform: uppercase;
   font-size: 1.3rem;
 }
-.left address, a{
+.left address{
     font-size: 0.80rem;
     color: #ffffff;
-}    
+}
+a{
+    font-size: 0.80rem;
+    /*color: #ffffff;*/
+}
 #footer .right{
   background: #F6F6F6;
   

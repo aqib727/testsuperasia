@@ -3,6 +3,9 @@
     <t t-jquery="div.row" t-operation="attributes">
         <attribute name="class" value="row w-100"/>
     </t>
+    <t t-jquery="div.o_carousel_product_card_footer" t-operation="attributes">
+        <attribute name="class" value="o_carousel_product_card_footer card-footer d-flex align-items-center text-black"/>
+    </t>
 </t>
 
 </templates>

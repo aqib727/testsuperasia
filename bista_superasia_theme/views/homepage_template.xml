@@ -8,38 +8,17 @@
             <t t-name="website.homepage">
                 <t t-call="website.layout">
                 <div id="wrap" class="oe_structure oe_empty">
-
-
-
-<!--                    <div class="vid_header">-->
-<!--                        <div class="overlay"></div>-->
-<!--                        <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">-->
-<!--                            <source src="/bista_superasia_theme/static/src/img/videoplayback.mp4" type="video/mp4"/>-->
-<!--                        </video>-->
-<!--                                                <div class="container h-100">-->
-<!--                                                    <div class="align-items-center d-flex h-100 w-50">-->
-<!--                                                        <div class="w-100 text-white">-->
-<!--                                                            <h4 id="superasia_heading" class="banner-heading-mali typing" style="color:rgba(255, 255, 255, 0.5); font-size: calc(18px + 3vw);">-->
-
-<!--                                                            </h4><br/>-->
-<!--                                                            <a href="#" class="catalogue_btn btn d-none" role="button" aria-pressed="true" style="background-color: rgba(172,21,32, 0.5);color: white;font-weight: bolder;font-size: 90%;">Product Catalogue</a>-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                    </div>-->
-
-
-
-
                     <section id="hero">
                         <div class="hero-container">
                                 <div class="carousel-item active home_banner" style="background: url(&quot;/bista_superasia_theme/static/src/img/slide/superasia.png&quot;)no-repeat center center;-webkit-background-size: cover;-moz-background-size: cover;background-size: cover;-o-background-size: cover;height:80vh;">
+                                    <div class="op" style="padding: 20px;background: rgba(0, 0, 0, 0.4);color: #fff;width: 100%;height: 100%;">
                                     <div class="carousel-container">
                                         <div class="carousel-content container text-left">
                                             <div class="row">
                                                 <div class="head_banner_text col-md-6">
                                                     <h4 id="superasia_heading" class="banner-heading-mali typing" style="font-family: 'Raleway', sans-serif;">
                                                     </h4>
+                                                    <hr style="height: 3px;color: #ac1520;width: 20%;opacity: inherit;"/>
                                                 </div><div class="col-md-9"></div>
                                                 <div class="head_banner_text_2 col-md-6">
                                                     <h5 id="superasia_heading2" class="banner-subheading-mali ">Super Asia Foods &amp; Spices is a wholesale company of quality and trusted products located in Toronto Canada.</h5>
@@ -48,7 +27,8 @@
 
                                         </div><!-- carousel-content -->
                                     </div><!-- carousel-container -->
-                                </div><!-- carousel-item -->
+                                </div>
+                            </div><!-- carousel-item -->
                         </div>
                     </section><!-- End Hero -->
 
@@ -77,30 +57,50 @@
 
                             <!-- ======= Services Section ======= -->
                             <section id="services" class="section-bg-new">
-                                <div class="container">
+                                <div class="fluid-container">
+<!--                                    <div class="row no-gutters" style="height: 35vh;">-->
+<!--                                        <div class="col-lg-7 col-md-7 text-center">-->
+
+<!--                                            <video class="" src="/bista_superasia_theme/static/src/img/videoplayback.mp4" autoplay="1" loop="1" playsinline="1" muted="1"></video>-->
+
+<!--                                        </div>-->
+<!--                                        <div class="col-lg-5 col-md-5 pl-5 responsive-vision-statement">-->
+<!--                                            <div class="p-lg-5 p-md-3 section-title text-left w-75 vision_content">-->
+<!--                                                <h1 class="vision-font-head">Vision Statement</h1><hr/>-->
+<!--                                                <p class="text-white vision-font">Super Asia Foods &amp; Spices is a wholesale company of quality and trusted products located in Toronto Canada.</p>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
                                     <div class="row no-gutters">
-                                        <div class="col-lg-6 video-box py-5">
-                                            <a href="https://player.vimeo.com/video/468748413" target="_blank"><img src="/bista_superasia_theme/static/src/img/play-icon.png" class="img-fluid" alt="play-icon" width="32" height="32"/></a>
+                                        <div class="col-lg-6">
+                                            <video class="" src="/bista_superasia_theme/static/src/img/videoplayback.mp4" autoplay="1" loop="1" playsinline="1" muted="1"></video>
                                         </div>
-                                        <div class="col-lg-6 pl-5 responsive-vision-statement">
-                                            <div class="section-title text-left">
-                                                <h1>Vision Statement</h1><hr/>
-                                                <p class="text-white vision-font">Super Asia Foods &amp; Spices is a wholesale company of quality and trusted products located in Toronto Canada.</p>
+
+
+                                        <div class="col-lg-6 pl-5 responsive-vision-statement" style="height: 35.1vh;background: url('/bista_superasia_theme/static/src/img/vision_right.jpg') no-repeat;    background-repeat: no-repeat;background-size: 100%;background-position: center;">
+                                            <div class="p-lg-5 p-md-3 section-title text-left w-75 vision_content">
+                                                <h1 class="vision-font-head aos-animate aos-init" data-aos="fade-up">Vision Statement</h1><hr/>
+                                                <p class="text-white vision-font" data-aos="fade-left">Super Asia Foods &amp; Spices is a wholesale company of quality and trusted products located in Toronto Canada.</p>
                                             </div>
+
                                         </div>
                                     </div>
+
+
+
+
+
+
                                 </div>
                             </section><!-- End Services Section -->
-
                             <!-- ======= How It Works Section ======= -->
                             <section id="how_it_works" class="section-bg-how-it-works">
                                 <div class="container">
-
                                     <div class="row no-gutters">
                                         <div class="col-lg-12">
                                             <div class="section-how-it-works-title text-center pb-5">
-                                                <h1 class="text-uppercase h1_replace">How It Works? </h1>
-                                                <p class="">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                                <h1 class="text-uppercase h1_replace" data-aos="fade-right">How It Works? </h1>
+                                                <p class="" data-aos="fade-left">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                                             </div>
                                             <div class="howItWork-content-wrap">
                                                 <div class="howItWork-content d-xl-flex align-items-center justify-content-center">
@@ -275,21 +275,21 @@
                             </section><!-- End Services Section -->
 
                             <!-- ======= Bussiness Section Start ======= -->
-<!--                            <section class="range section-bg">-->
-                                <div class="c-no container-fluid pb-5 pt-5" style="background: #ac1520;">
+                            <section class="company_achievement" style="background: #F5F5F5;">
+                                <div class="c-no container-fluid pb-4 pt-4" style="background: #ac1520;">
                                     <div class="container-fluid">
                                         <h1 class="row text-uppercase" id="counter">
                                             <div class="container">
                                                 <div class="row">
                                                     <div class="aos-animate aos-init col-sm-12 text-center" data-aos="fade-up">
-                                                        <h1 class="pb-3 text-white fw-bold" style="font-family: 'Raleway', sans-serif;"> Super Asia Foods Canada's premium Ethnic Food Distributor</h1>
+                                                        <h1 class="pb-3 h1_replace text-uppercase" style="font-family: 'Raleway', sans-serif;color:white !important"> Super Asia Foods Canada's premium Ethnic Food Distributor</h1>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="container-fluid d-flex text-white" style="background-color:#ac1520">
                                                 <div class="col-sm-4 counter-Txt" style="border-right: solid;">
                                                     <span class="counter-value" data-count="15">0</span>
-                                                    YEARS IN BUSINESS<br/><span style="font-size:15px">(Serving canada since 1990’s)</span>
+                                                    Years In Business<br/><span style="font-size:15px">(Serving canada since 1990’s)</span>
                                                 </div>
                                             <div class="col-sm-4 counter-Txt pt-2">
                                                     <div class="d-flex justify-content-center pt-1">
@@ -302,19 +302,19 @@
                                                         <span class="counter-value" data-count="800">0</span>
                                                         <i class="fa fa-plus pl-1 pt-2"/>
                                                     </div>
-                                                    SERVING B2B STORE
+                                                    Serving B2B Store
                                                 </div>
                                             </div>
                                         </h1>
                                     </div>
                                 </div>
-<!--                            </section>-->
+                            </section>
                             <!-- ======= Business Section End======= -->
 
                             <!-- ======= Range Section ======= -->
-                            <section class="range section-bg pb-0" style="background:#F5F5F5">
-                                <div class="container section-title pb-0">
-                                    <h1 class="h1_replace">Our Range</h1>
+                            <section class="section-bg" style="background:#F5F5F5">
+                                <div class="container section-title">
+                                    <h1 class="h1_replace" data-aos="flip-left">Our Range</h1>
                                     <div class="row">
                                         <div id="clients">
                                             <div class="clients-wrap">
@@ -338,89 +338,14 @@
 
 
                             <!-- ======= Products Catalog Section ======= -->
-                            <section class="products-catalog" style="background:#F5F5F5">
-                                <div class="container section-title pb-0">
-                                    <h1 class="h1_replace pt-4 testimonials-title text-center text-uppercase"><a href=""><i class="far fa-file-pdf"></i> Click Here For Super Asia Foods Product Catalog</a></h1>
-                                    <div class="row">
-                                        <div class="col-lg-10 mx-auto">
-                                        </div>
-                                    </div>
-                                </div><!-- End container -->
+                            <section class="products-catalog">
+                                <div class="d-grid gap-2">
+                                    <a href="" class="btn custom_them_primary font-weight-bold text-white" style="font-size: 36px;
+    letter-spacing: 0px;"><i class="far fa-file-pdf"></i> Click Here for The Product Catalog
+                                        </a>
+                                </div>
                             </section><!-- End Counts Section -->
-                            <!-- ======= Clients Section ======= -->
-
-                            <section class="section-bg-clients py-5">
-                                <div class="container section-title">
-                                    <h1 class="text-center text-uppercase testimonials-title h1_replace py-3">What They Say</h1>
-                                    <div class="row">
-                                        <div class="col-lg-12 mx-auto">
-                                            <div class="p-2 responsive-clients-section">
-                                                <!-- Bootstrap carousel-->
-                                                <div class="carousel slide" id="recipeCarousel" data-ride="carousel">
-                                                    <div class="row mx-auto my-auto">
-                                                        <div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel">
-                                                            <div class="carousel-inner w-100" role="listbox">
-                                                                <div class="carousel-item active">
-                                                                    <div class="client-range-sliders mx-auto">
-                                                                        <i class="fa fa-quote-left mr-3 blockquote-color">
-<!--                                                                            <div class="media w-100 pt-3 pb-2"><img class="rounded-circle img-thumbnail mx-auto" src="https://res.cloudinary.com/mhmd/image/upload/v1579676165/avatar-1_ffutqr.jpg" alt="" width="75"/></div>-->
-                                                                            <div class="media-body ml-3 py-3">
-                                                                                <blockquote class="border-0 p-0">
-                                                                                    <p class="lead"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                                                                </blockquote>
-
-                                                                            </div>
-                                                                            <cite title="Source Title" class="cite-title-text">Name Here</cite>
-
-                                                                        </i>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="carousel-item">
-                                                                    <div class="client-range-sliders mx-auto">
-                                                                        <i class="fa fa-quote-left mr-3 blockquote-color">
-<!--                                                                            <div class="media text-center w-100 pt-3 pb-2"><img class="rounded-circle img-thumbnail mx-auto" src="/bista_superasia_theme/static/src/img/client-1.jpg" alt="" width="75"/></div>-->
-                                                                            <div class="media-body ml-3 py-3">
-                                                                                <blockquote class="border-0 p-0">
-                                                                                    <p class="lead"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                                                                </blockquote>
-
-                                                                            </div>
-                                                                             <cite title="Source Title" class="cite-title-text">Name Here</cite>
-                                                                        </i>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="carousel-item">
-                                                                    <div class="client-range-sliders mx-auto">
-                                                                        <i class="fa fa-quote-left mr-3 blockquote-color">
-<!--                                                                            <div class="media text-center w-100 pt-3 pb-2"><img class="rounded-circle img-thumbnail mx-auto" src="https://res.cloudinary.com/mhmd/image/upload/v1579676165/avatar-1_ffutqr.jpg" alt="" width="75"/></div>-->
-                                                                            <div class="media-body ml-3 py-3">
-                                                                                <blockquote class="border-0 p-0">
-                                                                                    <p class="lead"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                                                                </blockquote>
-
-                                                                            </div>
-                                                                        <cite title="Source Title" class="cite-title-text">Name Here</cite>
-                                                                        </i>
-                                                                    </div>
-                                                                </div>
-
-                                                            </div><!-- end carousel-inner -->
-                                                        </div><!-- end recipeCarousel -->
-                                                    </div><!-- end ro -->
-                                                    <!-- Bootstrap carousel indicators [nav] -->
-                                                    <ol class="carousel-indicators mb-0 carousel-position">
-                                                        <li data-target="#recipeCarousel" data-slide-to="0" class="active"></li>
-                                                        <li data-target="#recipeCarousel" data-slide-to="1"></li>
-                                                        <li data-target="#recipeCarousel" data-slide-to="2"></li>
-
-                                                    </ol>
-                                                </div><!-- end carousel-slide -->
-
-                                            </div><!-- end p-5 -->
-                                        </div><!-- end col-lg-10 -->
-                                    </div><!-- end row -->
-                                </div><!-- end container -->
-                            </section><!-- End Clients Section -->
+                            <!-- End Clients Reviews Section -->
                         </t>
                         <t t-if="request.env.user.has_group('base.user_admin') or request.env.user.id != request.env.ref('base.public_user').id">
 
@@ -492,15 +417,6 @@
                                                         </div>
                                                     </form>
 
-
-
-
-
-
-
-
-
-
                                                 </div>
                                         </div>
 
@@ -514,7 +430,7 @@
                             <!-- ======= Our Partners Section ======= -->
                             <section class="section-partners">
                                 <div class="container section-title">
-                                    <h3>Our Partners</h3>
+                                    <h1 class="text-center text-uppercase testimonials-title h1_replace py-3 pb-5" data-aos="zoom-in">Our Partners</h1>
                                     <div class="row">
                                         <div class="col-md-2 pb-3">
                                             <img src="/bista_superasia_theme/static/src/img/Our_Patners/01.png" alt="kcb" class="image-alignment" />
@@ -559,8 +475,27 @@
                                 </div><!-- end container -->
                             </section><!-- End Clients Section -->
 
-
                         </t>
+
+                        <!-- ======= Clients Reviews Section ======= -->
+
+                        <section class="section-bg-clients">
+                            <div class="section-title">
+                                <h1 class="text-center text-uppercase testimonials-title h1_replace py-3" data-aos="zoom-in">What They Say</h1>
+                                <div class="row">
+                                    <div class="col-lg-10 mx-auto">
+                                        <div class="p-2 responsive-clients-section">
+                                            <!-- Bootstrap carousel-->
+                                            <div data-romw-token="Da4gxGxDWyHQmDJL47Jh016ns124Gvp9xmhYOhWLXrH7tNmFU2"></div>
+                                            <script src="https://reviewsonmywebsite.com/js/v2/embed.js?id=c338ae55b38e487f19ae" type="text/javascript"></script>
+                                        </div><!-- end p-5 -->
+                                    </div><!-- end col-lg-10 -->
+                                </div><!-- end row -->
+                            </div><!-- end container -->
+                        </section>
+
+                        <!-- End Clients Reviews Section -->
+
 
 
 

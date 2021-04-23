@@ -46,7 +46,9 @@
 
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <a href="/my/home" role="menuitem" class="dropdown-item">My Account</a>
                                     <a id="o_logout" class="dropdown-item-text"  style="padding: 5px;" t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a>
+
 <!--                                    <button class="dropdown-item" type="button">Action</button>-->
 <!--                                    <button class="dropdown-item" type="button">Another action</button>-->
 <!--                                    <button class="dropdown-item" type="button">Something else here</button>-->
@@ -82,10 +84,10 @@
                                 <div class="col-12 col-3 order-2" id="sticky-sidebar">
                                     <div class="sticky-top">
                                         <div class="col-12 nav flex-column">
-                                            <a t-att-href="'mailto:%s' % res_company.email" class="nav-link" data-toggle="tooltip" data-placement="right" title="" t-att-title="res_company.email"><i class="icofont-ui-message"></i></a>
-                                            <a t-att-href="'mailto:%s' % res_company.phone" href="#_" class="nav-link" data-toggle="tooltip" data-placement="right" title="" t-att-title="res_company.phone"><i class="icofont-phone"></i></a>
+                                            <a t-att-href="'mailto:%s' % res_company.email" class="nav-link" data-toggle="tooltip" data-placement="right" title="" t-att-title="res_company.email"><i class="icofont-ui-message" style="font-size: 1.8rem;"></i></a>
+                                            <a t-att-href="'mailto:%s' % res_company.phone" href="#_" class="nav-link" data-toggle="tooltip" data-placement="right" title="" t-att-title="res_company.phone"  style="font-size: 1.8rem;"><i class="icofont-phone"></i></a>
                                             <a href="/b2b_activation" class="nav-link retailer-login" data-toggle="tooltip" data-placement="right" title="" data-original-title="Retailer Login" style="white-space: normal !important">Retailer Login</a>
-                                            <a t-att-href="res_company.google_map_link()" target="_BLANK" class="nav-link" data-toggle="tooltip" data-placement="right" title="" data-original-title="View Location"><i class="icofont-google-map"></i></a>
+                                            <a t-att-href="res_company.google_map_link()" target="_BLANK" class="nav-link" data-toggle="tooltip" data-placement="right" title="" data-original-title="View Location"  style="font-size: 1.8rem;"><i class="icofont-google-map"></i></a>
 <!--                                            <a href="#_" class="nav-link" data-toggle="tooltip" data-placement="right" title="" data-original-title="Search"><i class="icofont-search-1"></i></a>-->
                                             <div class="nav-item hover-flag-dropdown open">
                                                 <a href="#" class="nav-link dropdown-toggle"><i class="ca flag"></i></a>

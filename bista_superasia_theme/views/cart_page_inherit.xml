@@ -73,20 +73,20 @@
                       <td class="col-md-2 col-3 border-0" ></td>
                   </tr>
                   <tr id="order_total_untaxed" class="border-bottom">
-                      <td class="text-center border-0 text-secondary font-weight-bold">Subtotal:</td>
-                      <td class="text-xl-center border-0" >
+                      <td class="text-right border-0 text-secondary font-weight-bold">Subtotal:</td>
+                      <td class="text-xl-right border-0" >
                           <span t-field="website_sale_order.amount_untaxed" class="monetary_field text-secondary font-monospace" style="white-space: nowrap;" t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>
                       </td>
                   </tr>
                   <tr id="order_total_taxes" class="border-bottom">
-                      <td class="text-center border-0 text-secondary font-weight-bold">Taxes:</td>
-                      <td class="text-xl-center border-0">
+                      <td class="text-right border-0 text-secondary font-weight-bold">Taxes:</td>
+                      <td class="text-xl-right border-0">
                            <span t-field="website_sale_order.amount_tax" class="monetary_field text-secondary font-monospace" style="white-space: nowrap;" t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}" />
                       </td>
                   </tr>
                   <tr id="order_total" class="border-bottom">
-                      <td class="text-center font-weight-bold"><strong>Total:</strong></td>
-                      <td class="text-xl-center">
+                      <td class="text-right font-weight-bold"><strong>Total:</strong></td>
+                      <td class="text-xl-right">
                           <strong t-field="website_sale_order.amount_total" class="monetary_field"
                               t-options='{"widget": "monetary", "display_currency": website_sale_order.pricelist_id.currency_id}'/>
                       </td>
@@ -95,7 +95,14 @@
         </div>
         </xpath>
     </template>
-    <template id="bista_superasia_reduction_code" inherit_id="bista_superasia_theme.total_inherite" customize_show="True" name="SuperAsia Promo Code">
+
+
+
+
+
+
+
+    <template id="bista_superasia_reduction_code" inherit_id="bista_superasia_theme.total_inherite">
         <xpath expr="//div[@id='cart_total']//table/tr[last()]" position="after">
             <tr t-if="not hide_coupon">
                 <td colspan="3" class="text-center text-xl-right border-0">
@@ -112,6 +119,20 @@
                 </td>
             </tr>
         </xpath>
+
+
+        <xpath expr="//tr[@id='order_total_untaxed']" position="before">
+            <tr id="order_delivery" t-if="website_sale_order and website_sale_order.carrier_id">
+              <td class="text-right border-0 text-secondary font-weight-bold"  title="Delivery will be updated after choosing a new delivery method">Delivery:</td>
+              <td class="text-xl-right border-0" >
+                   <span t-field="website_sale_order.amount_delivery" class="monetary_field" style="white-space: nowrap;" t-options='{
+                      "widget": "monetary",
+                      "display_currency": website_sale_order.currency_id,
+                  }'/>
+              </td>
+            </tr>
+        </xpath>
+
     </template>
     <template id="checkout_inherite" inherit_id="website_sale.checkout" name="Checkout Inherit">
         <xpath expr="//a[hasclass('btn', 'btn-secondary', 'mb32')]" position="attributes">

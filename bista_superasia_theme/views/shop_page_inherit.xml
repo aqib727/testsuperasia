@@ -372,18 +372,31 @@
                 </form>
         </xpath>
     </template>
-    <template id="option_collapse_products_categories_inherit" name="Collapsible Category List Inherit" inherit_id="website_sale.products_categories">
+
+    <template id="option_collapse_products_categories_inherit" name="Collapsible Category List Inherit" inherit_id="website_sale.option_collapse_products_categories">
+        <xpath expr="//ul[@id='o_shop_collapse_category']" position="attributes">
+            <attribute name="class">flex-column ml-n4 mr-lg-n3 nav nav-pills</attribute>
+        </xpath>
+
         <xpath expr="//ul[@id='o_shop_collapse_category']/li" position="replace">
-<!--            <attribute name="class">mt-3 nav-item font-weight-bold</attribute>-->
             <li class="mt-3 nav-item font-weight-bold">
                 <a href="/shop" t-attf-class="nav-link #{'' if category else 'active'} o_not_editable">All Products</a>
             </li>
-
         </xpath>
-        <xpath expr="//ul[@id='o_shop_collapse_category']" position="attributes">
-            <attribute name="class">flex-column ml-n4 mr-lg-n3 nav nav-pills</attribute>
+    </template>
 
-        </xpath>
+    <template id="eCommerce_categories_inherit" name="eCommerce Categories Inherit" inherit_id="website_sale.products_categories">
+<!--        <xpath expr="//ul[@id='o_shop_collapse_category']/li" position="replace">-->
+<!--            <li class="mt-3 nav-item font-weight-bold">-->
+<!--                <a href="/shop" t-attf-class="nav-link #{'' if category else 'active'} o_not_editable">All Products</a>-->
+<!--            </li>-->
+<!--        </xpath>-->
+
+<!--        <xpath expr="//ul[@id='o_shop_collapse_category']" position="attributes">-->
+<!--            <attribute name="class">flex-column ml-n4 mr-lg-n3 nav nav-pills</attribute>-->
+<!--        </xpath>-->
+
+
         <xpath expr="//div[@id='wsale_products_categories_collapse']" position="attributes">
 <!--            <attribute name="class">border-right collapse</attribute>-->
             <attribute name="class">collapse show</attribute>
