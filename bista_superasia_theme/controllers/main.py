@@ -201,16 +201,3 @@ class WebsiteSale(ws):
 
 
 
-class ProductTemplate(models.Model):
-    _inherit = 'product.template'
-    def featured_products(self):
-        count = 0
-        temp_list = []
-        main_list = []
-        for pro_temp in self.env['product.template'].sudo().search([]):
-            count += 1
-            temp_list.append(pro_temp)
-            if count % 6 == 0:
-                main_list.append(temp_list)
-                temp_list = []
-        return main_list

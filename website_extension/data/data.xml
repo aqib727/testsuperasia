@@ -7,5 +7,22 @@
             <field name="parent_id" ref="website.main_menu"/>
             <field name="sequence" type="int">25</field>
         </record>
+
+        <record id="b2c_pricelist_auto_price_calc" model="ir.cron">
+            <field name="name">Auto Calculate B2C Pricelist's Pricing</field>
+            <field name="model_id" ref="product.model_product_pricelist"/>
+            <field name="state">code</field>
+            <field name="code">
+                model.b2c_pricelist_price_calc()
+            </field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">999</field>
+            <field name="interval_type">months</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="priority">1000</field>
+            <field name="active" eval="False"/>
+        </record>
+
     </data>
 </odoo>

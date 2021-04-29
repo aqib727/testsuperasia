@@ -1181,7 +1181,7 @@ padding-left: 10% !important;
 }
 @media screen and (max-width: 991px) and (min-width: 320px){
 #hero, #hero .home_banner{
-    height : 100vh;
+    height : auto;
 }
 
 /*#hero .carousel-item {
@@ -1350,7 +1350,7 @@ padding-left: 10% !important;
 
 #hero .carousel-item {
   width: 100%;
-  height: 35vh;
+  height: auto;
   background-size: contain;
   background-position: top center;
   background-repeat: no-repeat;
@@ -1473,7 +1473,7 @@ margin-left: 15%;
   color: #fff;
 }
 
-#hero .carousel-inner .carousel-item {
+/*#hero .carousel-inner .carousel-item {
   transition-property: opacity;
   background-position: top center;
 }
@@ -1497,7 +1497,7 @@ margin-left: 15%;
 #hero .carousel-inner .active.carousel-item-right {
   left: 0;
   transform: translate3d(0, 0, 0);
-}
+}*/
 
 #hero .carousel-control-prev, #hero .carousel-control-next {
   width: 10%;
@@ -1608,9 +1608,6 @@ font-size: 2rem;
  }
  .responsive-vision-statement{
     padding-top: 0!important;
-  }
-  #hero, #hero .carousel-item {
-    /*height: 25vh !important;*/
   }
   #hero .carousel-item {
     background-size: auto !important;
@@ -1923,7 +1920,7 @@ body[data-aos-duration="400"] [data-aos] {
 .carousel-position{
   top: 105%;
 }
-.carousel-inner .carousel-item.active,
+/*.carousel-inner .carousel-item.active,
 .carousel-inner .carousel-item-next,
 .carousel-inner .carousel-item-prev {
   display: flex;
@@ -1939,7 +1936,7 @@ body[data-aos-duration="400"] [data-aos] {
 .carousel-inner .carousel-item-right,
 .carousel-inner .carousel-item-left{ 
   transform: translateX(0); 
-}
+}*/
 .client-range-sliders {
     width: 300px;
     height: 300px;
@@ -2579,7 +2576,7 @@ margin-top: -7rem!important;
 }
 
 @media (max-width: 992px) {
-#hero, #hero .home_banner{
+#hero .home_banner{
     height : 50vh !important;
     background-size: cover !important;
 }

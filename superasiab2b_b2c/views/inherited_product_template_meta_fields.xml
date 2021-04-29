@@ -18,8 +18,12 @@
 		                    <field name="website_meta_keywords" />
 	                        <field name="website_meta_og_img" />
 	                        <field name="website_meta_description" />
+		                    <field name="website_meta_ingredients" />
 	                    </group>
 					</page>
+				</xpath>
+				<xpath expr="//field[@name='public_categ_ids']" position="after">
+					<field name="is_featured_product"/>
 				</xpath>
 			</field>
 		</record>

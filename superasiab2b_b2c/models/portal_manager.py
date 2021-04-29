@@ -18,6 +18,8 @@ from werkzeug.urls import url_encode
 class product_template(models.Model):
     _inherit = 'product.template'
 
+    website_meta_ingredients = fields.Text("Website meta ingredients", translate=True)
+
     def _get_default_uom_id(self):
         return self.env["uom.uom"].search([], limit=1, order='id').id
     b2buom_id = fields.Many2one(
@@ -25,6 +27,29 @@ class product_template(models.Model):
     default=_get_default_uom_id, required=True,
     help="Default unit of measure used for all stock operations.")
 
+
+
+    is_featured_product = fields.Boolean(string="Feature Product?",
+                                         help="Check true if you want this product to be in Featured Products on E-commerce homepage.")
+
+
+    def featured_products(self):
+        main_list = []
+        temp_list=[]
+        prodids = self.env['product.template'].sudo().search([('is_featured_product', '=', True)])
+        _logger.info('========prodids========= %s' % prodids)
+        for prod in prodids:
+            if len(temp_list) < 6:
+                temp_list.append(prod)
+            else:
+                main_list.append(temp_list)
+                temp_list=[]
+                temp_list.append(prod)
+
+        if temp_list:
+            main_list.append(temp_list)
+        _logger.info('========main_list========= %s' % main_list)
+        return main_list
 
 class SaleOrdersuperaisa(models.Model):
     _inherit = 'sale.order'

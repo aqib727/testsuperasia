@@ -210,65 +210,10 @@
             <attribute name="class">border-bottom d-flex flex-row-reverse form-inline pb-3 pt-3</attribute>
         </xpath>
         <xpath expr="//div[hasclass('js_sale')]" position="before">
-            <section id="hero">
-                <div class="hero-container">
-                    <div id="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel">
-
-                    <ol class="carousel-indicators d-lg-none" id="hero-carousel-indicators"></ol>
-
-                    <div class="carousel-inner" role="listbox">
-
-<!--                        &lt;!&ndash; Slide 1 &ndash;&gt;-->
-<!--                        <div class="carousel-item active" style="background-image: url('/bista_superasia_theme/static/src/img/slide/shop_banner.jpg');">-->
-<!--                            <div class="carousel-container">-->
-
-<!--                            </div>&lt;!&ndash; carousel-container &ndash;&gt;-->
-<!--                        </div>&lt;!&ndash; carousel-item &ndash;&gt;-->
-
-                        <!-- Slide 2 -->
-                        <div class="carousel-item active" style="background-image: url('/bista_superasia_theme/static/src/img/slide/banner2.jpg');">
-                            <div class="carousel-container">
-                                <div class="carousel-content container text-center">
-                                    <div class="row">
-
-                                    </div>
-                                </div> <!-- carousel-content -->
-                            </div> <!-- carousel-container -->
-                        </div> <!-- carousel-item -->
-
-<!--                        &lt;!&ndash; Slide 3 &ndash;&gt;-->
-<!--                        <div class="carousel-item" style="background-image: url('/bista_superasia_theme/static/src/img/slide/banner4.jpg');">-->
-<!--                            <div class="carousel-container">-->
-<!--                                <div class="carousel-content container text-center">-->
-<!--                                    <div class="row">-->
-
-<!--                                    </div>-->
-<!--                                </div> &lt;!&ndash; carousel-content &ndash;&gt;-->
-<!--                            </div> &lt;!&ndash; carousel-container &ndash;&gt;-->
-<!--                        </div> &lt;!&ndash; carousel-item &ndash;&gt;-->
-
-<!--                        &lt;!&ndash; Slide 4 &ndash;&gt;-->
-<!--                        <div class="carousel-item" style="background-image: url('/bista_superasia_theme/static/src/img/slide/banner5.jpg');">-->
-<!--                            <div class="carousel-container">-->
-<!--                                <div class="carousel-content container text-center">-->
-<!--                                    <div class="row">-->
-
-<!--                                    </div>-->
-<!--                                </div> &lt;!&ndash; carousel-content &ndash;&gt;-->
-<!--                            </div> &lt;!&ndash; carousel-container &ndash;&gt;-->
-<!--                        </div> &lt;!&ndash; carousel-item &ndash;&gt;-->
-<!--                        &lt;!&ndash; Next and Previous Icons &ndash;&gt;-->
-<!--                        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">-->
-<!--                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
-<!--                            <span class="sr-only">Previous</span>-->
-<!--                        </a>-->
-<!--                        <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">-->
-<!--                            <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
-<!--                            <span class="sr-only">Next</span>-->
-<!--                        </a>-->
-                    </div>
-                </div>
-                </div>
+<!--            <section id="hero">-->
+            <section id="hero" class="d-flex justify-content-center">
+<!--                <img class="carousel-item active" src="/bista_superasia_theme/static/src/img/slide/banner2.jpg"/>-->
+                <img class="img-fluid" src="/bista_superasia_theme/static/src/img/slide/banner2.jpg"/>
             </section><!-- End Hero -->
         </xpath>
 
@@ -287,6 +232,19 @@
         <xpath expr="//div[@id='product_details']" position="attributes">
             <attribute name="class">col-md-6 col-xl-4 pl-lg-5 pl-md-5</attribute>
         </xpath>
+
+        <xpath expr="//div[@id='product_details']/hr" position="attributes">
+            <attribute name="class">d-none</attribute>
+        </xpath>
+        <xpath expr="//div[@id='product_details']/p[3]" position="replace">
+            <p class="text-muted" ><t t-esc="product.website_meta_description"/></p>
+            <br/>
+            <p class="text-muted" ><t t-esc="product.website_meta_ingredients"/></p>
+
+        </xpath>
+
+
+
     </template>
 
     <template id="add_to_cart_product_image_inherite" inherit_id="website_sale.shop_product_carousel"  name="Add to Cart Product Image Inherit">
