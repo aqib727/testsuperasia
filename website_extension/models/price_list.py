@@ -22,8 +22,11 @@ class PricelistExtension(models.Model):
         product_tmpl_list = self.env['product.template'].search([('is_published', '=', True)])
 
         for product_tmpl in product_tmpl_list:
-            unit_price = product_tmpl.lst_price / product_tmpl.uom_id.factor_inv
-            b2c_price = unit_price + (unit_price * 0.5)
+            if product_tmpl.uom_id.factor_inv == 1:
+                b2c_price = product_tmpl.lst_price
+            else:
+                unit_price = product_tmpl.lst_price / product_tmpl.uom_id.factor_inv
+                b2c_price = unit_price + (unit_price * 0.5)
             if product_tmpl in pricelist_product_templates:
                 # _logger.info('======== %s found in B2C pricelist=========' % product_tmpl)
                 prod_in_pricelist = next((pricelist_prod for pricelist_prod in pricelist_items if pricelist_prod.product_tmpl_id.id == product_tmpl.id), None)
