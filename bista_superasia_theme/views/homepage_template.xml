@@ -340,8 +340,9 @@
                             <!-- ======= Products Catalog Section ======= -->
                             <section class="products-catalog">
                                 <div class="d-grid gap-2">
-                                    <a href="" class="btn custom_them_primary font-weight-bold text-white" style="font-size: 36px;
-    letter-spacing: 0px;"><i class="far fa-file-pdf"></i> Click Here for The Product Catalog
+                                    <a href="/bista_superasia_theme/static/src/Super_Asia_Cat_1.pdf"
+                                       class="btn custom_them_primary font-weight-bold text-white" style="font-size: 36px;
+    letter-spacing: 0px;" target="_blank"><i class="far fa-file-pdf"></i> Click Here for The Product Catalog
                                         </a>
                                 </div>
                             </section><!-- End Counts Section -->

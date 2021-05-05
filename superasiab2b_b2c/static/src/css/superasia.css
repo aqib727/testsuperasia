@@ -69,3 +69,19 @@
     margin: 4px 2px;
     cursor: pointer;
 }
+
+.template_layout {
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    font-family: "Raleway", sans-serif;
+}
+
+.h1_sa {
+    color: #000 !important;
+    font-family: "Raleway", sans-serif;
+}

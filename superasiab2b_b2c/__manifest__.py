@@ -16,6 +16,7 @@
             'views/portal_template.xml',
             'views/sales_order.xml',
             'views/inherited_product_template_meta_fields.xml',
+            'views/website_config_settings.xml',
             ],
 
         'qweb': [

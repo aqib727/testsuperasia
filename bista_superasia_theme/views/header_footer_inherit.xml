@@ -35,7 +35,8 @@
 <!--                            <div class="text-center adjust-icon">-->
                                 <img src="/bista_superasia_theme/static/src/img/profile.png" class="menu_icon_right_panel mx-auto profile_icon" alt="profile"/>
 
-                                <a t-attf-href="/web/login" style="width: max-content !important;" groups="base.group_public">
+                                <a class="link-dark cart_link custom_nav_a" t-attf-href="/web/login" style="width: max-content !important;"
+                                   groups="base.group_public">
                                     Sign in
                                 </a>
 
@@ -47,7 +48,7 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                                     <a href="/my/home" role="menuitem" class="dropdown-item">My Account</a>
-                                    <a id="o_logout" class="dropdown-item-text"  style="padding: 5px;" t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a>
+                                    <a id="o_logout" class="dropdown-item-text"  style="padding: .25rem 1.5rem;" t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a>
 
 <!--                                    <button class="dropdown-item" type="button">Action</button>-->
 <!--                                    <button class="dropdown-item" type="button">Another action</button>-->

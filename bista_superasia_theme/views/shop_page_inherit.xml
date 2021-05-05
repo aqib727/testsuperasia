@@ -237,14 +237,38 @@
             <attribute name="class">d-none</attribute>
         </xpath>
         <xpath expr="//div[@id='product_details']/p[3]" position="replace">
-            <p class="text-muted" ><t t-esc="product.website_meta_description"/></p>
-            <br/>
-            <p class="text-muted" ><t t-esc="product.website_meta_ingredients"/></p>
-
+            <t t-if="product.website_meta_description">
+                <p class="text-muted font-weight-bold"><t t-esc="product.website_meta_description"/></p>
+            </t>
+            <t t-if="product.website_meta_ingredients">
+                <br/>
+                <p class="font-weight-bold">
+                    <span class="font-weight-bold text-black"> Ingredients :</span><br/>
+                    <span class="text-muted font-weight-bold" t-esc="product.website_meta_ingredients"/>
+                </p>
+            </t>
         </xpath>
+<!--        <xpath expr="//span[@t-field='attribute.name']" position="attributes">-->
+<!--            <attribute name="class">font-weight-bold text-black</attribute>-->
+<!--        </xpath>-->
+<!--&lt;!&ndash;        <xpath expr="//div[@id='product_attributes_simple']/p" position="attributes">&ndash;&gt;-->
+<!--&lt;!&ndash;                <attribute name="style">font-weight: unset !important;color: #343a40 !important;</attribute>&ndash;&gt;-->
+<!--&lt;!&ndash;        </xpath>&ndash;&gt;-->
 
-
-
+        <xpath expr="//div[@id='product_attributes_simple']" position="replace">
+            <div id="product_attributes_simple" class="pt-2">
+                <p class="text-muted">
+                    <t t-set="single_value_attributes" t-value="product.valid_product_template_attribute_line_ids._prepare_single_value_for_display()"/>
+                    <t t-foreach="single_value_attributes" t-as="attribute">
+                        <span t-field="attribute.name" class="font-weight-bold text-black"/>:
+                        <t t-foreach="single_value_attributes[attribute]" t-as="ptal">
+                            <span t-field="ptal.product_template_value_ids._only_active().name"/><t t-if="not ptal_last">, </t>
+                        </t>
+                        <br/>
+                    </t>
+                </p>
+            </div>
+        </xpath>
     </template>
 
     <template id="add_to_cart_product_image_inherite" inherit_id="website_sale.shop_product_carousel"  name="Add to Cart Product Image Inherit">

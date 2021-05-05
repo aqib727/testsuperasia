@@ -18,111 +18,40 @@
 
 <template id="reset_password_email">
     <t t-call="website.layout">
-<t t-set="additional_title">PortalUser</t>
+        <t t-set="additional_title">PortalUser</t>
         <div id="wrap">
             <div class="oe_structure">
-                        <section data-snippet-id="text-block" class="mb16">
-                            <div class="">
-                                <style>
-                                    row-centered {
-                                        text-align: center;
-                                    }
-
-                                    .col-centered {
-                                        float: none;
-                                        margin: 0 auto;
-                                    }
-                                </style>
-                <div class="container">
-                                
-                                <div class="row">
-                
-
-<!-- <div class="row row-centered"> -->
-<div class="row-md-2 row-centered col-md-12">
-
-    <section id="forms">
-
-      
-
-<br/>
-
-<table border="0" cellpadding="0" cellspacing="0" width="590" style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
-                <tr><td valign="top" style="font-size: 13px;">
-                    <div>
-                        <b>Dear <span t-esc="user_data.name"/>,<br/><br/>
-                          <p> Successful Authentication</p></b>
-                <br></br>
-     
-Your Account is not active yet.You can login to your account, once your account is approved by Administrator. <br/>
-Thanks
-                    </div>
-                </td></tr>
-                   </table>
-               </section>
-           </div>
-       </div>
-   </div>
-   </div>
-</section>
-           </div>
-       </div>
-       
-</t>
+                <div class="container text-center template_layout">
+                    <p>
+                        <h1 class="h1_sa">Dear <span t-esc="user_data.name"/>,</h1>
+                        <h1 class="h1_sa">
+                            Your Account is not active yet.You can login to your account, once your account is approved by Administrator.
+                        </h1>
+                        <br/>
+                        <h1 class="h1_sa">Thanks</h1>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </t>
 </template>
 
 
 
 <template id="reset_password_emailb2c">
     <t t-call="website.layout">
-<t t-set="additional_title">PortalUser</t>
+        <t t-set="additional_title">PortalUser</t>
         <div id="wrap">
             <div class="oe_structure">
-
-                        <section data-snippet-id="text-block" class="mb16">
-                            <div class="">
-                                <style>
-                                    row-centered {
-                                        text-align: center;
-                                    }
-
-                                    .col-centered {
-                                        float: none;
-                                        margin: 0 auto;
-                                    }
-                                </style>
-                <div class="container">
-                                
-                                <div class="row">
-                
-
-<div class="row-md-2 row-centered col-md-12">
-
-    <section id="forms">
-
-      
-
-<br/>
-
-<table border="0" cellpadding="0" cellspacing="0" width="590" style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
-                <tr><td valign="top" style="font-size: 13px;">
-                    <div>
-                        <b>Dear <span t-esc="user_data.name"/>,<br/><br/>
-                          <p> Successful Authentication - Completed Activation</p></b>
-                <br></br>
-                    </div>
-                </td></tr>
-                   </table>
-               </section>
-           </div>
-       </div>
-   </div>
-   </div>
-</section>
-           </div>
-       </div>
-       
-</t>
+                <div class="container text-center template_layout">
+                    <p>
+                        <h1 class="h1_sa">Dear <span t-esc="user_data.name"/>,</h1>
+                        <h1 class="h1_sa">Successful Authentication - Completed Activation</h1>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </t>
 </template>
 
 
@@ -238,7 +167,13 @@ Thanks
                                                 <div class="value">
                                                     <script src='https://www.google.com/recaptcha/api.js'></script>
                                                     <div id="captcha" class="imageContainer">
-                                                        <div class="g-recaptcha" data-sitekey="6Ldbe4waAAAAAM26blpmW9f7AxmUATGv9ebhkYHZ"
+                                                        <t t-if="website.recaptcha_key_site">
+                                                            <t t-set="recaptcha_site_key" t-value="website.recaptcha_key_site"/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <t t-set="recaptcha_site_key" t-value="'siteKeyMissing'"/>
+                                                        </t>
+                                                        <div class="g-recaptcha" t-att-data-sitekey="recaptcha_site_key"
                                                              data-callback="verifyRecaptchaCallback"
                                                              data-expired-callback="expiredRecaptchaCallback"></div>
                                                         <input class="form-control d-none" data-recaptcha="true" />
@@ -404,20 +339,24 @@ Thanks
 
         <div id="wrap">
             <div class="oe_structure">
-                <div class="container">
-                    <br/>
-                    
+                <div class="container text-center template_layout">
                     <p>
-<b>This User account is already activated.</b><br/>
+                        <h1 class="h1_sa">
+                            This user account is already activated.
+                        </h1>
+                        <br/>
                     </p>
                     <br/>
                     <br/>
                     <p>
-                       <b> Thank you,</b><br/>
-                      <b>  System Administrator</b>
+                        <h1 class="h1_sa">
+                            Thank you,
+                        </h1>
+                        <br/>
+                        <h1 class="h1_sa">System Administrator</h1>
                     </p>
-                    
-      <div class="col-md-6 col-sm-4 col-centered">
+                    <br/>
+      <div class="col-centered">
 <button class="btn custom_them_primary font-weight-bold text-white" style="color: #ac1520;" type="submit" onclick="goBack()">Go Back</button>
 
                   </div>         
@@ -438,14 +377,14 @@ Thanks
 
         <div id="wrap">
             <div class="oe_structure">
-                <div class="container">
-                    <br/>
-                    
+                <div class="container text-center template_layout">
                     <p>
-                    <b> Your Passwords doesn't match!</b>
+                        <h1 class="h1_sa">
+                            Your passwords doesn't match!
+                        </h1>
                     </p>
                     <br/>
-      <div class="col-md-6 col-sm-4 col-centered">
+      <div class="col-centered">
 <button class="btn custom_them_primary font-weight-bold text-white" style="color: #ac1520;" type="submit" onclick="goBack()">Go Back</button>
                   </div>         
                    
@@ -465,14 +404,14 @@ Thanks
 
         <div id="wrap">
             <div class="oe_structure">
-                <div class="container">
-                    <br/>
-                    
+                <div class="container text-center template_layout">
                     <p>
-                    <b> Already a Registered Account!</b>
+                        <h1 class="h1_sa">
+                            Already a Registered Account!
+                        </h1>
                     </p>
                     <br/>
-      <div class="col-md-6 col-sm-4 col-centered">
+      <div class="col-centered">
 <button class="btn custom_them_primary font-weight-bold text-white" style="color: #ac1520;" type="submit" onclick="goBack()">Go Back</button>
                   </div>         
                    
@@ -492,14 +431,14 @@ Thanks
 
         <div id="wrap">
             <div class="oe_structure">
-                <div class="container">
-                    <br/>
-                    
+                <div class="container text-center template_layout">
                     <p>
-                    <b> User Account exists already!</b>
+                        <h1 class="h1_sa">
+                            User account exists already!
+                        </h1>
                     </p>
                     <br/>
-      <div class="col-md-6 col-sm-4 col-centered">
+      <div class="col-centered">
 <button class="btn custom_them_primary font-weight-bold text-white" style="color: #ac1520;" type="submit" onclick="goBack()">Go Back</button>
                   </div>         
                    
@@ -519,14 +458,12 @@ Thanks
 
         <div id="wrap">
             <div class="oe_structure">
-                <div class="container">
-                    <br/>
-                    
+                <div class="container text-center template_layout">
                     <p>
-                    <b>Invalid Email!</b>
+                        <h1 class="h1_sa">Invalid Email!</h1>
                     </p>
                     <br/>
-      <div class="col-md-6 col-sm-4 col-centered">
+      <div class="col-centered">
 <button class="btn custom_them_primary font-weight-bold text-white" style="color: #ac1520;" type="submit" onclick="goBack()">Go Back</button>
                   </div>         
                    
