@@ -10,8 +10,3 @@ class Website(models.Model):
     recaptcha_key_site = fields.Char()
     recaptcha_key_secret = fields.Char()
 
-    # def get_recaptcha_sitekey(self):
-    #     if self.recaptcha_key_site:
-    #         return self.recaptcha_key_site
-    #     else:
-    #         return "siteKeyMissing"

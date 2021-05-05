@@ -4,8 +4,27 @@
 from odoo import api, fields, models
 
 
+class Website(models.Model):
+    _inherit = "website"
+
+    recaptcha_key_site = fields.Char()
+    recaptcha_key_secret = fields.Char()
+
+
+
 class ResConfigSettings(models.TransientModel):
     _inherit = "res.config.settings"
+
+    @api.depends("website_id")
+    def _compute_has_google_recaptcha(self):
+        for config in self:
+            config.has_google_recaptcha = bool(config.recaptcha_key_site)
+
+    def _inverse_has_google_recaptcha(self):
+        for config in self:
+            if not config.has_google_recaptcha:
+                config.recaptcha_key_site = False
+                config.recaptcha_key_secret = False
 
     recaptcha_key_site = fields.Char(
         related="website_id.recaptcha_key_site", readonly=False
@@ -20,13 +39,3 @@ class ResConfigSettings(models.TransientModel):
         readonly=False,
     )
 
-    @api.depends("website_id")
-    def _compute_has_google_recaptcha(self):
-        for config in self:
-            config.has_google_recaptcha = bool(config.recaptcha_key_site)
-
-    def _inverse_has_google_recaptcha(self):
-        for config in self:
-            if not config.has_google_recaptcha:
-                config.recaptcha_key_site = False
-                config.recaptcha_key_secret = False
