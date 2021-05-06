@@ -1,0 +1,17 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+acess_ir_mail_server,acess.ir_mail_server,base.model_ir_mail_server,base.group_system,1,1,1,1
+acess_ir_mail_server_pub,acess.ir_mail_server.pub,base.model_ir_mail_server,base.group_public,1,1,1,1
+acess_ir_mail_server_port,acess.ir_mail_server.usr,base.model_ir_mail_server,base.group_portal,1,1,1,1
+acess_ir_mail_server_b2b,acess.ir_mail_server.b2b,base.model_ir_mail_server,superasiab2b_b2c.group_b2baccount,1,1,1,1
+acess_mail_mail_pub,acess.mail_mail.pub,mail.model_mail_mail,base.group_public,1,1,1,1
+acess_mail_message_pub,acess.mail_message.pub,mail.model_mail_message,base.group_public,1,1,1,1
+acess_mail_template_pub,acess.mail_template.pub,mail.model_mail_template,base.group_public,1,1,1,1
+acess_res_groups_pub,acess.res_groups.pub,mail.model_res_groups,base.group_public,1,1,1,1
+acess_res_users_pub,acess.res_users.pub,mail.model_res_users,base.group_public,1,1,1,1
+acess_res_partner_pub,acess.res_partner.pub,mail.model_res_partner,base.group_public,1,1,1,1
+acess_mail_followers_pub,acess.mail_followers.pub,mail.model_mail_followers,base.group_public,1,1,1,1
+acess_snailmail_letter_pub,acess.snailmail_letter.pub,snailmail.model_snailmail_letter,base.group_public,1,1,1,1
+
+
+
+

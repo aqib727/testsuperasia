@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="superasia_custom_header" name="SuperAsia Custom Header" inherit_id="website.layout">
+        <xpath expr="//div[@id='wrapwrap']/header" position="replace">
+<!--            <header id="header" class="header-align">-->
+            <header id="header">
+                <nav class="navbar h-100">
+                    <div class="col-md-12 col-sm-12 col-lg-10">
+                    <ul class="mt-n1">
+                        <li class="navbar-logo logo">
+                            <a href="/">
+                                <img t-att-src="'/logo.png?company=%s' % res_company.id" t-att-alt="'Logo of %s' % res_company.name" t-att-title="res_company.name"/>
+                            </a>
+                        </li>
+                        <li class="navbar-toggle" id="toggle_menu"><i class="fas fa-bars fa-2x"/></li>
+                        <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                            <t t-call="website.submenu">
+<!--                                <t t-set="item_class" t-value="'nav-item'" class="p-2"/>-->
+                                <t t-set="item_class" t-value="'nav-menus'" class="p-2"/>
+                                <t t-set="link_class" t-value="'nav-link'" class="p-2"/>
+                            </t>
+                        </t>
+                        <li class="navbar-links">
+                            <div class="form-outline">
+                                <t t-set="ci_rec" t-value="request.env['product.template'].sudo().search([])"/>
+                                <select id="search-input" placeholder="Search Products.." class="top_search" style="width: 85% !important;">
+                                    <option value=""></option>
+                                    <t t-foreach="ci_rec" t-as="ci">
+                                        <option t-attf-src="/web/image/product.template/#{ci.id}/image_128" t-att-value="ci.id" t-esc="ci.name"/>
+                                    </t>
+                                </select>
+                            </div>
+                        </li>
+                        <li class="navbar-links">
+<!--                            <div class="text-center adjust-icon">-->
+                                <img src="/bista_superasia_theme/static/src/img/profile.png" class="menu_icon_right_panel mx-auto profile_icon" alt="profile"/>
+
+                                <a t-attf-href="/web/login" style="width: max-content !important;" groups="base.group_public">
+                                    Sign in
+                                </a>
+
+<!--                            </div>-->
+                            <div class="dropdown">
+                                <a class="p-0 text-left custom_nav_a" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" t-ignore="true" t-if="not user_id._is_public()" style="white-space: normal;">
+                                    <t t-esc="user_id.name[:23] + '...' if user_id.name and len(user_id.name) &gt; 25 else user_id.name"/>
+
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <a id="o_logout" class="dropdown-item-text"  style="padding: 5px;" t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a>
+<!--                                    <button class="dropdown-item" type="button">Action</button>-->
+<!--                                    <button class="dropdown-item" type="button">Another action</button>-->
+<!--                                    <button class="dropdown-item" type="button">Something else here</button>-->
+                                </div>
+                            </div>
+                        </li>
+                        <li class="navbar-links">
+                            <div class="adjust-icontext-center">
+                                <img src="/bista_superasia_theme/static/src/img/wishlist.png" class="menu_icon_right_panel mx-auto profile_icon" alt="wishlist"/>
+                                <a class="p-0 text-left custom_nav_a" href="#">Wishlist</a>
+                            </div>
+                        </li>
+                        <li class="navbar-links">
+                            <div class="text-center">
+                                <img src="/bista_superasia_theme/static/src/img/cart.png" class="menu_icon_right_panel profile_icon" alt="cart"/><br/>
+                                <t t-set="website_sale_order" t-value="website.sale_get_order()" />
+                                <t t-if ="website_sale_order and website_sale_order.cart_quantity">
+
+                                    <a href="/shop/cart" class="link-dark cart_link custom_nav_a">
+                                        Cart <sup style="font-size: calc(12px);position: initial;width: 1vw;border-radius: 0px;background: #BE222B;" t-attf-class="my_cart_quantity badge badge-primary" t-esc="website_sale_order and website_sale_order.cart_quantity or ''" t-att-data-order-id="website_sale_order and website_sale_order.id or ''"/>
+                                    </a>
+                                </t>
+                                <t t-else="">
+                                    <a href="/shop/cart" class="link-dark cart_link custom_nav_a">Cart<sup style="font-size: calc(12px);position: initial;width: 1vw;border-radius: 0px;background: #BE222B;" t-attf-class="my_cart_quantity badge badge-primary" t-esc="website_sale_order and website_sale_order.cart_quantity or ''" t-att-data-order-id="website_sale_order and website_sale_order.id or ''"/></a>
+                                </t>
+                            </div>
+                        </li>
+                    </ul>
+                    </div>
+                </nav>
+                <t t-if="request.env.user.id == request.env.ref('base.public_user').id">
+                            <div class="left-fixed-sidebar row py-3 pl-0">
+                                <div class="col-12 col-3 order-2" id="sticky-sidebar">
+                                    <div class="sticky-top">
+                                        <div class="col-12 nav flex-column">
+                                            <a t-att-href="'mailto:%s' % res_company.email" class="nav-link" data-toggle="tooltip" data-placement="right" title="" t-att-title="res_company.email"><i class="icofont-ui-message"></i></a>
+                                            <a t-att-href="'mailto:%s' % res_company.phone" href="#_" class="nav-link" data-toggle="tooltip" data-placement="right" title="" t-att-title="res_company.phone"><i class="icofont-phone"></i></a>
+                                            <a href="/b2b_activation" class="nav-link retailer-login" data-toggle="tooltip" data-placement="right" title="" data-original-title="Retailer Login" style="white-space: normal !important">Retailer Login</a>
+                                            <a t-att-href="res_company.google_map_link()" target="_BLANK" class="nav-link" data-toggle="tooltip" data-placement="right" title="" data-original-title="View Location"><i class="icofont-google-map"></i></a>
+<!--                                            <a href="#_" class="nav-link" data-toggle="tooltip" data-placement="right" title="" data-original-title="Search"><i class="icofont-search-1"></i></a>-->
+                                            <div class="nav-item hover-flag-dropdown open">
+                                                <a href="#" class="nav-link dropdown-toggle"><i class="ca flag"></i></a>
+                                                <div class="dropdown-menu-toggle">
+                                                    <a href="#" class="dropdown-item"><i class="gb flag"></i></a>
+                                                    <a href="#" class="dropdown-item"><i class="us flag"></i></a>
+
+                                                </div>
+                                            </div><!-- hover-flag-dropdown -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+
+
+
+<!--                <div class="container">-->
+<!--                    <div class="row">-->
+
+<!--                        <div class="col-12 col-sm-6 col-md-2 logo float-left">-->
+<!--                            <div class="text-light float-left">-->
+<!--                                <a href="/">-->
+<!--                                    <img t-att-src="'/logo.png?company=%s' % res_company.id" t-att-alt="'Logo of %s' % res_company.name" t-att-title="res_company.name"/>-->
+<!--                                </a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-10 main-menu">-->
+<!--                            <nav class="nav-menu float-left d-none d-lg-block d-lg-flex">-->
+<!--                                <ul>-->
+<!--                                    &lt;!&ndash;                                <li class="active"><a href="index.html">Home <i class="la la-angle-down"></i></a></li>&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                <li><a href="#">Contact Us</a></li>&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                <li><a href="#">Shop</a></li>&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                <li class="border-right-0"><a href="#">Media</a></li>&ndash;&gt;-->
+
+<!--                                    <t t-foreach="website.menu_id.child_id" t-as="submenu">-->
+<!--                                        <t t-call="website.submenu">-->
+<!--                                            <t t-set="item_class" t-value="'nav-item'" class="p-2"/>-->
+<!--                                            <t t-set="link_class" t-value="'nav-link'" class="p-2"/>-->
+<!--                                        </t>-->
+<!--                                    </t>-->
+<!--                                    <li class="border-right-0 responsive_search_li">-->
+<!--                                        <div class="adjust-icon col-sm-5 input-group ml-4 nav-item mr-5 search_responsive_box">-->
+<!--                                            <div class="form-outline">-->
+
+<!--                                                <t t-set="ci_rec" t-value="request.env['product.template'].sudo().search([])"/>-->
+
+<!--                                                <select id="search-input" placeholder="Search Products.." class="top_search" style="width: 85% !important;">-->
+<!--                                                    <option value=""></option>-->
+<!--                                                    <t t-foreach="ci_rec" t-as="ci">-->
+<!--                                                        <option t-attf-src="/web/image/product.template/#{ci.id}/image_128" t-att-value="ci.id" t-esc="ci.name"/>-->
+<!--                                                    </t>-->
+<!--                                                </select>-->
+
+<!--                                                &lt;!&ndash;                                            <input id="search-input" type="search" class="form-control" value="Search Products...."/>&ndash;&gt;-->
+<!--                                            </div>-->
+<!--                                            &lt;!&ndash;                                        <button id="search-button" type="button" class="btn btn-primary ml-n1 mr-5 responsive-search-btn">&ndash;&gt;-->
+<!--                                            &lt;!&ndash;                                            <i class="icofont-search responsive_icon_search"></i>&ndash;&gt;-->
+<!--                                            &lt;!&ndash;                                        </button>&ndash;&gt;-->
+<!--                                            &lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--                                        </div>-->
+<!--                                    </li>-->
+<!--                                    <li class="border-right-0 responsive_dynamic_menu">-->
+<!--                                        <div class="col-12 text-center adjust-icon">-->
+<!--                                            <img src="/bista_superasia_theme/static/src/img/profile.png" class="menu_icon_right_panel mx-auto profile_icon" alt="profile"/>&lt;!&ndash; <i class="float-left icofont-user-alt-3 w-100 profile_icon"></i> &ndash;&gt;-->
+<!--                                            &lt;!&ndash;                                            <span class="float-left w-100">Profile</span>&ndash;&gt;-->
+<!--                                            <a t-attf-href="/web/login" class="link-light pt-0 text-sm-left custom_nav_a sign_in_link" groups="base.group_public">-->
+<!--                                                Sign in-->
+<!--                                            </a>-->
+
+<!--                                            <a class="p-0 text-left custom_nav_a" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" t-ignore="true" t-if="not user_id._is_public()" style="white-space: normal;">-->
+<!--                                                <t t-esc="user_id.name[:23] + '...' if user_id.name and len(user_id.name) &gt; 25 else user_id.name"/>-->
+
+<!--                                            </a>-->
+<!--                                            <div class="dropdown-menu js_usermenu logout_btn_txt" role="menu">-->
+<!--                                                <a id="o_logout" class="dropdown-item-text"  style="padding: 5px;" t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a>-->
+<!--                                            </div>-->
+
+
+<!--                                        </div>-->
+<!--                                    </li>-->
+<!--                                    <li class="border-right-0 ml-lg-4 responsive_dynamic_menu">-->
+<!--                                        <div class="adjust-icon col-12 text-center">-->
+<!--                                            <img src="/bista_superasia_theme/static/src/img/wishlist.png" class="menu_icon_right_panel mx-auto profile_icon" alt="wishlist"/>&lt;!&ndash; <i class="icofont-heart w-100 float-left profile_icon"></i> &ndash;&gt;-->
+<!--                                            &lt;!&ndash;                                        <span class="float-left w-100">Wishlist</span>&ndash;&gt;-->
+<!--                                            <a class="p-0 text-left custom_nav_a" href="#">Wishlist</a>-->
+<!--                                        </div>-->
+<!--                                    </li>-->
+<!--                                    <li class="border-right-0 ml-lg-4 responsive_dynamic_menu">-->
+<!--                                        <div class="col-12 text-center adjust-icon adjust_cart">-->
+<!--                                            <img src="/bista_superasia_theme/static/src/img/cart.png" class="menu_icon_right_panel profile_icon" alt="cart"/>&lt;!&ndash; <i class="icofont-shopping-cart w-100 float-left profile_icon"></i> &ndash;&gt;-->
+<!--                                            &lt;!&ndash;                                        <span class="float-left w-100">Cart</span>&ndash;&gt;-->
+<!--                                            <t t-set="website_sale_order" t-value="website.sale_get_order()" />-->
+<!--                                            <t t-if ="website_sale_order and website_sale_order.cart_quantity">-->
+
+<!--                                                <a href="/shop/cart" class="link-dark cart_link custom_nav_a">-->
+<!--                                                    Cart <sup style="font-size: calc(12px);position: initial;width: 1vw;border-radius: 0px;background: #BE222B;" t-attf-class="my_cart_quantity badge badge-primary" t-esc="website_sale_order and website_sale_order.cart_quantity or ''" t-att-data-order-id="website_sale_order and website_sale_order.id or ''"/>-->
+<!--                                                </a>-->
+<!--                                            </t>-->
+<!--                                            <t t-else="">-->
+<!--                                                <a href="/shop/cart" class="link-dark cart_link custom_nav_a">Cart<sup style="font-size: calc(12px);position: initial;width: 1vw;border-radius: 0px;background: #BE222B;" t-attf-class="my_cart_quantity badge badge-primary" t-esc="website_sale_order and website_sale_order.cart_quantity or ''" t-att-data-order-id="website_sale_order and website_sale_order.id or ''"/></a>-->
+<!--                                            </t>-->
+<!--                                        </div>-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </nav>&lt;!&ndash; end .nav-menu &ndash;&gt;-->
+<!--                        </div>&lt;!&ndash; end col-sm-10 &ndash;&gt;-->
+<!--                        <t t-if="request.env.user.id == request.env.ref('base.public_user').id">-->
+<!--                            <div class="left-fixed-sidebar row py-3 pl-0">-->
+<!--                                <div class="col-12 col-3 order-2" id="sticky-sidebar">-->
+<!--                                    <div class="sticky-top">-->
+<!--                                        <div class="col-12 nav flex-column">-->
+<!--                                            <a t-att-href="'mailto:%s' % res_company.email" class="nav-link" data-toggle="tooltip" data-placement="right" title="" t-att-title="res_company.email"><i class="icofont-ui-message"></i></a>-->
+<!--                                            <a t-att-href="'mailto:%s' % res_company.phone" href="#_" class="nav-link" data-toggle="tooltip" data-placement="right" title="" t-att-title="res_company.phone"><i class="icofont-phone"></i></a>-->
+<!--                                            <a href="/b2b_activation" class="nav-link retailer-login" data-toggle="tooltip" data-placement="right" title="" data-original-title="Retailer Login" style="white-space: normal !important">Retailer Login</a>-->
+<!--                                            <a t-att-href="res_company.google_map_link()" target="_BLANK" class="nav-link" data-toggle="tooltip" data-placement="right" title="" data-original-title="View Location"><i class="icofont-google-map"></i></a>-->
+<!--                                            <a href="#_" class="nav-link" data-toggle="tooltip" data-placement="right" title="" data-original-title="Search"><i class="icofont-search-1"></i></a>-->
+<!--                                            <div class="nav-item hover-flag-dropdown open">-->
+<!--                                                <a href="#" class="nav-link dropdown-toggle"><i class="ca flag"></i></a>-->
+<!--                                                <div class="dropdown-menu-toggle">-->
+<!--                                                    <a href="#" class="dropdown-item"><i class="gb flag"></i></a>-->
+<!--                                                    <a href="#" class="dropdown-item"><i class="us flag"></i></a>-->
+
+<!--                                                </div>-->
+<!--                                            </div>&lt;!&ndash; hover-flag-dropdown &ndash;&gt;-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </t>-->
+<!--                    </div>&lt;!&ndash; container &ndash;&gt;-->
+<!--                </div>-->
+            </header><!-- End Header -->
+
+
+
+
+
+
+
+
+
+
+        </xpath>
+    </template>
+
+    <template id="superasia_footer_custom" inherit_id="website.layout" name="Super Asia Custom Footer">
+        <xpath expr="//div[@id='footer']" position="replace">
+            <footer id="footer" class="">
+                <div class="container extra">
+                    <div class="row">
+                        <div class="bg-color-left col-md-7 left pt-5">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <h3>Contact Us</h3>
+                                        <address>Head Office<br/><t t-esc="res_company.street"/><t t-esc="res_company.street2"/>,<br/> <t t-esc="res_company.city"/>, <t t-esc="res_company.state_id.name"/> (<t t-esc="res_company.zip"/>)<br/>
+                                            <t t-esc="res_company.country_id.name"/>
+                                        </address>
+                                    <a t-att-href="'mailto:%s' % res_company.phone" href="@" class="mb-1 w-100 float-left text-white"><i class="icofont-phone"></i> <t t-esc="res_company.phone"/> </a>
+                                    <a t-att-href="'mailto:%s' % res_company.email" href="mailto:cservice@superasia.ca" class="mb-1 w-100 float-left text-white"><i class="icofont-ui-message"></i> <t t-esc="res_company.email"/></a>
+                                    <a t-att-href="res_company.google_map_link()" target="_BLANK" class="mb-1 w-100 float-left text-white"><i class="icofont-google-map"></i> OTHER LOCATIONS</a>
+                                </div>
+                                <div class="col-md-7">
+                                    <h3>Other Links</h3>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <a href="#" class="mb-1 w-100 float-left text-white">About Us</a>
+                                            <a href="#" class="mb-1 w-100 float-left text-white">Blog</a>
+                                            <a href="/contactus" class="mb-1 w-100 float-left text-white">Contact Us</a>
+                                            <a href="#" class="mb-1 w-100 float-left text-white">Careers</a>
+                                            <a href="#" class="mb-1 w-100 float-left text-white">FAQ's</a>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a href="#" class="mb-1 w-100 float-left text-white">T &amp; C</a>
+                                            <a href="/" class="mb-1 w-100 float-left text-white">How It Works</a>
+                                            <a href="/b2b_activation" class="mb-1 w-100 float-left text-white">Retailer Login</a>
+                                            <a href="#" class="mb-1 w-100 float-left text-white">XML Sitemap</a>
+                                        </div>
+                                    </div><!-- end row -->
+                                </div><!-- end col-md-7 -->
+                            </div><!-- end row -->
+                        </div><!-- end col-md-7 -->
+                        <div class="col-md-5 bg-color-right pt-5 right">
+                            <div class="row">
+                                <div class="col-sm-12 pl-5 responsive-footer">
+                                    <h3 class="py-3">Join Our Newsletter Now</h3>
+                                    <p>Join Our Newsletter for New Offers / Arrivals &amp; more!</p>
+<!--                                    <div class="input-group pb-4">-->
+<!--                                        <div class="form-outline w-100">-->
+<!--                                            <input id="search-input" type="search" class="form-control" value="Enter your mail..." onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;"/>-->
+<!--                                        </div>-->
+<!--                                        <button id="search-button" type="button" class="btn btn-secondary-footer ml-n1">SUBSCRIBE-->
+<!--                                        </button>-->
+<!--                                    </div>-->
+                                </div>
+                                <div class="d-flex desktop-social-icons ml-4 mt-4">
+                                    <div class="col-9 row">
+                                        <div class="col-sm-auto desktop-social-icons">
+                                            <a t-att-href="res_company.social_facebook" target="_blank"><img src="/bista_superasia_theme/static/src/img/facebook-with-circle.png" alt="facebook" class="pb-3" /></a>
+                                        </div>
+                                        <div class="col-sm-auto desktop-social-icons">
+                                            <a t-att-href="res_company.social_linkedin" target="_blank"><img src="/bista_superasia_theme/static/src/img/linkedin-with-circle.png" alt="linkedin" class="pb-3" /></a>
+                                        </div>
+                                        <div class="col-sm-auto desktop-social-icons">
+                                            <a t-att-href="res_company.social_twitter" target="_blank"><img src="/bista_superasia_theme/static/src/img/twitter-with-circle.png" alt="twitter" class="pb-3" /></a>
+                                        </div>
+                                        <div class="col-sm-auto desktop-social-icons">
+                                            <a t-att-href="res_company.social_youtube" target="_blank"><img src="/bista_superasia_theme/static/src/img/youtube-with-circle.png" alt="youtube" class="pb-3" /></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <button id="search-button" type="button" class="btn btn-primary" style="border: 1px solid #BE222B;border-radius: 5px;">ENGLISH
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-sm-auto d-lg-none d-md-none pb-3 responsive-social-icons w-100">
+                                    <a href="#" target="_blank" class="pr-2"><img src="/bista_superasia_theme/static/src/img/facebook-with-circle.png" alt="facebook" class="pb-3" /></a>
+                                    <a href="#" target="_blank" class="pr-2"><img src="/bista_superasia_theme/static/src/img/linkedin-with-circle.png" alt="linkedin" class="pb-3" /></a>
+                                    <a href="#" target="_blank" class="pr-2"><img src="/bista_superasia_theme/static/src/img/twitter-with-circle.png" alt="twitter" class="pb-3" /></a>
+                                    <a href="#" target="_blank"><img src="/bista_superasia_theme/static/src/img/youtube-with-circle.png" alt="youtube" class="pb-3" /></a>
+                                    <button id="search-button" type="button" class="btn btn-primary pull-right" style="border: 1px solid #BE222B;border-radius: 5px;
+}">ENGLISH
+                                        </button>
+                                </div>
+                            </div><!-- end row -->
+                        </div><!-- end col-md-5 -->
+                    </div><!-- End row -->
+                </div><!-- End container-fluid -->
+            </footer><!-- End Footer -->
+        </xpath>
+    </template>
+
+    <template id="superasia_footer_copyright_custom" inherit_id="web.frontend_layout" name="SuperAsiaFooter Copyright">
+        <xpath expr="//div[hasclass('o_footer_copyright')]" position="replace">
+            <div class="sub-footer sub-footer text-center pt-1">
+                <p class="mb-1">© Copyright 2021 Super Asia Foods.</p>
+            </div>
+            <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+        </xpath>
+    </template>
+
+
+
+
+</odoo>

@@ -1,0 +1,71 @@
+/*.oe_website_bids .affix{
+	position: fixed;
+	top: 5px;
+	width: 22vw;
+}*/
+
+.products_pager {
+  text-align: center;
+}
+.products_pager > div {
+  margin: 0 auto;
+  display: inline-block;
+}
+.products_pager > div > * {
+  vertical-align: middle;
+  float: none;
+  padding: 0;
+}
+.products_pager > div > ul {
+  padding-left: 10px;
+}
+.products_pager > ul {
+  margin-left: auto;
+  margin-right: auto;
+}
+.oe_website_bids parallax {
+    /* The image used */
+    /*background-image: '/addons/mark_web/static/src/css/bid.jpeg';*/
+    background-image: url("img_parallax.jpg");
+
+    /* Set a specific height */
+    min-height: 500px; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+
+.mytext {
+    height: 1000px;
+}
+
+.buttoncreateaccount {
+    background-color: #ac1520;
+    border: none;
+    color: white;
+    padding: 1rem 1.2rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.buttonlogin {
+    background-color: #D4AF37;
+    border: none;
+    color: #fff;
+    padding: 1rem 1.2rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}

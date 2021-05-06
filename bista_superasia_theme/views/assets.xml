@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="superasia_assets_frontend_website_sale" inherit_id="website_sale.assets_frontend">
+       <xpath expr="//script[@src='/website_sale/static/src/js/website_sale_utils.js']" position="replace">
+            <script type="text/javascript" src="/bista_superasia_theme/static/src/js/website_sale_utils.js"></script>
+        </xpath>
+       <xpath expr="//script[@src='/sale/static/src/js/variant_mixin.js']" position="replace">
+            <script type="text/javascript" src="/bista_superasia_theme/static/src/js/variant_mixin.js"></script>
+        </xpath>
+        <xpath expr="//script[@src='/website_sale/static/src/js/website_sale.js']" position="replace">
+            <script type="text/javascript" src="/bista_superasia_theme/static/src/js/website_sale.js"></script>
+        </xpath>
+    </template>
+
+    <template id="superasia_assets_frontend_subscription" inherit_id="website_mass_mailing.assets_frontend">
+       <xpath expr="//script[@src='/website_mass_mailing/static/src/js/website_mass_mailing.js']" position="replace">
+           <script type="text/javascript" src="/bista_superasia_theme/static/src/js/website_mass_mailing.js"></script>
+       </xpath>
+    </template>
+    <template id="superasia_assets_frontend" inherit_id="web.assets_frontend">
+        <xpath expr="//link" position="after">
+            <link rel="stylesheet" href="/bista_superasia_theme/static/src/scss/mdb.min.css"/>
+            <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i,900" rel="stylesheet"/>
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+
+            <!--        Vendor CSS Files -->
+            <link href="/bista_superasia_theme/static/src/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+            <link href="/bista_superasia_theme/static/src/vendor/bootstrap/css/bootstrap-grid.min.css" rel="stylesheet"/>
+            <link href="/bista_superasia_theme/static/src/vendor/icofont/icofont.min.css" rel="stylesheet"/>
+            <link href="/bista_superasia_theme/static/src/vendor/boxicons/css/boxicons.min.css" rel="stylesheet"/>
+            <link href="/bista_superasia_theme/static/src/vendor/animate.css/animate.min.css" rel="stylesheet"/>
+            <link href="/bista_superasia_theme/static/src/vendor/venobox/venobox.css" rel="stylesheet"/>
+            <link href="/bista_superasia_theme/static/src/vendor/aos/aos.css" rel="stylesheet"/>
+            <!--        Vendor CSS Files -->
+
+          <!-- Template Main CSS File -->
+            <link href="/bista_superasia_theme/static/src/scss/style.css" rel="stylesheet"/>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"/>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css"/>
+
+          <!-- Template Main CSS File -->
+
+
+
+            <!-- Vendor JS Files -->
+            <script type="text/javascript" src="/bista_superasia_theme/static/src/vendor/jquery-sticky/jquery.sticky.js"/>
+            <script type="text/javascript" src="/bista_superasia_theme/static/src/vendor/counterup/counterup.min.js"/>
+            <script type="text/javascript" src="/bista_superasia_theme/static/src/vendor/aos/aos.js"/>
+            <script type="text/javascript" src="/bista_superasia_theme/static/src/vendor/jquery.easing/jquery.easing.min.js"/>
+            <script type="text/javascript" src="/bista_superasia_theme/static/src/vendor/venobox/venobox.min.js"/>
+            <script type="text/javascript" src="/bista_superasia_theme/static/src/vendor/waypoints/jquery.waypoints.min.js"/>
+            <script type="text/javascript" src="/bista_superasia_theme/static/src/vendor/isotope-layout/isotope.pkgd.min.js"/>
+            <script type="text/javascript"  src="/bista_superasia_theme/static/src/js/custom_js.js" />
+            <script type="text/javascript"  src="/bista_superasia_theme/static/src/js/feature_products.js" />
+            <script type="text/javascript" src="/bista_superasia_theme/static/src/js/main.js"/>
+            <script type="text/javascript" src="/bista_superasia_theme/static/src/js/typed.min.js"/>
+<!--            <script type="text/javascript" src="/bista_superasia_theme/static/src/js/website_mass_mailing.js"></script>-->
+
+        </xpath>
+    </template>
+
+
+</odoo>

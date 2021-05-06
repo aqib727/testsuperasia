@@ -1,0 +1,800 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700|Raleway:300,400,700');
+
+
+/* Carousel */
+.carousel-caption {
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.carousel-caption h1{
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+.carousel-caption h3 {
+    font-family: "Helvetica", "Arial"," Verdana";
+    margin-bottom: 50px;
+}
+
+.carousel-item.active {
+    background-color: #fff;
+}
+
+video {
+    width: 100%;
+}
+
+.carousel-control{
+    z-index: 2;
+}
+
+.carousel-overlay-logo {
+    width: 100%;
+    height: 160px;
+    margin-bottom:100px;
+    /*background-color: rgba(255,255,255,0.7);*/
+}
+.carousel-overlay-logo img {
+    height: 160px;
+}
+/*
+.carousel_buttons .button{
+    height: 45px;
+    vertical-align: middle;
+    line-height: 45px;
+    margin: 0 10px;
+    font-size: 22px;
+}*/
+
+
+.table {
+  border-collapse: collapse;
+
+}
+
+.table, td, th{
+  border:  solid white;
+}
+
+
+
+/* Testimonials */
+.mwbe_accelerator_testimonial {
+    margin: 50px 0;
+    background-color: rgba(231, 111, 81, 0.8);
+    display: inline-block;
+}
+
+
+.testimonial-container {
+    margin-bottom: 10px;
+    display: inline-block;
+    padding: 30px 0;
+}
+
+.testimonial-text {
+    width: 85%;
+    display:inline-block;
+    color: #fff;
+    font-family: "Helvetica", "Arial"," Verdana";
+    font-size: 27px;
+    text-align: center;
+    padding: 10px;
+}
+
+.left-quote {
+    float: left;
+}
+
+.left-quote,
+.right-quote {
+    width: 7%;
+    height: 100%;
+    display: inline-block;
+}
+
+.right-quote {
+    -webkit-transform:rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.left-quote img,
+.right-quote img {
+    width: 100%;
+}
+
+.testimonial-by {
+    color: #fff;
+    font-size: 21px;
+   /* float: right;*/
+    margin: 15px 15% 0 15%;
+    text-align : center;
+}
+
+
+.procurement_solution_main_header{
+    text-align: center;
+    color: #E76F51;
+    font-family: "Helvetica", "Arial"," Verdana";
+    font-size: 36px;
+}
+
+.procurement_solution_sub_header {
+    color: #023E4C;
+    font-size: 22px;
+    margin-bottom: 75px;
+    text-align: center;
+    font-family: "Helvetica", "Arial"," Verdana";
+}
+
+.solution_header {
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.access_header {
+    color: #e66e50;
+}
+
+.readiness_header {
+    color: #45a488;
+}
+
+.capacity_header {
+    color: #f3bd41;
+}
+
+.solution_description {
+    color: #023E4C;
+    font-size: 22px;
+    font-family: "Helvetica", "Arial"," Verdana";
+}
+
+
+.see_faq_link_container span a{
+    display: block;
+    background-color: rgba(255, 255, 255, 0.81);
+    border: solid rgba(231, 111, 81, 1) 3px;
+    cursor: pointer !important;
+    padding: 6px;
+    text-align: center;
+    font-size: 22px;
+    max-width: 750px;
+    margin: 20px auto;
+}
+
+.see_faq_link_container span a{
+    color: #000;
+    text-decoration: none;
+}
+
+.see_faq_link_container span:hover a {
+    color: #fff;
+}
+
+.see_faq_link_container span:hover a{
+    background-color: rgba(231, 111, 81, 1);
+    border: solid #888 3px;
+}
+
+
+/* Procurement */
+.mwbe_accelerator_procurement_contianer {
+    background-color: rgba(231, 111, 81, 0.8);
+    display:inline-block;
+    padding-bottom: 75px;
+}
+
+.procurement_img {
+    text-align: center;
+}
+.procurement_img .full-width-image{
+    max-width: 140px;
+}
+
+.border-right {
+    border-right: 1px solid #fff;
+}
+
+.full-width-image {
+    width: 100%;
+    margin-top: 40px;
+}
+
+.procurement_main_header {
+    padding: 50px;
+    text-align: center;
+    font-size: 36px;
+    font-family: "Helvetica", "Arial"," Verdana";
+    color: #fff;
+}
+
+.procurement_header {
+    font-size: 22px;
+    color: #fff;
+    padding: 25px 5px;
+    font-weight: bold;
+    font-family: "Helvetica", "Arial"," Verdana";
+}
+
+.procurement_details {
+    font-size: 22px;
+    color: #fff;
+    line-height: 33px;
+    padding: 5px;
+    font-family: "Helvetica", "Arial"," Verdana";
+}
+
+.learn_solution_link_container span{
+    display: block;
+    background-color: rgba(255, 255, 255, 0.81);
+    border: solid rgba(255, 255, 255, 1) 3px;
+    cursor: pointer !important;
+    padding: 6px;
+    text-align: center;
+    font-size: 22px;
+    max-width: 750px;
+    margin: 20px auto;
+}
+
+/* ABOUT  */
+.about_mwbe_header {
+    padding: 50px;
+    text-align: center;
+    color: #E76F51;
+    font-size: 36px;
+    font-family: "Helvetica", "Arial"," Verdana";
+}
+
+.about_data_headers{
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    padding: 50px 30px;;
+    color: #E76F51;
+    position: relative;
+    font-family: "Helvetica", "Arial"," Verdana";
+}
+.about_data_details {
+    color: #fff;
+    line-height: 34px;
+    font-size: 18px;
+    padding: 0 65px;
+    text-align: center;
+    position: relative;
+    font-family: "Helvetica", "Arial"," Verdana";
+
+}
+.about_mission,
+.about_beliefs,
+.about_team {
+    max-width: 650px;
+    min-height: 400px;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    right:0;
+    margin: auto;
+    background-size: cover;
+    position: relative;
+}
+
+.about_image_overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(2, 62, 76, 0.3);
+}
+
+.about_mission:before,
+.about_beliefs:before,
+.about_team:before {
+    content:' ';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color:rgba(0,0,0,0.2);
+}
+.about_mission {
+    background-image: url('/mark_web/static/src/img/our_mission.png');
+}
+
+.about_beliefs {
+    background-image: url('/mark_web/static/src/img/our_beliefs.png');
+}
+
+.about_team {
+    background-image: url('/mark_web/static/src/img/our_team.png');
+}
+
+/* Partners */ 
+.mwbe_partners_container {
+    text-align: center;
+    background-color: #fff;
+}
+.mwbe_partners_container .image-container {
+}
+
+.better_local {
+    padding: 40px 0;
+}
+.border-red {
+    background-color: red;
+    height: 1px;
+    display:inline-block;
+    width: 80%;
+    margin: 0 10%;
+}
+
+
+.back_to_bid_page {
+    
+}
+
+/* Footer Css */
+
+footer {
+    background-color: #023E4C;
+}
+
+#footer_container {
+    padding: 0;
+    background-color: #023E4C;
+    color: #fff;
+    display:inline-block;
+}
+
+.full-height-container {
+    height: 100%;
+}
+
+.footer_company_details {
+    height: 470px;
+}
+.footer_company_contact a {
+    color: #fff;
+    text-decoration: underline;
+}
+.footer_contact_name {
+    font-family: "Helvetica", "Arial"," Verdana";
+    margin-top: 50px;
+    font-size: 36px;
+}
+
+.footer_powered_by {
+    font-family: "Helvetica", "Arial"," Verdana";
+    position: absolute;
+    bottom: 10px;
+}
+
+.footer_powered_by a {
+    text-decoration: underline;
+    color: #fff;
+}
+
+.footer_copyright_details {
+    font-family: "Helvetica", "Arial"," Verdana";
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.footer_privacy_policy {
+    font-family: "Helvetica", "Arial"," Verdana";
+    margin-top: 20px;
+    font-size: 20px;
+}
+.footer_privacy_policy a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.footer_address_title {
+    font-family: "Helvetica", "Arial"," Verdana";
+    margin-top: 55px;
+    font-size: 22px;
+}
+
+.footer_company_address {
+    font-family: "Helvetica", "Arial"," Verdana";
+    margin-top: 20px;
+    font-size:20px;
+}
+
+.footer_company_address span {
+    display: block;
+}
+
+.footer_inquiry_link {
+    font-family: "Helvetica", "Arial"," Verdana";
+    margin-top: 30px;
+    font-size: 20px;
+}
+
+.footer_inquiry_form_header {
+    font-family: "Helvetica", "Arial"," Verdana";
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.left-panel-form,
+.right-panel-form {
+    width: 50%;
+    float: left;
+    margin-top: 15px;
+    padding: 2px;
+}
+
+.left-panel-form input,
+.right-panel-form textarea {
+    background-color: rgba(255, 255, 255, 1);
+    font: normal normal normal 14px/1.4em 'open sans',sans-serif;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: 0px solid rgba(221, 221, 221, 1);
+    color: #555555;
+    margin: 0 0 3px;
+    padding: 5px;
+    width: 100%;
+}
+
+.right-panel-form textarea {
+    resize: none;
+}
+
+.footer_form_button {
+    border: 0;
+    color: #FFFFFF;
+    cursor: pointer;
+    background-color: rgba(65, 183, 196, 1);
+    font: normal normal normal 14px/1.4em 'open sans',sans-serif;
+    padding: 5px;
+    float: right;
+    top: 0;
+    margin-top:-5px;
+}
+
+
+
+/* Buyer Regisrtation Page */
+.buyer_registration_container {
+    background-color: rgba(0, 163, 136, 1);
+    color: #fff;
+    font-size: 40px;
+    text-align: center;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.supplier_activation_header_text {
+    /*background-color: #070707;*/
+    background-color: #fcfcfc;
+    
+}
+.servicecategory_header_text {
+    background-color: #91291D;
+}
+.referraltemp {
+    /*background-color: #070707;*/
+    background-color: #49a3f2;
+    
+}
+.referraltempfooter {
+    /*background-color: #070707;*/
+    background-color: #03192b;
+    
+}
+.supplier_profile_header_text {
+    background-color: #1390d4;    
+}
+
+.caspio {
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 10%;
+}
+
+.supplier_changeprofile_header_text {
+    background-color: #1e4f20;
+}
+
+.bid_opportunity_header_text {
+    background-color: #023E4C;    
+}
+
+.faqs_header_text {
+    background-color: #ff954d;
+}
+
+.contact_us_header_text {
+    background-color: #ff954d;
+}
+
+.map {
+    height: 300px;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.press_header_text {
+    background-color: #023E4C;
+}
+
+.page_header_text {
+    font-family: "Helvetica", "Arial"," Verdana";
+    color: #080707;
+    font-size: 20px;
+    text-align: center;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+.page_serviceheader_text {
+    font-family: "Helvetica", "Arial"," Verdana";
+    color: #fcf7f7;
+    font-size: 25px;
+    text-align: center;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+.page_bidheader_text {
+    font-family: "Helvetica", "Arial"," Verdana";
+    color: #FFFFFF;
+    font-size: 25px;
+    text-align: center;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.contact_text{
+    font-size: 24px;
+    font-family: "Helvetica", "Arial"," Verdana";
+    color: #023E4C;
+    max-width: 300px;
+    text-align: center;
+    margin: 20px auto;
+}
+
+.contact_reach_image {
+    margin: 50px 0;
+    text-align: center;
+
+}
+.contact_reach_image img {
+    max-width: 80px;
+    width: 100%;
+}
+
+/* PILLARS page */
+
+.three_pillar_title{
+    text-align: center;
+    font-size: 40px;
+    padding: 30px;
+    color: #E76F51;
+    box-shadow: 0px 2px 2px rgba(51, 51, 51, 0.4) inset;
+    font-family: "Helvetica", "Arial"," Verdana";
+}
+
+.access-pillar-container {
+    padding: 50px 0;
+    background-color: #e66f51;
+    color: #fff;
+    font-size: 20px;
+}
+.pillar-title-container img{
+    float: left;
+}
+
+.pillar_title{
+    line-height: 156px;
+    text-align: center;
+    width: 40%;
+    display: inline-block;
+    font-weight: bold;
+    font-family: "Helvetica", "Arial"," Verdana";
+}
+
+.pillar_details_description {
+    font-family: "Helvetica", "Arial"," Verdana";
+}
+
+.pillar_details_description a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.pillar_button a{
+    cursor: pointer;
+    margin: 20px;
+    padding: 10px;
+    text-align: center;
+    font-family: "Helvetica", "Arial"," Verdana";
+    display: block;
+    text-decoration: none;
+}
+
+
+
+.pillar_button.account_activation_button:hover a,
+.pillar_button.buyer_registration_button:hover a{
+    background-color: #888;
+    color: #fff;
+}
+
+.pillar_button.buyer_registration_button a{
+    background-color: #00a388;
+    color: #fff;
+}
+
+.pillar_button.account_activation_button a{
+    background-color: #fff;
+    color: #e66f51;
+}
+.readiness_pillar_container {
+    padding: 50px 0;
+    background-color: #45a388;
+    color: #fff;
+    font-size: 20px;
+    margin: 50px 0px;
+    
+}
+
+.capacity_pillar_container{
+    padding: 50px 0;
+    background-color: #f3bd43;
+    color: #fff;
+    font-size: 20px;
+}
+.pillar_details_title{
+    font-weight: bold;
+    font-family: "Helvetica", "Arial"," Verdana";
+}
+
+.pillar_note {
+    font-weight: bold;
+    font-size: 20px;
+    font-family: "Helvetica", "Arial"," Verdana";
+}
+.pillar_note a{
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* FAQs */
+
+.faq_header_text {
+    font-size: 23px;
+    font-family: "Helvetica", "Arial"," Verdana";
+    padding: 30px;
+    color: #023E4C;
+}
+
+.faq_question {
+    color: #E76F51;
+    font-size: 23px;
+    font-family: "Helvetica", "Arial"," Verdana";
+}
+
+.faq_answer {
+    font-size: 23px;
+    color: #023E4C;
+    margin-bottom: 30px;
+}
+.faq_answer a{
+    color: #023E4C;
+    margin-bottom: 30px;
+    text-decoration: underline;
+}
+
+.terms_page_header_text {
+    background-color: #0e3f4c;
+}
+
+.effective_date_container {
+    text-align: center;
+    font-size: 22px;
+    font-family: "Helvetica", "Arial"," Verdana";
+}
+
+.terms_container {
+    margin: 0 10%;
+    color: #0e3f4c;
+}
+
+.terms_header {
+    font-size: 22px;
+    text-align: center;
+    margin: 20px 0;
+    color: #e66f51;
+}
+
+.terms_sub_header {
+    font-size: 20px;
+   font-family: "Helvetica", "Arial"," Verdana";
+}
+.terms_details {
+    margin-left: 5%;
+    font-family: "Helvetica", "Arial"," Verdana";
+    font-size: 20px;
+}
+
+.terms_details a{
+    color: #0e3f4c;
+    text-decoration: underline;
+
+}
+.search_publish_bids_list
+{
+    font-size:18px;
+}
+.search_form_group
+{
+    font-size:18px;
+}
+.faq_answer
+{
+    font-family: "Helvetica", "Arial"," Verdana";
+}
+.page_header_text_suplier {
+    font-family: "Helvetica", "Arial"," Verdana";
+    color: #fff;
+    font-size: 25px;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.page_header_text_supplier_sub {
+    font-family: "Helvetica", "Arial"," Verdana";
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    padding: 5px;
+    margin-bottom: 30px;
+}
+
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+background-color: #BE222B;
+color:white !important;
+
+}
+
+.panel {
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+}
+
+.text1 {
+  font-size: 32px;
+}
+
+/*.product_detail_img {
+    max-height: 50px;
+    max-width: 50px;
+}
+
+*/

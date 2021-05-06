@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<template id="offline_fallback_page">
+		<t t-call="website.layout">
+			<t t-set="title">Offline</t>
+			<div class="container text-center">
+                <div class="row mb64 mt64">
+                    <div class="col-md-12 col-12">
+                        <img src="/bista_web_pwa/static/img/offline.png" style="height: 75px;" alt=":-("/>
+                    </div>
+                    <div class="col-md-12 col-12 mt16" style="font-family: sans-serif;font-size: 26px;color: #333333;">
+                        You are offline.
+                    </div>
+                    <div class="col-md-6 col-12 offset-md-3 mt16 mb16" style="font-family: sans-serif;font-size: 15px;color: #555555;">
+                        Currently you can't view this page without a connection.
+                    </div>
+                    <div class="col-md-12 col-12 mb16">
+                        <a href="/" class="btn btn-primary" style="padding: 8px 24px;">BACK TO HOMEPAGE</a>
+                    </div>
+                </div>
+			</div>
+		</t>
+	</template>
+
+</odoo>

@@ -1,0 +1,12 @@
+.whatsappapi{position:fixed;z-index:1000;right:20px;bottom:20px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;font-size:16px;line-height:1.625em;color:#262626;transform:scale3d(0, 0, 0);transition:transform .3s ease-in-out;user-select:none;-ms-user-select:none;-moz-user-select:none;-webkit-user-select:none}.whatsappapi *,
+.whatsappapi *:before,
+.whatsappapi *:after{box-sizing:border-box}.whatsappapi svg,
+.whatsappapi svg
+path{fill:currentColor!important}.whatsappapi.whatsappapi--show{transform:scale3d(1, 1, 1);transition:transform .5s cubic-bezier(.18,.89,.32,1.28)}.whatsappapi__button{display:-ms-flexbox;display:-webkit-flex;display:flex;position:absolute;z-index:2;bottom:8px;right:8px;height:60px;min-width:60px;max-width:95vw;background-color:#25D366;color:#fff;border-radius:30px;box-shadow:1px 6px 24px 0 rgba(7, 94, 84, .24);cursor:pointer;transition:background-color 0.2s linear;-webkit-tap-highlight-color:rgba(0,0,0,0)}.whatsappapi__button:hover{background-color:#128C7E;transition:background-color 1.5s linear}.whatsappapi--chatbox
+.whatsappapi__button{background-color:#128C7E;transition:background-color 0.2s linear}.whatsappapi--chatbox .whatsappapi__button:hover{background-color:#075E54}.whatsappapi__button:active{background-color:#075E54;transition:none}@supports (-webkit-overflow-scrolling:touch){.whatsappapi--chatbox
+.whatsappapi__button{background-color:#34B7F1}.whatsappapi--chatbox .whatsappapi__button:hover,.whatsappapi__button:active{background-color:#228bb9}}.whatsappapi__button
+svg{width:36px;height:36px;margin:12px
+12px}.whatsappapi--chatbox
+.whatsappapi__button{box-shadow:0 1px 2px 0 rgba(0, 0, 0, .3)}[dir=rtl] .whatsappapi__button{-ms-flex-direction:row-reverse;-webkit-flex-direction:row-reverse;flex-direction:row-reverse}[dir=rtl] .whatsappapi--left
+.whatsappapi__button{-ms-flex-direction:row;-webkit-flex-direction:row;flex-direction:row}@media (max-width:480px),
+(orientation:landscape) and (max-width:767px){.whatsappapi{bottom:6px;right:6px}}

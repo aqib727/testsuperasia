@@ -8,7 +8,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='move_ids_without_package']//field[@name='product_uom']" position="after">
                     <field name="lot_no" string="Lot/Serial Number"/>
-                    <field name="expiry_date" string="Expiry Date"/>
+                    <field name="expiry_date" string="Expiry Date" required="True" />
                 </xpath>
             </field>
         </record>

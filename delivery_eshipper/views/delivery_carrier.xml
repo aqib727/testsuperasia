@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <record id="view_delivery_carrier_eshipper_tree" model="ir.ui.view">
+        <field name="name">eshipper.delivery.carrier.tree</field>
+        <field name="model">delivery.carrier</field>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <tree string="Carrier">
+                <field name="sequence" widget="handle"/>
+                <field name="service_id"/>
+                <field name="name"/>
+                <field name="country_of_origin"/>
+                <field name="delivery_type"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_delivery_carrier_form_eshipper" model="ir.ui.view">
+        <field name="name">delivery.carrier.form.provider.eshipper</field>
+        <field name="model">delivery.carrier</field>
+        <field name="inherit_id" ref="delivery.view_delivery_carrier_form"/>
+        <field name="arch" type="xml">
+            <button name="toggle_debug" position="after">
+                <button name="active_new_services" string="Add Services" type="object" class="oe_stat_button" icon="fa-edit"
+                        attrs="{'invisible': ['|',('is_default_eshipper_services','=',False),('delivery_type', '!=', 'eshipper')]}"/>
+            </button>
+            <xpath expr="//page[@name='destination']" position='before'>
+                <page string="eShipper Configuration" attrs="{'invisible': [('delivery_type', '!=', 'eshipper')]}">
+                    <group>
+                        <group>
+                            <field name="is_default_eshipper_services" invisible="1"/>
+                            <field name="eshipper_username" attrs="{'invisible': ['|',('is_default_eshipper_services','=',False),('delivery_type', '!=', 'eshipper')]}"/>
+                            <field name="eshipper_passwd" attrs="{'invisible': ['|',('is_default_eshipper_services','=',False),('delivery_type', '!=', 'eshipper')]}"/>
+                        	<field name="service_id" readonly="1" string="eShipper Service ID"/>
+                        </group>
+                        <group>
+                        	<group colspan="4">
+	                            <field name="eshipper_default_packaging_id" attrs="{'required': [('delivery_type', '=', 'eshipper')]}" domain="[('package_carrier_type', '=', 'eshipper')]" options="{'no_create': True}"/>
+                            </group>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

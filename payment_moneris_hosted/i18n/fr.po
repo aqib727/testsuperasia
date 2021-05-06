@@ -1,0 +1,484 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* payment_moneris_hosted
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-12-11 11:52+0000\n"
+"PO-Revision-Date: 2020-12-11 11:52+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: payment_moneris_hosted
+#: model_terms:ir.ui.view,arch_db:payment_moneris_hosted.moneris_status
+msgid ""
+"<span class=\"fa fa-long-arrow-left\"/>\n"
+"                                <span class=\"hidden-xs\">Go To Shopping Cart</span>\n"
+"                                <span class=\"visible-xs-inline\">Continue</span>"
+msgstr ""
+
+#. module: payment_moneris_hosted
+#: model_terms:ir.ui.view,arch_db:payment_moneris_hosted.moneris_status
+msgid "<span>Message: </span>"
+msgstr ""
+
+#. module: payment_moneris_hosted
+#: model_terms:ir.ui.view,arch_db:payment_moneris_hosted.moneris_status
+msgid "<span>Code de réponse: </span>"
+msgstr ""
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,help:payment_moneris_hosted.field_payment_acquirer__moneris_image_url
+msgid ""
+"A relative absolute URL pointing to a square image of your brand or product."
+" As defined in your moneris_onsite profile. See: "
+"https://moneris_onsite.com/docs/checkout"
+msgstr ""
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_acquirer__fees_active
+msgid "Add Extra Fees"
+msgstr "Ajoutez des frais additionnels"
+
+#. module: payment_moneris_hosted
+#: code:addons/payment_moneris_hosted/models/moneris.py:0
+#: model:ir.model.fields.selection,name:payment_moneris_hosted.selection__payment_acquirer__moneris_store_card__always
+#, python-format
+msgid "Always"
+msgstr "Toujours"
+
+#. module: payment_moneris_hosted
+#: model_terms:ir.ui.view,arch_db:payment_moneris_hosted.payment_confirmation_status_hosted
+msgid "Amount"
+msgstr "Montante"
+
+#. module: payment_moneris_hosted
+#: code:addons/payment_moneris_hosted/models/moneris.py:0
+#: model:ir.model.fields.selection,name:payment_moneris_hosted.selection__payment_acquirer__moneris_order_confirmation__capture
+#, python-format
+msgid "Authorize & capture the amount and conform it"
+msgstr "Autorisez et saisissez le montant et conformez-le"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_bank_approval
+msgid "Bank Approval"
+msgstr "Approbation bancaire"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields.selection,name:payment_moneris_hosted.selection__payment_transaction__moneris_card_type__card
+#: model_terms:ir.ui.view,arch_db:payment_moneris_hosted.payment_confirmation_status_hosted
+msgid "Card"
+msgstr "Carte"
+
+#. module: payment_moneris_hosted
+#: model_terms:ir.ui.view,arch_db:payment_moneris_hosted.payment_confirmation_status_hosted
+msgid "Card Number"
+msgstr "Numéro de carte"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_card_name
+msgid "Card Type"
+msgstr "Type de carte"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_card_holder
+msgid "Cardholder"
+msgstr "Titulaire de la carte"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_acquirer__moneris_image_url
+msgid "Checkout Image URL"
+msgstr "URL de l'image de paiement"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_credit_card
+msgid "Credit Card"
+msgstr "Carte de crédit"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_customer_id
+msgid "Customer Id"
+msgstr "N ° de client"
+
+#. module: payment_moneris_hosted
+#: model_terms:ir.ui.view,arch_db:payment_moneris_hosted.moneris_status
+msgid "Email us at"
+msgstr "Écrivez-nous à"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_expiry_date
+msgid "Expiry Date"
+msgstr "Date d'expiration"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_acquirer__fees_dom_fixed
+msgid "Fixed domestic fees"
+msgstr "Frais fixes domestiques"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_acquirer__fees_int_fixed
+msgid "Fixed international fees"
+msgstr "Frais fixes internationales "
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_gift_cardnum
+msgid "Gift Card Num"
+msgstr "Numéro de carte-cadeau"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_gift_charge
+msgid "Gift Charge"
+msgstr "Frais de cadeau"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_gift_display
+msgid "Gift Display"
+msgstr "Affichage de cadeau"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_gift_orderno
+msgid "Gift Order No"
+msgstr "No de commande cadeau"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_gift_refnum
+msgid "Gift Ref Num"
+msgstr "Numéro de référence du cadeau"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_gift_txnnum
+msgid "Gift Txn Num"
+msgstr "Num Txn Cadeau"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_interac_invoice
+msgid "INVOICE"
+msgstr ""
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_interac_issconf
+msgid "ISSCONF"
+msgstr ""
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_interac_issname
+msgid "ISSNAME"
+msgstr ""
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_iso_code
+msgid "Iso Code"
+msgstr "Code ISO"
+
+#. module: payment_moneris_hosted
+#: code:addons/payment_moneris_hosted/models/moneris.py:0
+#: model:ir.model.fields.selection,name:payment_moneris_hosted.selection__payment_acquirer__moneris_store_card__customer
+#, python-format
+msgid "Let the customer decide"
+msgstr "Laissez le client décider"
+
+#. module: payment_moneris_hosted
+#: code:addons/payment_moneris_hosted/models/moneris.py:0
+#: model:ir.model.fields.selection,name:payment_moneris_hosted.selection__payment_acquirer__provider__moneris
+#, python-format
+msgid "Moneris"
+msgstr ""
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_card_amount
+msgid "Moneris Card Amount"
+msgstr "Montant de la carte Moneris"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_card_description
+msgid "Moneris Card Description"
+msgstr "Description de la carte Moneris"
+
+#. module: payment_moneris_hosted
+#: model_terms:ir.ui.view,arch_db:payment_moneris_hosted.transaction_form_moneris
+msgid "Moneris Details"
+msgstr "Détails de Moneris"
+
+#. module: payment_moneris_hosted
+#: code:addons/payment_moneris_hosted/models/moneris.py:0
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_acquirer__moneris_hpp_key
+#, python-format
+msgid "Moneris HPP Key"
+msgstr "Clé HPP Moneris"
+
+#. module: payment_moneris_hosted
+#: model:payment.acquirer,display_as:payment_moneris_hosted.payment_acquirer_moneris
+#: model:payment.acquirer,name:payment_moneris_hosted.payment_acquirer_moneris
+msgid "Moneris Hosted"
+msgstr ""
+
+#. module: payment_moneris_hosted
+#: code:addons/payment_moneris_hosted/models/moneris.py:0
+#: model:ir.model.fields,help:payment_moneris_hosted.field_payment_acquirer__moneris_use_ipn
+#, python-format
+msgid "Moneris Instant Payment Notification"
+msgstr "Notification de paiement instantané Moneris"
+
+#. module: payment_moneris_hosted
+#: code:addons/payment_moneris_hosted/models/moneris.py:0
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_acquirer__moneris_psstore_id
+#, python-format
+msgid "Moneris PS Store ID"
+msgstr "Identifiant Moneris PS Store"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_partial_amount
+msgid "Moneris Partial Amount"
+msgstr "Montant partiel de Moneris"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_partial_toggle
+msgid "Moneris Partial Toggle"
+msgstr "Bascule partielle de Moneris"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_txn_related
+msgid "Moneris Txn Related"
+msgstr "En relation avec Moneris Txn"
+
+#. module: payment_moneris_hosted
+#: code:addons/payment_moneris_hosted/models/moneris.py:0
+#, python-format
+msgid "Moneris: received data with missing reference (%s) or txn_id (%s)"
+msgstr ""
+
+#. module: payment_moneris_hosted
+#: code:addons/payment_moneris_hosted/models/moneris.py:0
+#: model:ir.model.fields.selection,name:payment_moneris_hosted.selection__payment_acquirer__moneris_store_card__never
+#, python-format
+msgid "Never"
+msgstr "Jamais"
+
+#. module: payment_moneris_hosted
+#: model_terms:ir.ui.view,arch_db:payment_moneris_hosted.payment_confirmation_status_hosted
+msgid "Not Paid"
+msgstr "Impayé"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_sale_order__payment_transaction_count
+msgid "Number of payment transactions"
+msgstr "Nombre de transactions de paiement"
+
+#. module: payment_moneris_hosted
+#: code:addons/payment_moneris_hosted/models/moneris.py:0
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_acquirer__moneris_order_confirmation
+#, python-format
+msgid "Order Confirmation"
+msgstr "Confirmation de commande"
+
+#. module: payment_moneris_hosted
+#: model_terms:ir.ui.view,arch_db:payment_moneris_hosted.payment_confirmation_status_hosted
+msgid "Paid"
+msgstr "Payé"
+
+#. module: payment_moneris_hosted
+#: model:ir.model,name:payment_moneris_hosted.model_payment_acquirer
+msgid "Payment Acquirer"
+msgstr "Intermédiaire de Paiement"
+
+#. module: payment_moneris_hosted
+#: model_terms:ir.ui.view,arch_db:payment_moneris_hosted.moneris_status
+msgid "Payment Failed"
+msgstr "Paiement échoué"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_card_type
+msgid "Payment Method"
+msgstr "Mode de paiement"
+
+#. module: payment_moneris_hosted
+#: model_terms:ir.ui.view,arch_db:payment_moneris_hosted.payment_confirmation_status_hosted
+msgid "Payment Mode"
+msgstr "Mode de paiement"
+
+#. module: payment_moneris_hosted
+#: model_terms:ir.ui.view,arch_db:payment_moneris_hosted.moneris_status
+msgid "Payment Success"
+msgstr "Paiement réussi"
+
+#. module: payment_moneris_hosted
+#: model:ir.model,name:payment_moneris_hosted.model_payment_transaction
+msgid "Payment Transaction"
+msgstr "Transaction"
+
+#. module: payment_moneris_hosted
+#: model_terms:ir.ui.view,arch_db:payment_moneris_hosted.payment_confirmation_status_hosted
+msgid "Payment Transaction Details"
+msgstr "Transaction de paiement"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_payment_type
+msgid "Payment Type"
+msgstr "Type de paiement"
+
+#. module: payment_moneris_hosted
+#: code:addons/payment_moneris_hosted/models/moneris.py:0
+#: model:ir.model.fields.selection,name:payment_moneris_hosted.selection__payment_acquirer__moneris_transaction_type__preauthorization
+#, python-format
+msgid "Preauthorization"
+msgstr "Préautorisation"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_acquirer__provider
+msgid "Provider"
+msgstr "Fournisseur"
+
+#. module: payment_moneris_hosted
+#: code:addons/payment_moneris_hosted/models/moneris.py:0
+#: model:ir.model.fields.selection,name:payment_moneris_hosted.selection__payment_acquirer__moneris_transaction_type__purchase
+#, python-format
+msgid "Purchase"
+msgstr "Achat"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_receipt_id
+msgid "Receipt Id"
+msgstr "ID de reçu"
+
+#. module: payment_moneris_hosted
+#: model_terms:ir.ui.view,arch_db:payment_moneris_hosted.payment_confirmation_status_hosted
+msgid "Reference"
+msgstr "Référence"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_reference_no
+msgid "Reference Number"
+msgstr "Numéro de réference"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_rem_balance
+msgid "Remaining Balance"
+msgstr "Solde restant"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_response_code
+msgid "Response Code"
+msgstr "Code de réponse"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_order_id
+msgid "Response Order Id"
+msgstr "ID de commande de réponse"
+
+#. module: payment_moneris_hosted
+#: model:ir.model,name:payment_moneris_hosted.model_sale_order
+msgid "Sales Order"
+msgstr "Bon de commande"
+
+#. module: payment_moneris_hosted
+#: model_terms:ir.ui.view,arch_db:payment_moneris_hosted.payment_confirmation_status_hosted
+msgid "Status"
+msgstr "Statut"
+
+#. module: payment_moneris_hosted
+#: code:addons/payment_moneris_hosted/models/moneris.py:0
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_acquirer__moneris_store_card
+#, python-format
+msgid "Store Card Data"
+msgstr "Stocker les données de la carte"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_transaction_date
+msgid "Transaction Date"
+msgstr "Date de la transaction"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_transaction_id
+msgid "Transaction ID"
+msgstr "Identifiant de transaction"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_transaction_key
+msgid "Transaction Key"
+msgstr "Clé de transaction"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_session
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_transaction_no
+msgid "Transaction Number"
+msgstr "Numéro de transaction"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_transaction_time
+msgid "Transaction Time"
+msgstr "Temps de transaction"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_acquirer__moneris_transaction_type
+msgid "Transaction Type"
+msgstr "Type de transaction"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_txn_type
+msgid "Transaction type"
+msgstr "Type de transaction"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_gift_txntype
+msgid "Txn Type"
+msgstr "Type de Txn"
+
+#. module: payment_moneris_hosted
+#: code:addons/payment_moneris_hosted/models/moneris.py:0
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_acquirer__moneris_use_ipn
+#, python-format
+msgid "Use IPN"
+msgstr "Utiliser IPN"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_acquirer__fees_dom_var
+msgid "Variable domestic fees (in percents)"
+msgstr "Frais de port national variables (en pourcentage)"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_acquirer__fees_int_var
+msgid "Variable international fees (in percents)"
+msgstr "Frais de port international variables (en pourcentage)"
+
+#. module: payment_moneris_hosted
+#: model:ir.model.fields,field_description:payment_moneris_hosted.field_payment_transaction__moneris_voucher_text
+msgid "Voucher Text"
+msgstr "Texte du bon"
+
+#. module: payment_moneris_hosted
+#: model_terms:payment.acquirer,pre_msg:payment_moneris_hosted.payment_acquirer_moneris
+msgid ""
+"You will be redirected to the Moneris website after clicking on the payment "
+"button."
+msgstr ""
+
+#. module: payment_moneris_hosted
+#: model_terms:ir.ui.view,arch_db:payment_moneris_hosted.moneris_status
+msgid "Your Transaction Key is"
+msgstr "Votre clé de transaction est"
+
+#. module: payment_moneris_hosted
+#: model_terms:payment.acquirer,auth_msg:payment_moneris_hosted.payment_acquirer_moneris
+msgid "Your payment has been authorized."
+msgstr "Votre paiement a été autorisé."
+
+#. module: payment_moneris_hosted
+#: model_terms:payment.acquirer,cancel_msg:payment_moneris_hosted.payment_acquirer_moneris
+msgid "Your payment has been cancelled."
+msgstr "Votre paiement a été annulé."
+
+#. module: payment_moneris_hosted
+#: model_terms:payment.acquirer,pending_msg:payment_moneris_hosted.payment_acquirer_moneris
+msgid "Your payment has been successfully processed but is waiting for approval."
+msgstr "Votre paiement a été traité avec succès mais est en attente d'approbation."
+
+#. module: payment_moneris_hosted
+#: model_terms:payment.acquirer,done_msg:payment_moneris_hosted.payment_acquirer_moneris
+msgid "Your payment has been successfully processed. Thank you!"
+msgstr "Votre paiement a été traité avec succès. Je vous remercie!"

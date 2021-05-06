@@ -1,0 +1,8 @@
+<templates>
+<t t-extend="website_sale.productsRecentlyViewed">
+    <t t-jquery="div.row" t-operation="attributes">
+        <attribute name="class" value="row w-100"/>
+    </t>
+</t>
+
+</templates>

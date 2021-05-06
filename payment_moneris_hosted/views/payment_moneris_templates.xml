@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data >
+
+        <template id="moneris_form">
+            <div>
+              <!-- TESTING -->
+                <!-- <input type="hidden" name="partial_toggle" t-att-value="partial_toggle"/>
+                <input type="hidden" name="partial_amount" t-att-value="partial_amount"/> -->
+                <!--  -->
+                <input type="hidden" name="data_set" t-att-data-action-url="tx_url" data-remove-me=""/>
+                <input type="hidden" name="ps_store_id" t-att-value="acquirer.moneris_psstore_id"/>
+                <input type="hidden" name="hpp_key" t-att-value="acquirer.moneris_hpp_key"/>
+                <!-- <t t-if="partial_toggle == 'true'">
+                    <input type="hidden" name="charge_total" t-att-value="partial_amount"/>
+                </t>
+                <t t-if="partial_toggle == 'false'">
+                    <input type="hidden" name="charge_total" t-att-value="amount"/>
+                </t> -->
+                <input type="hidden" name="charge_total" t-att-value="amount"/>
+                <input type="hidden" name="order_id" t-att-value="item_number"/>
+                <input type="hidden" name="rvaroid" t-att-value="item_number"/>
+                <input type="hidden" name="rvarret" t-att-value='custom'/>
+                <input type="hidden" name="cmd" t-att-value="cmd"/>
+                <input type="hidden" name="business" t-att-value="business"/>
+                <input type="hidden" name="item_name" t-att-value="item_name"/>
+                <input type="hidden" name="item_number" t-att-value="item_number"/>
+                <input type="hidden" name="amount" t-att-value="'{:.2f}'.format(amount) or '0.0'"/>
+                <input type="hidden" name="handling" t-att-value="handling"/>
+                <input type="hidden" name="currency_code" t-att-value="currency_code"/>
+                <!-- Item Details -->
+                <t t-foreach="order_lines" t-as="line">
+                    <input type="hidden"  t-attf-name="id{{line['name']}}" t-att-value="line['id']"/>
+                    <input type="hidden"  t-attf-name="description{{line['name']}}" t-att-value="line['description']"/>
+                    <input type="hidden" t-attf-name="quantity{{line['name']}}" t-att-value="line['quantity']"/>
+                    <input type="hidden"  t-attf-name="price{{line['name']}}" t-att-value="line['price']"/>
+                    <input type="hidden"  t-attf-name="subtotal{{line['name']}}" t-att-value="line['subtotal']"/>     
+                </t>
+
+                <input type="hidden" name="cust_id" t-att-value="cust_id"/>
+                <!-- <input type="hidden" name="order_id" t-att-value="item_number"/> -->
+                <!-- <input type="hidden" name="lang" t-att-value="lang"/> -->
+                <t t-if="gst !=0.0"><input type="hidden" name="gst" t-att-value="gst"/></t>
+                <t t-if="pst !=0.0"><input type="hidden" name="pst" t-att-value="pst"/></t>           
+                <t t-if="hst !=0.0"><input type="hidden" name="hst" t-att-value="hst"/></t>                    
+                <t t-if="shipping_cost !=0.0">
+                    <input type="hidden" name="shipping_cost" t-att-value="shipping_cost"/>
+                </t>                 
+                <t t-if="shipping_cost ==0.0">
+                    <input type="hidden" name="shipping_cost" value="0.0"/>
+                </t>                
+                 <!-- <input type="hidden" name="shipping_cost" t-att-value="shipping_cost"/> -->
+                <input type="hidden" name="note" t-att-value="note"/>
+                <input type="hidden" name="email" t-att-value="email"/>
+ 
+                <!-- Billing Address -->
+                <input type="hidden" name="bill_first_name" t-att-value="bill_first_name"/>
+                <input type="hidden" name="bill_last_name" t-att-value="bill_last_name"/>
+                <input type="hidden" name="bill_company_name" t-att-value="bill_company_name"/>
+                <input type="hidden" name="bill_address_one" t-att-value="bill_address_one"/>
+                <input type="hidden" name="bill_city" t-att-value="bill_city"/>
+                <input type="hidden" name="bill_state_or_province" t-att-value="bill_state_or_province"/>
+                <input type="hidden" name="bill_postal_code" t-att-value="bill_postal_code"/>
+                <input type="hidden" name="bill_country" t-att-value="bill_country"/>
+                <input type="hidden" name="bill_phone" t-att-value="bill_phone"/>
+                    
+                <!-- Shipping Address -->
+                <input type="hidden" name="ship_first_name" t-att-value="ship_first_name"/>
+                <input type="hidden" name="ship_last_name" t-att-value="ship_last_name"/>
+                <input type="hidden" name="ship_company_name" t-att-value="ship_company_name"/>
+
+                <input type="hidden" name="ship_address_one" t-att-value="ship_address_one"/>
+                <input type="hidden" name="ship_city" t-att-value="ship_city"/>
+                <input type="hidden" name="ship_state_or_province" t-att-value="ship_state_or_province"/>
+                <input type="hidden" name="ship_postal_code" t-att-value="ship_postal_code"/>
+                <input type="hidden" name="ship_country" t-att-value="ship_country"/>
+                <input type="hidden" name="ship_phone" t-att-value="ship_phone"/>
+                <!-- <input type="hidden" name="ship_fax" t-att-value="333-555-6666"/> -->
+
+            </div>
+        </template>
+
+    </data>
+</odoo>

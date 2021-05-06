@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <record id="view_sales_order_eshipper_form" model="ir.ui.view">
+       <field name="name">sale.order.eshipper.form.view</field>
+       <field name="model">sale.order</field>
+       <field name="inherit_id" ref="sale.view_order_form"/>
+       <field name="arch" type="xml">
+       	 <field name="pricelist_id" position="after">
+       	 	<field name="delivery_type" invisible="1"></field>
+       	 </field>
+         <xpath expr="//notebook" position="inside">
+            <page string="eShipper Quotes" attrs="{'invisible':[('delivery_type','!=','eshipper')]}">
+                <group>
+                    <group string="Quotes" name="eshipper" colspan="4">
+                        <field name="eshipper_lines" readonly="1" nolabel="1">
+                          <tree>
+                              <field name="carrier_name"/>
+                              <field name="service_name"/>
+                              <field name="basecharge"/>
+                              <field name="fulecharge"/>
+                              <field name="total_charge"/>
+                              <field name="transit_days"/>
+                              <button name="set_order_delivery_method" string="Use Service" type="object" class="oe_inline fa fa-arrow-right oe_link" />
+                          </tree>
+                        </field>
+                    </group>
+                </group>
+            </page>
+      	 </xpath>
+       </field>
+   </record>
+</odoo>

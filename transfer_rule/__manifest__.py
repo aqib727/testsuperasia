@@ -20,6 +20,7 @@
         'views/transfer_rule_view.xml',
         'data/data.xml',
         'views/res_config_setting_view.xml',
+        'wizard/internal_transfer_rule_scheduler.xml',
     ],
     # only loaded in demonstration mode
     'demo': [],

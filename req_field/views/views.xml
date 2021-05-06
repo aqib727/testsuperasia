@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="req_field_list_stock_prod_lot">
+      <field name="name">product.expiry.prod.lot.removal.date</field>
+      <field name="model">stock.production.lot</field>
+      <field name="inherit_id" ref="product_expiry.view_move_form_expiry"/>
+      <field name="arch" type="xml">
+          <field name="removal_date" position="attributes" >
+              <attribute name="required">1</attribute>
+          </field>
+      </field>
+    </record>
+
+<!--    Inherit and apply filter for "My Transfer" to apply by default for Inventory OVerview-->
+    <record id="stock.stock_picking_action_picking_type" model="ir.actions.act_window">
+        <field name="context">{'contact_display': 'partner_address', 'search_default_available': 1,
+            'search_default_my_transfers': 1, 'search_default_ready': 1, 'search_default_waiting': 1}</field>
+    </record>
+
+<!--    Inherit and apply filter for "My Transfer" to apply by default for "__ TO PROCESS"-->
+    <record id="stock.action_picking_tree_ready" model="ir.actions.act_window">
+        <field name="context">{'contact_display': 'partner_address', 'search_default_available': 1,
+            'search_default_my_transfers': 1, 'search_default_ready': 1, 'search_default_waiting': 1}</field>
+    </record>
+
+    <!--    Inherit and apply filter for "My Transfer" to apply by default for Waiting-->
+    <record id="stock.action_picking_tree_waiting" model="ir.actions.act_window">
+        <field name="context">{'contact_display': 'partner_address', 'search_default_waiting': 1, 'search_default_my_transfers': 1}</field>
+    </record>
+
+    <!--    Inherit and apply filter for "My Transfer" to apply by default for Late-->
+    <record id="stock.action_picking_tree_late" model="ir.actions.act_window">
+        <field name="context">{'contact_display': 'partner_address', 'search_default_late': 1, 'search_default_my_transfers': 1}</field>
+    </record>
+
+    <!--    Inherit and apply filter for "My Transfer" to apply by default for Backorder-->
+    <record id="stock.action_picking_tree_backorder" model="ir.actions.act_window">
+        <field name="context">{'contact_display': 'partner_address', 'search_default_backorder': 1, 'search_default_my_transfers': 1}</field>
+    </record>
+
+
+<!--    Inherit and apply filter for "My Order" to apply by default for Transfers-->
+    <record id="stock.action_picking_tree_all" model="ir.actions.act_window">
+        <field name="context">{'contact_display': 'partner_address', 'default_company_id': allowed_company_ids[0], 'search_default_my_transfers': 1}</field>
+    </record>
+
+<!--    For the kanban view barcode app-->
+    <record id="stock_barcode.stock_picking_action_kanban" model="ir.actions.act_window">
+        <field name="context">{
+            'form_view_initial_mode': 'edit',
+            'contact_display': 'partner_address',
+            'search_default_available': 1,
+            'force_detailed_view': True,
+            'search_default_my_transfers': 1,
+            'search_default_waiting': 1
+        }</field>
+    </record>
+
+</odoo>

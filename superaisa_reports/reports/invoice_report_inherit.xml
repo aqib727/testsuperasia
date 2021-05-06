@@ -14,7 +14,6 @@
     <template id="report_invoice_document_inherit_custom" inherit_id="account.report_invoice_document">
         <!--    Replace heading:    -->
 
-        <!--    Replace heading:    -->
         <xpath expr="//h2" position="replace">
 <!--            <h2>-->
             <h2 style="padding-top:20px">
@@ -35,6 +34,38 @@
         </xpath>
         <!--        -->
 
+        <xpath expr="//div[@id='informations']" position="replace">
+            <div class="row mt32 mb32" id="information_custom">
+                <div class="col-auto mw-100 mb-2" t-if="o.invoice_date" name="invoice_date">
+                    <strong style="color:maroon">Invoice Date:</strong>
+                    <p class="m-0" t-field="o.invoice_date"/>
+                </div>
+                <div class="col-auto mw-100 mb-2"
+                     t-if="o.invoice_date_due and o.type == 'out_invoice' and o.state == 'posted'" name="due_date">
+                    <strong style="color:maroon">Due Date:</strong>
+                    <p class="m-0" t-field="o.invoice_date_due"/>
+                </div>
+                <div class="col-auto mw-100 mb-2" t-if="o.invoice_origin" name="origin">
+                    <strong style="color:maroon">Source:</strong>
+                    <p class="m-0" t-field="o.invoice_origin"/>
+                </div>
+                <div class="col-auto mw-100 mb-2" t-if="o.partner_id.ref" name="customer_code">
+                    <strong style="color:maroon">Customer Code:</strong>
+                    <p class="m-0" t-field="o.partner_id.ref"/>
+                </div>
+                <div class="col-auto mw-100 mb-2" t-if="o.ref" name="reference">
+                    <strong style="color:maroon">Reference:</strong>
+                    <p class="m-0" t-field="o.ref"/>
+                </div>
+                <div class="col-auto  mw-100 mb-2" t-if="o.invoice_user_id"
+                         name="div_salesperson">
+                        <strong style="color:maroon">Salesperson:</strong>
+<!--                        <p t-field="o.x_studio_salesperson_1"/>-->
+                        <p t-field="o.invoice_user_id"/>
+                </div>
+            </div>
+        </xpath>
+
         <xpath expr="//table[@name='invoice_line_table']" position="replace">
 
             <table class="table table-sm o_main_table" name="invoice_line_table">
@@ -42,12 +73,17 @@
                     <tr>
                         <!-- TODO: remove in master -->
                         <t t-set="colspan" t-value="6"/>
+<!--                        <th name="th_quantity_shipped" class="text-center" >-->
+<!--                            <span>Quantity<br/> Ordered</span>-->
+<!--                        </th>-->
+<!--                        <th name="th_quantity" class="text-center">-->
+<!--                            <span>Quantity<br/> Shipped</span>-->
+<!--                        </th>-->
+
                         <th name="th_quantity" class="text-center">
                             <span>Quantity</span>
                         </th>
-<!--                        <th name="th_description" class="text-center">-->
-<!--                            <span>Usaid Description</span>-->
-<!--                        </th>-->
+
                         <!-- TODO: remove in master -->
                         <th name="th_source" class="d-none text-center" t-if="0">
                             <span>Source Document</span>
@@ -61,16 +97,13 @@
                         <th name="th_UPC" class="text-center">
                             <span>UPC</span>
                         </th>
-                        <th name="th_UPC" class="text-center">
-                            <span>UPC</span>
-                        </th>
                         <th name="th_priceunit"
                             t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
                             <span>U.O.M.</span>
                         </th>
                         <th name="th_priceunit" class="text-center"
                             t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
-                            <span>Unit Price</span>
+                            <span>Box Price</span>
                         </th>
                         <th name="th_price_unit" t-if="display_discount" class="text-center"
                             t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
@@ -78,13 +111,24 @@
                             <!-- TODO: remove in master -->
                             <t t-set="colspan" t-value="colspan+1"/>
                         </th>
+                        <th name="net_price_x" class="text-center" t-if="display_discount">
+                            <span>Net Price</span>
+                        </th>
+<!--                        <th class="text-right" t-if="display_discount">-->
+<!--                            <span>Subtotal</span>-->
+<!--                        </th>-->
+<!--                        <th class="text-right" t-if="display_discount">-->
+                        <th class="text-right">
+                            <span>Per Unit Price</span>
+                        </th>
+                        <th name="th_subtotal" class="text-right">
+                            <span t-if="not display_discount" groups="account.group_show_line_subtotals_tax_excluded">Amount</span>
+                            <span t-if="not display_discount" groups="account.group_show_line_subtotals_tax_included">Total Price</span>
+                            <span t-if="display_discount">Discounted Price</span>
+                        </th>
                         <th name="th_taxes" class="text-center"
                             t-attf-class="text-center {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
                             <span>Taxes</span>
-                        </th>
-                        <th name="th_subtotal" class="text-right">
-                            <span groups="account.group_show_line_subtotals_tax_excluded">Amount</span>
-                            <span groups="account.group_show_line_subtotals_tax_included">Total Price</span>
                         </th>
                     </tr>
                 </thead>
@@ -96,6 +140,10 @@
                     <!--Initialize quantity variable-->
                             <t t-set="quantity_total" t-value="0" />
 
+                    <!--Initialize total savings variable-->
+                            <t t-set="saving_total" t-value="0" />
+
+
                     <t t-foreach="lines" t-as="line">
                         <t t-set="current_subtotal" t-value="current_subtotal + line.price_subtotal"
                            groups="account.group_show_line_subtotals_tax_excluded"/>
@@ -104,21 +152,48 @@
 
                         <tr t-att-class="'bg-200 font-weight-bold o_line_section' if line.display_type == 'line_section' else 'font-italic o_line_note' if line.display_type == 'line_note' else ''">
                             <t t-if="not line.display_type" name="account_invoice_line_accountable">
+<!--                                Quant ordered-->
+<!--                                <td class="text-center">-->
+                                    <span>
+                                       <t t-set="quantity_ordered" t-value="0" />
+                                       <t t-foreach="line.sale_line_ids " t-as="sli">
+                                           <t t-if="sli.product_id.id == line.product_id.id">
+                                               <t t-set="quantity_ordered" t-value="sli.product_uom_qty" />
+<!--                                               <t t-esc="'%.0f'% quantity_ordered" />-->
+                                           </t>
+                                       </t>
+                                    </span>
+<!--                                </td>-->
+
                                 <td class="text-center">
-                                    <span t-field="line.quantity"/>
+<!--                                    <span t-esc="'%.0f'% line.quantity"/>-->
+                                    <t t-if="round(line.quantity) == line.quantity">
+                                        <span t-if="o.state != 'done'"
+                                              t-esc="'%.0f'% line.quantity"/>
+                                    </t>
+                                    <t t-if="not round(line.quantity) == line.quantity">
+                                        <span t-if="o.state != 'done'"
+                                          t-esc="line.quantity"/>
+                                    </t>
 
                                     <!-- Add to counter:-->
                                     <t t-set="quantity_total" t-value="quantity_total+line.quantity"/>
                                 </td>
+<!--                                Description-->
                                 <td name="account_invoice_line_name">
-                                    <span t-field="line.product_id.description_sale" t-options="{'widget': 'text'}"/>
+                                    <span t-if="(line.quantity != quantity_ordered) and (line.discount > 0)" style="text-decoration:underline; background:yellow" t-field="line.product_id.description_sale" t-options="{'widget': 'text'}" />
+                                    <span t-elif="line.discount > 0" style="background:yellow" t-field="line.product_id.description_sale" t-options="{'widget': 'text'}" />
+                                    <span t-elif="(line.quantity != quantity_ordered)" style="background:aquamarine" t-field="line.product_id.description_sale" t-options="{'widget': 'text'}" />
+                                    <span t-elif="line.discount == 0" t-field="line.product_id.description_sale" t-options="{'widget': 'text'}"/>
                                 </td>
 <!--                                <td name="account_invoice_line_name">-->
+<!--                                    <span t-if="line.discount > 0" style="background:yellow" t-field="line.product_id.description_sale" t-options="{'widget': 'text'}" />-->
+<!--                                    <span t-elif="line.discount == 0" t-field="line.product_id.description_sale" t-options="{'widget': 'text'}"/>-->
+<!--                                </td>-->
 
 <!--                                Insert the UPC here-->
                                 <td class="text-center" style="min-width:40mm">
 <!--                                    <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', o.name, 600, 100)" style="width:300px;height:50px"/>-->
-
                                     <t t-foreach="request.env['product.template'].search([('id', '=', line.product_id.id)])" t-as="obj">
                                                 <t t-if="obj['unit_barcode']">
                                                     <t t-esc="obj['unit_barcode']"/>
@@ -126,41 +201,61 @@
                                     </t>
 
                                 </td>
-<!--                                <td name="account_invoice_line_name">-->
-
-<!--                                Insert the UPC here-->
-                                <td class="text-center" style="min-width:40mm">
-<!--                                    <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', o.name, 600, 100)" style="width:300px;height:50px"/>-->
-
-                                    <t t-foreach="request.env['product.template'].search([('id', '=', line.product_id.id)])" t-as="obj">
-                                                <t t-if="obj['unit_barcode']">
-                                                    <p t-esc="obj['unit_barcode']"/>
-                                                </t>
-                                    </t>
-
-                                </td>
-
-
+<!--                                UOM-->
                                 <td class="text-right">
 <!--                                    <span t-field="line.quantity"/>-->
                                     <span t-field="line.product_uom_id" groups="uom.group_uom"/>
                                 </td>
-                                <td t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
-                                    <span class="text-nowrap" t-field="line.price_unit"/>
+<!--                                Box price-->
+                                <td t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}" class="text-center">
+                                    <span>$</span><span class="text-nowrap" t-field="line.price_unit"/>
                                 </td>
+<!--                                Discount %-->
                                 <td t-if="display_discount"
                                     t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
-                                    <span class="text-nowrap" t-field="line.discount"/>
+                                    <span t-if="line.discount > 0" class="text-nowrap" t-field="line.discount"/>
                                 </td>
-                                <td t-attf-class="text-center {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
-                                    <span t-esc="', '.join(map(lambda x: (x.description or x.name), line.tax_ids))"
-                                          id="line_tax_ids"/>
+<!--                                Net Price-->
+                                <td t-if="display_discount" class="text-center">
+                                    <span t-set="net_prices" t-value="line.price_unit - (line.price_unit * line.discount/100)" />
+                                    <span>$</span><span t-esc="'%.2f'% net_prices" />
                                 </td>
+
+<!--                                Subtotal && Per-Unit-price-->
+                                <td class="text-right" t-if="display_discount">
+                                    <span t-set="total_sans_discount" t-value="line.price_unit * line.quantity"/>
+
+                                    <!-- Add to savings:-->
+                                    <t t-set="saving_total" t-value="saving_total + (total_sans_discount - line.price_subtotal)"/>
+
+                                    <!--subtotal:-->
+<!--                                    <span>$</span><span t-esc="total_sans_discount"/>-->
+
+                                    <!--Per unit price:-->
+                                    <span t-set="per_unit_price" t-value="net_prices / (line.product_uom_id.factor_inv)" />
+                                    <span>$</span><span t-esc="'%.2f'% per_unit_price" />
+
+                                </td>
+<!--                                Per unit price no discount-->
+                                <td class="text-right" t-if="not display_discount">
+                                    <!--Per unit price:-->
+                                    <span t-set="net_prices_no_disc" t-value="line.price_unit - (line.price_unit * line.discount/100)" />
+                                    <span t-set="per_unit_price_no_disc" t-value="net_prices_no_disc / (line.product_uom_id.factor_inv)" />
+                                    <span>$</span><span t-esc="'%.2f'% per_unit_price_no_disc" />
+
+                                </td>
+
+<!--                                Amount-->
                                 <td class="text-right o_price_total">
                                     <span class="text-nowrap" t-field="line.price_subtotal"
                                           groups="account.group_show_line_subtotals_tax_excluded"/>
                                     <span class="text-nowrap" t-field="line.price_total"
                                           groups="account.group_show_line_subtotals_tax_included"/>
+                                </td>
+<!--                                Taxes-->
+                                <td t-attf-class="text-center {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
+                                    <span t-esc="', '.join(map(lambda x: (x.description or x.name), line.tax_ids))"
+                                          id="line_tax_ids"/>
                                 </td>
                             </t>
                             <t t-if="line.display_type == 'line_section'">
@@ -194,11 +289,11 @@
 
 
                             <!--Total quantity:-->
-                <strong>Total Quantity: </strong>
+                <strong>Total Shipped Quantity: </strong>
                     <t t-esc="quantity_total"/>
-
-
-<!--            <t t-call="report_aged_receivable_inherit_custom"/>-->
+            <br/>
+                <!--Total Savings-->
+            <br/><strong t-if="saving_total > 0">You Saved: <span>$<t t-esc="'%.2f'% saving_total"/></span></strong>
 
 
         </xpath>

@@ -1,0 +1,50 @@
+* {box-sizing: border-box;}
+
+.input-container {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.icon {
+  font-size: 1.2rem;
+  padding: 10px;
+  background: #4f8ef5;
+  color: white;
+  min-width: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+}
+
+.input-field:focus {
+  border: 2px solid #8cc0f3;
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+img.avatar {
+  width: 5%;
+  border-radius: 50%;
+}
+
+.captcha {
+  text-align: center;
+  background-color: #ccc;
+  letter-spacing: 10px;
+  font-style: italic;
+  text-decoration-line: line-through;
+  font-family: "Times New Roman", Times, serif;
+}

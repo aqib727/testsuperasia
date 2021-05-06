@@ -117,6 +117,25 @@ class StockPicking(models.Model):
                 else:
                     return (True, 'extra_lot')
 
+    def action_generate_backorder_wizard(self):
+        view = self.env.ref('stock.view_backorder_confirmation')
+        backorder_ml_ids = self.move_line_ids.filtered(lambda m: m.qty_done < m.product_uom_qty)
+        product_name = ''
+        for rec in backorder_ml_ids:
+            product_name += rec.product_id.display_name + ' %s\n' % str(rec.product_uom_qty - rec.qty_done)
+        wiz = self.env['stock.backorder.confirmation'].create({'pick_ids': [(4, p.id) for p in self],
+                                                               'product_name': product_name})
+        return {
+            'name': _('Create Backorder?'),
+            'type': 'ir.actions.act_window',
+            'view_mode': 'form',
+            'res_model': 'stock.backorder.confirmation',
+            'views': [(view.id, 'form')],
+            'view_id': view.id,
+            'target': 'new',
+            'res_id': wiz.id,
+            'context': self.env.context,
+        }
 
 class StockMove(models.Model):
     _inherit = 'stock.move.line'

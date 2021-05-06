@@ -1,0 +1,1329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data noupdate="1">
+    <record id="delivery_carrier_eshipper_default" model="delivery.carrier">
+        <field name="name">eShipper</field>
+        <field name="service_id">0</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="is_default_eshipper_services" eval="1"/>
+    </record>
+    <record id="eshipper_service_1" model="delivery.carrier">
+        <field name="service_id">1</field>
+        <field name="name">FedEx Priority</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US, CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_2" model="delivery.carrier">
+        <field name="service_id">2</field>
+        <field name="name">FedEx First Overnight</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US, CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_3" model="delivery.carrier">
+        <field name="service_id">3</field>
+        <field name="name">FedEx Ground</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US, CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_28" model="delivery.carrier">
+        <field name="service_id">28</field>
+        <field name="name">FedEx Standard Overnight</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field><field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_29" model="delivery.carrier">
+        <field name="service_id">29</field>
+        <field name="name">FedEx 2nd Day</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_30" model="delivery.carrier">
+        <field name="service_id">30</field>
+        <field name="name">FedEx Express Saver</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_4" model="delivery.carrier">
+        <field name="service_id">4</field>
+        <field name="name">Purolator Air</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_5" model="delivery.carrier">
+        <field name="service_id">5</field>
+        <field name="name">Purolator Air 9AM</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_6" model="delivery.carrier">
+        <field name="service_id">6</field>
+        <field name="name">Purolator Air 1030</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_7" model="delivery.carrier">
+        <field name="service_id">7</field>
+        <field name="name">Puroletter</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_8" model="delivery.carrier">
+        <field name="service_id">8</field>
+        <field name="name">Puroletter 9AM</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_9" model="delivery.carrier">
+        <field name="service_id">9</field>
+        <field name="name">Puroletter 1030</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_10" model="delivery.carrier">
+        <field name="service_id">10</field>
+        <field name="name">PuroPak</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_11" model="delivery.carrier">
+        <field name="service_id">11</field>
+        <field name="name">PuroPak 9AM</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_12" model="delivery.carrier">
+        <field name="service_id">12</field>
+        <field name="name">PuroPak 1030</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_13" model="delivery.carrier">
+        <field name="service_id">13</field>
+        <field name="name">Purolator Ground</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_19" model="delivery.carrier">
+        <field name="service_id">19</field>
+        <field name="name">Purolator Ground 9AM</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_20" model="delivery.carrier">
+        <field name="service_id">20</field>
+        <field name="name">Purolator Ground 1030</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_14" model="delivery.carrier">
+        <field name="service_id">14</field>
+        <field name="name">Canada Worldwide Same Day</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_15" model="delivery.carrier">
+        <field name="service_id">15</field>
+        <field name="name">Canada Worldwide Next Flight Out</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_16" model="delivery.carrier">
+        <field name="service_id">16</field>
+        <field name="name">Canada Worldwide Air Freight</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_17" model="delivery.carrier">
+        <field name="service_id">17</field>
+        <field name="name">Canada Worldwide LTL</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_106" model="delivery.carrier">
+        <field name="service_id">106</field>
+        <field name="name">DHL International Express</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_600" model="delivery.carrier">
+        <field name="service_id">600</field>
+        <field name="name">UPS Express, Next Day Air</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">CA, US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_601" model="delivery.carrier">
+        <field name="service_id">601</field>
+        <field name="name">UPS Expedited, Second Day Air</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">CA, US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_602" model="delivery.carrier">
+        <field name="service_id">602</field>
+        <field name="name">UPS Worldwide Express</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_603" model="delivery.carrier">
+        <field name="service_id">603</field>
+        <field name="name">UPS Worldwide Expedited</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_604" model="delivery.carrier">
+        <field name="service_id">604</field>
+        <field name="name">UPS Standard (Ground)</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_605" model="delivery.carrier">
+        <field name="service_id">605</field>
+        <field name="name">UPS Express Early A.M., Next Day Air Early A.M.</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">CA, US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_606" model="delivery.carrier">
+        <field name="service_id">606</field>
+        <field name="name">UPS Three-Day Select</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_607" model="delivery.carrier">
+        <field name="service_id">607</field>
+        <field name="name">UPS Saver</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_608" model="delivery.carrier">
+        <field name="service_id">608</field>
+        <field name="name">UPS Ground</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_609" model="delivery.carrier">
+        <field name="service_id">609</field>
+        <field name="name">Next Day Saver</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_610" model="delivery.carrier">
+        <field name="service_id">610</field>
+        <field name="name">Worldwide Express Plus</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_611" model="delivery.carrier">
+        <field name="service_id">611</field>
+        <field name="name">Second Day Air A.M.</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_500" model="delivery.carrier">
+        <field name="service_id">500</field>
+        <field name="name">Canada Post Priority</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_501" model="delivery.carrier">
+        <field name="service_id">501</field>
+        <field name="name">Canada Post Xpress Post</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_502" model="delivery.carrier">
+        <field name="service_id">502</field>
+        <field name="name">Canada Post Expedited</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_503" model="delivery.carrier">
+        <field name="service_id">503</field>
+        <field name="name">Canada Post Regular</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_504" model="delivery.carrier">
+        <field name="service_id">504</field>
+        <field name="name">Canada Post Xpress Post USA</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_505" model="delivery.carrier">
+        <field name="service_id">505</field>
+        <field name="name">Canada Post Xpress Post Int’l</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_506" model="delivery.carrier">
+        <field name="service_id">506</field>
+        <field name="name">Canada Post Air Parcel Int’l</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_507" model="delivery.carrier">
+        <field name="service_id">507</field>
+        <field name="name">Canada Post Surface Parcel Int ’l</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_508" model="delivery.carrier">
+        <field name="service_id">508</field>
+        <field name="name">Canada Post Expedited Parcel USA</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1100" model="delivery.carrier">
+        <field name="service_id">1100</field>
+        <field name="name">TST LTL</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1500" model="delivery.carrier">
+        <field name="service_id">1500</field>
+        <field name="name">eShipper LTL - Chicago Suburban Express</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1501" model="delivery.carrier">
+        <field name="service_id">1501</field>
+        <field name="name">eShipper LTL - FedEx Freight East</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1502" model="delivery.carrier">
+        <field name="service_id">1502</field>
+        <field name="name">eShipper LTL - FedEx Freight West</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1503" model="delivery.carrier">
+        <field name="service_id">1503</field>
+        <field name="name">eShipper LTL - Mid-States Express</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1504" model="delivery.carrier">
+        <field name="service_id">1504</field>
+        <field name="name">eShipper LTL - New England Motor Freight</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1505" model="delivery.carrier">
+        <field name="service_id">1505</field>
+        <field name="name">eShipper LTL - New Penn</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1506" model="delivery.carrier">
+        <field name="service_id">1506</field>
+        <field name="name">eShipper LTL – Oak Harbor</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1507" model="delivery.carrier">
+        <field name="service_id">1507</field>
+        <field name="name">eShipper LTL – Pitt Ohio</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1508" model="delivery.carrier">
+        <field name="service_id">1508</field>
+        <field name="name">eShipper LTL – R&amp;L Carriers</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1509" model="delivery.carrier">
+        <field name="service_id">1509</field>
+        <field name="name">eShipper LTL - SAIA</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1510" model="delivery.carrier">
+        <field name="service_id">1510</field>
+        <field name="name">eShipper LTL – USF Reddaway</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1511" model="delivery.carrier">
+        <field name="service_id">1511</field>
+        <field name="name">eShipper LTL – Vitran Express</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1512" model="delivery.carrier">
+        <field name="service_id">1512</field>
+        <field name="name">eShipper LTL – Wilson Trucking</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1513" model="delivery.carrier">
+        <field name="service_id">1513</field>
+        <field name="name">eShipper LTL – Yellow Transportation</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1514" model="delivery.carrier">
+        <field name="service_id">1514</field>
+        <field name="name">eShipper LTL – Roadway</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1515" model="delivery.carrier">
+        <field name="service_id">1515</field>
+        <field name="name">eShipper LTL – FedEx National</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1800" model="delivery.carrier">
+        <field name="service_id">1800</field>
+        <field name="name">Wilson TruckingTFC</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1801" model="delivery.carrier">
+        <field name="service_id">1801</field>
+        <field name="name">AAA Cooper Transportation</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1802" model="delivery.carrier">
+        <field name="service_id">1802</field>
+        <field name="name">Roadrunner Dawes</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1803" model="delivery.carrier">
+        <field name="service_id">1803</field>
+        <field name="name">New England Motor Freight</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1804" model="delivery.carrier">
+        <field name="service_id">1804</field>
+        <field name="name">New Penn Motor Express</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1805" model="delivery.carrier">
+        <field name="service_id">1805</field>
+        <field name="name">Dayton Freight</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1806" model="delivery.carrier">
+        <field name="service_id">1806</field>
+        <field name="name">Southeastern Freightway</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1807" model="delivery.carrier">
+        <field name="service_id">1807</field>
+        <field name="name">Saia, Inc</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1808" model="delivery.carrier">
+        <field name="service_id">1808</field>
+        <field name="name">Conway</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1809" model="delivery.carrier">
+        <field name="service_id">1809</field>
+        <field name="name">Roadway</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1810" model="delivery.carrier">
+        <field name="service_id">1810</field>
+        <field name="name">USF Reddaway</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1811" model="delivery.carrier">
+        <field name="service_id">1811</field>
+        <field name="name">USF Holland</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1812" model="delivery.carrier">
+        <field name="service_id">1812</field>
+        <field name="name">Dependable Highway Express</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1813" model="delivery.carrier">
+        <field name="service_id">1813</field>
+        <field name="name">DAY AND ROSS</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1814" model="delivery.carrier">
+        <field name="service_id">1814</field>
+        <field name="name">DAY AND ROSS (R AND L)</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1815" model="delivery.carrier">
+        <field name="service_id">1815</field>
+        <field name="name">UPS</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1816" model="delivery.carrier">
+        <field name="service_id">1816</field>
+        <field name="name">Aaa Cooper</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1817" model="delivery.carrier">
+        <field name="service_id">1817</field>
+        <field name="name">Ama Transportation</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1818" model="delivery.carrier">
+        <field name="service_id">1818</field>
+        <field name="name">Averitt Express</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1819" model="delivery.carrier">
+        <field name="service_id">1819</field>
+        <field name="name">Central Freight</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1820" model="delivery.carrier">
+        <field name="service_id">1820</field>
+        <field name="name">Conway</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1821" model="delivery.carrier">
+        <field name="service_id">1821</field>
+        <field name="name">Dayton</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1822" model="delivery.carrier">
+        <field name="service_id">1822</field>
+        <field name="name">Drug Transport</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1823" model="delivery.carrier">
+        <field name="service_id">1823</field>
+        <field name="name">Estes</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1824" model="delivery.carrier">
+        <field name="service_id">1824</field>
+        <field name="name">Land Air Express</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1825" model="delivery.carrier">
+        <field name="service_id">1825</field>
+        <field name="name">Fedex West</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1826" model="delivery.carrier">
+        <field name="service_id">1826</field>
+        <field name="name">Fedex National</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1827" model="delivery.carrier">
+        <field name="service_id">1827</field>
+        <field name="name">Usf Holland</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1828" model="delivery.carrier">
+        <field name="service_id">1828</field>
+        <field name="name">Lakeville M Express</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1829" model="delivery.carrier">
+        <field name="service_id">1829</field>
+        <field name="name">Milan Express</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1830" model="delivery.carrier">
+        <field name="service_id">1830</field>
+        <field name="name">Nebraska Transport</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1831" model="delivery.carrier">
+        <field name="service_id">1831</field>
+        <field name="name">New England</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1832" model="delivery.carrier">
+        <field name="service_id">1832</field>
+        <field name="name">New Penn</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1833" model="delivery.carrier">
+        <field name="service_id">1833</field>
+        <field name="name">A Duie Pyle</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1834" model="delivery.carrier">
+        <field name="service_id">1834</field>
+        <field name="name">Roadway</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1835" model="delivery.carrier">
+        <field name="service_id">1835</field>
+        <field name="name">Usf Reddaway</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1836" model="delivery.carrier">
+        <field name="service_id">1836</field>
+        <field name="name">Rhody Transportation</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1837" model="delivery.carrier">
+        <field name="service_id">1837</field>
+        <field name="name">Saia Motor Freight</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1838" model="delivery.carrier">
+        <field name="service_id">1838</field>
+        <field name="name">Southeastern Frgt</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1839" model="delivery.carrier">
+        <field name="service_id">1839</field>
+        <field name="name">Pitt Ohio</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1840" model="delivery.carrier">
+        <field name="service_id">1840</field>
+        <field name="name">Ward</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1841" model="delivery.carrier">
+        <field name="service_id">1841</field>
+        <field name="name">Wilson</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1842" model="delivery.carrier">
+        <field name="service_id">1842</field>
+        <field name="name">Chi-cargo</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1843" model="delivery.carrier">
+        <field name="service_id">1843</field>
+        <field name="name">Tax Air</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1844" model="delivery.carrier">
+        <field name="service_id">1844</field>
+        <field name="name">Fedex East</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1845" model="delivery.carrier">
+        <field name="service_id">1845</field>
+        <field name="name">Central Transport</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1846" model="delivery.carrier">
+        <field name="service_id">1846</field>
+        <field name="name">Roadrunner</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1847" model="delivery.carrier">
+        <field name="service_id">1847</field>
+        <field name="name">R AND L Carriers</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1848" model="delivery.carrier">
+        <field name="service_id">1848</field>
+        <field name="name">Estes</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1849" model="delivery.carrier">
+        <field name="service_id">1849</field>
+        <field name="name">YRC (Roadway)</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1850" model="delivery.carrier">
+        <field name="service_id">1850</field>
+        <field name="name">Central Transport</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1851" model="delivery.carrier">
+        <field name="service_id">1851</field>
+        <field name="name">Absolute Transportation Services</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1852" model="delivery.carrier">
+        <field name="service_id">1852</field>
+        <field name="name">Blue Sky Express</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1853" model="delivery.carrier">
+        <field name="service_id">1853</field>
+        <field name="name">Galasso Trucking</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1854" model="delivery.carrier">
+        <field name="service_id">1854</field>
+        <field name="name">Griley Air Freight</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1855" model="delivery.carrier">
+        <field name="service_id">1855</field>
+        <field name="name">Jet Transportation</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1856" model="delivery.carrier">
+        <field name="service_id">1856</field>
+        <field name="name">Metro Transportation Logistics</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1857" model="delivery.carrier">
+        <field name="service_id">1857</field>
+        <field name="name">Oak Harbor</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1858" model="delivery.carrier">
+        <field name="service_id">1858</field>
+        <field name="name">Stream Links Express</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1859" model="delivery.carrier">
+        <field name="service_id">1859</field>
+        <field name="name">Tiffany Trucking</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1860" model="delivery.carrier">
+        <field name="service_id">1860</field>
+        <field name="name">UPS FREIGHT</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_1861" model="delivery.carrier">
+        <field name="service_id">1861</field>
+        <field name="name">Roadrunner</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="country_of_origin">US</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_3500" model="delivery.carrier">
+        <field name="service_id">3500</field>
+        <field name="name">Global Mail Parcel Priority</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="name">US,CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_3501" model="delivery.carrier">
+        <field name="service_id">3501</field>
+        <field name="name">Global Mail Parcel Standard</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="name">US,CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_3502" model="delivery.carrier">
+        <field name="service_id">3502</field>
+        <field name="name">Global Mail Packet Plus Priority</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="name">US,CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_3503" model="delivery.carrier">
+        <field name="service_id">3503</field>
+        <field name="name">Global Mail Packet Prior ity</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="name">US,CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_3504" model="delivery.carrier">
+        <field name="service_id">3504</field>
+        <field name="name">Global Mail Packet Standard</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="name">US,CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_3505" model="delivery.carrier">
+        <field name="service_id">3505</field>
+        <field name="name">Global Mail Business Priority</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="name">US,CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_3506" model="delivery.carrier">
+        <field name="service_id">3506</field>
+        <field name="name">Global Mail Business Standard</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="name">US,CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_3507" model="delivery.carrier">
+        <field name="service_id">3507</field>
+        <field name="name">Global Mail Parcel Direct Priority</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="name">US,CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+    <record id="eshipper_service_3508" model="delivery.carrier">
+        <field name="service_id">3508</field>
+        <field name="name">Global Mail Parcel Direct Standard</field>
+        <field name="product_id" ref="delivery_eshipper.product_product_delivery_eshipper"/>
+        <field name="delivery_type">eshipper</field>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="eshipper_default_packaging_id" ref="delivery_eshipper.eshipper_packaging_customer_packaging"/>
+        <field name="name">US,CA</field>
+        <field name="active" eval="0"></field>
+    </record>
+</data>
+</odoo>

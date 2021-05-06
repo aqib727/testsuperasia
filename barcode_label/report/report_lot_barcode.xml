@@ -14,8 +14,7 @@
                                   t-field="o.product_id.display_name"/>
                         </td>
                         <td style="text-align: right; vertical-align: middle; font-size:17px;">
-                            <img t-if="o.name"
-                                 t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', o.name, 600, 190)"
+                            <img t-if="o.name" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', o.name, 600, 190)"
                                  style="width:136%;height:42%;"/>
                             LN/SN:
                             <span t-field="o.name"/>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record id="inherited_product_attribute_view_form" model="ir.ui.view">
+			<field name="name">inherited.product.attribute.view.form</field>
+			<field name="model">product.attribute</field>
+			<field name="inherit_id" ref="sale.product_attribute_view_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='html_color']" position="after">
+					<field name="image" widget="image" class="oe_avatar" invisible="1"/>
+				</xpath>
+<!--				<xpath expr="//field[@name='example_field']" position="attributes">-->
+<!--					<attribute name="invisible">True</attribute>-->
+<!--				</xpath>-->
+			</field>
+		</record>
+
+		<record id="product_attribute_view_form" model="ir.ui.view">
+	        <field name="name">product.attribute.form.inherit</field>
+	        <field name="model">product.attribute</field>
+	        <field name="inherit_id" ref="product.product_attribute_view_form"/>
+			<field name="arch" type="xml">
+	            <xpath expr="//field[@name='value_ids']/tree" position="attributes">
+		            <attribute name="editable"/>
+	            </xpath>
+			</field>
+		</record>
+
+		<record id="product_attribute_value_view_form" model="ir.ui.view">
+	        <field name="name">product.attribute.value.form</field>
+	        <field name="model">product.attribute.value</field>
+			<field name="arch" type="xml">
+				<form string="Attribute Values">
+					<group>
+						<group>
+							<field name="name"/>
+							<field name="attribute_id"/>
+						</group>
+						<group>
+							<field name="sequence"/>
+							<field name="is_custom"/>
+						</group>
+						<group>
+							<field name="image" widget="image" class="oe_avatar" />
+						</group>
+						<group>
+							<field name="is_used_on_products"/>
+							<field name="html_color"/>
+							<field name="display_type"/>
+						</group>
+						<group colspan="2">
+							<field name="pav_attribute_line_ids"/>
+						</group>
+					</group>
+				</form>
+			</field>
+		</record>
+	</data>
+</odoo>

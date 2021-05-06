@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--    Prevent from Sales module-->
+    <record model="ir.ui.view" id="sale_view_order_form_prevent_product_creation">
+        <field name="name">sale.view.order.form.prevent.product.creation</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="priority">90</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']/tree/field[@name='product_id']" position="replace">
+                <field name="product_id"
+                       attrs="{                                             'readonly': [('product_updatable', '=', False)],                                             'required': [('display_type', '=', False)],                                         }"
+                       options="{'no_open': True, 'no_quick_create': True,'no_create_edit':True}"
+                       force_save="1"
+                       context="{                                             'partner_id': parent.partner_id,                                             'quantity': product_uom_qty,                                             'pricelist': parent.pricelist_id,                                             'uom':product_uom,                                             'company_id': parent.company_id,                                             'default_lst_price': price_unit,                                             'default_description_sale': name                                         }"
+                       domain="[('sale_ok', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"
+                       widget="product_configurator"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!--    Prevent from Purchase module-->
+    <record model="ir.ui.view" id="purchase_rfq_view_order_form_prevent_product_creation">
+        <field name="name">purchase.order.rfq.form.prevent.product.creation</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="priority">90</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']/tree/field[@name='product_id']" position="replace">
+                <field name="product_id"
+                       attrs="{                                             'readonly': [('state', 'in', ('purchase', 'to approve','done', 'cancel'))],
+                                                                'required': [('display_type', '=', False)],                                         }"
+                       options="{'no_quick_create': True,'no_create_edit':True}" 
+                       context="{'partner_id':parent.partner_id, 'quantity':product_qty,'uom':product_uom, 'company_id': parent.company_id}"
+                       force_save="1"
+                       domain="[('purchase_ok', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"
+                />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
+
+

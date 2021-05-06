@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <!-- Address -->
+    <record id="icp_auth_signup_with_address" model="ir.config_parameter">
+        <field name="key">auth_signup_with_address</field>
+        <field name="value">True</field>
+    </record>
+    <!-- Phone -->
+    <record id="icp_auth_signup_with_phone" model="ir.config_parameter">
+        <field name="key">auth_signup_with_phone</field>
+        <field name="value">True</field>
+    </record>
+    <!-- Date of Birth -->
+    <record id="icp_auth_signup_with_date_of_birth" model="ir.config_parameter">
+        <field name="key">auth_signup_with_date_of_birth</field>
+        <field name="value">False</field>
+    </record>
+    <!-- Image -->
+    <record id="icp_auth_signup_with_image" model="ir.config_parameter">
+        <field name="key">auth_signup_with_image</field>
+        <field name="value">True</field>
+    </record>
+    <!-- Image -->
+    <record id="icp_auth_signup_with_captcha" model="ir.config_parameter">
+        <field name="key">auth_signup_with_captcha</field>
+        <field name="value">True</field>
+    </record>
+    <!-- Image -->
+    <record id="icp_auth_login_with_captcha" model="ir.config_parameter">
+        <field name="key">auth_login_with_captcha</field>
+        <field name="value">True</field>
+    </record>
+</odoo>

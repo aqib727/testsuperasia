@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="contactus_form_inherite" inherit_id="website_form.contactus_form" name="Contactus_form Inherit">
+    <xpath expr="//a[hasclass('btn', 'btn-primary', 'btn-lg', 'o_website_form_send')]" position="attributes">
+            <attribute name="class">btn custom_them_primary o_website_form_send text-white</attribute>
+        </xpath>
+    </template>
+    <template id="contact_us_inherite" inherit_id="website.contactus" name="Contact Us Inherit">
+        <xpath expr="//section[hasclass('s_text_block')]" position="attributes">
+            <attribute name="class">s_text_block p-0</attribute>
+        </xpath>
+    </template>
+</odoo>

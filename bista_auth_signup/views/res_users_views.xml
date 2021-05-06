@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_users_form" model="ir.ui.view">
+        <field name="name">res.users.form</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='access_rights']/group" position="after">
+                <group>
+                    <group>
+                        <field name="date_of_birth" />
+                        <field name="signup_refer"/>
+                        <field name="company_name" attrs="{'invisible': [('customer_type', '=', 'person')]}"/>
+                    </group>
+                    <group>
+                        <field name="customer_type"/>
+                        <field name="news_letter_check"/>
+                        <field name="tax_hst_num" attrs="{'invisible': [('customer_type', '=', 'person')]}"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_users_search_extension" model="ir.ui.view">
+        <field name="name">res.users.search</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='no_share']" position="after">
+                <separator/>
+                <filter name="individual_customer_filter" string="Individual Customers" domain="[('customer_type','=','person')]"/>
+                <filter name="company_customer_filter" string="Company Customers" domain="[('customer_type','=','company')]"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_res_users_indv_cust" model="ir.actions.act_window">
+        <field name="name">Individual Customers</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.users</field>
+        <field name="view_mode">tree,form</field>
+<!--        <field name="view_id" ref="view_users_tree"/>-->
+        <field name="search_view_id" ref="view_users_search_extension"/>
+        <field name="context">{'search_default_individual_customer_filter': 'person'}</field>
+    </record>
+    <menuitem action="action_res_users_indv_cust" id="menu_action_res_users_indv_cust" parent="base.menu_users" sequence="1"/>
+
+    <record id="action_res_users_comp_cust" model="ir.actions.act_window">
+        <field name="name">Company Customers</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.users</field>
+        <field name="view_mode">tree,form</field>
+<!--        <field name="view_id" ref="view_users_tree"/>-->
+        <field name="search_view_id" ref="view_users_search_extension"/>
+        <field name="context">{'search_default_company_customer_filter': 'company'}</field>
+    </record>
+    <menuitem action="action_res_users_comp_cust" id="menu_action_res_users_comp_cust" parent="base.menu_users" sequence="2"/>
+</odoo>

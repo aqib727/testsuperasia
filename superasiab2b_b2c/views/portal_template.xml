@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+<template id="assets_frontendjh" inherit_id="website.assets_frontend" name="Jobs search assets">
+         
+            <xpath expr="." position="inside">
+                
+     <link rel='stylesheet' href='/superasiab2b_b2c/static/src/css/superasia.css'></link>
+    <link rel='stylesheet' href="/superasiab2b_b2c/static/src/css/super_style.css"></link>
+    <link rel='stylesheet' href="/superasiab2b_b2c/static/src/css/main.css"></link>
+  <script type="text/javascript" src="/superasiab2b_b2c/static/src/js/onchangeportal.js"></script>
+  <script type="text/javascript" src="/superasiab2b_b2c/static/src/js/search_bids.js"></script>
+
+             </xpath>
+        </template>
+
+
+
+<template id="reset_password_email">
+    <t t-call="website.layout">
+<t t-set="additional_title">PortalUser</t>
+        <div id="wrap">
+            <div class="oe_structure">
+                        <section data-snippet-id="text-block" class="mb16">
+                            <div class="">
+                                <style>
+                                    row-centered {
+                                        text-align: center;
+                                    }
+
+                                    .col-centered {
+                                        float: none;
+                                        margin: 0 auto;
+                                    }
+                                </style>
+                <div class="container">
+                                
+                                <div class="row">
+                
+
+<!-- <div class="row row-centered"> -->
+<div class="row-md-2 row-centered col-md-12">
+
+    <section id="forms">
+
+      
+
+<br/>
+
+<table border="0" cellpadding="0" cellspacing="0" width="590" style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                <tr><td valign="top" style="font-size: 13px;">
+                    <div>
+                        <b>Dear <span t-esc="user_data.name"/>,<br/><br/>
+                          <p> Successful Authentication</p></b>
+                <br></br>
+     
+Your Account is not active yet.You can login to your account, once your account is approved by Administrator. <br/>
+Thanks
+<!-- 
+                        You may change your password by following this link which will remain valid during 24 hours:<br/>
+                        <div style="margin: 16px 0px 16px 0px;">
+                            <a t-attf-href="{{ user_data.signup_url }}"
+                                style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;">
+                                Add/Change password
+                            </a>
+
+                        </div>
+                         -->
+                    </div>
+                </td></tr>
+                   </table>
+               </section>
+           </div>
+       </div>
+   </div>
+   </div>
+</section>
+           </div>
+       </div>
+       
+</t>
+</template>
+
+
+
+<template id="reset_password_emailb2c">
+    <t t-call="website.layout">
+<t t-set="additional_title">PortalUser</t>
+        <div id="wrap">
+            <div class="oe_structure">
+
+                        <section data-snippet-id="text-block" class="mb16">
+                            <div class="">
+                                <style>
+                                    row-centered {
+                                        text-align: center;
+                                    }
+
+                                    .col-centered {
+                                        float: none;
+                                        margin: 0 auto;
+                                    }
+                                </style>
+                <div class="container">
+                                
+                                <div class="row">
+                
+
+<div class="row-md-2 row-centered col-md-12">
+
+    <section id="forms">
+
+      
+
+<br/>
+
+<table border="0" cellpadding="0" cellspacing="0" width="590" style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                <tr><td valign="top" style="font-size: 13px;">
+                    <div>
+                        <b>Dear <span t-esc="user_data.name"/>,<br/><br/>
+                          <p> Successful Authentication - Completed Activation</p></b>
+                <br></br>
+                    </div>
+                </td></tr>
+                   </table>
+               </section>
+           </div>
+       </div>
+   </div>
+   </div>
+</section>
+           </div>
+       </div>
+       
+</t>
+</template>
+
+
+
+
+ <template id="b2b_activation">
+            <t t-call="website.layout">
+                <t t-set="additional_title">PortalUser</t>
+
+
+                <div id="wrap">
+                    <div class="oe_structure">
+                        <div class="servicecategory_header_text page_serviceheader_text">
+      <img src="/superasiab2b_b2c/static/src/description/logosuperasia.png" class="img img-fluid" style="height:70px;">
+  <span class="text1">Super Asia Foods</span>
+
+ 
+</img>
+
+<p style="font-size:22px">Are you Retailer? Looking of Catalog, New Arrivals &amp; Best Pricing</p>
+                                     </div>
+
+                            <div class="">
+                                <style>
+                                    row-centered {
+                                        text-align: center;
+                                    }
+
+                                    .col-centered {
+                                        float: none;
+                                        margin: 0 auto;
+                                    }
+                                </style>
+
+
+                                <div class="justify-content-center opportunitylinadd_details row">
+
+                                    <div class="col-md-8 col-sm-12 d-md-flex justify-content-end">
+                                        <form class="b2b_acc_signup_form mx-auto w-md-50" method="POST" action="/b2baccountactivation" enctype="multipart/form-data">
+
+                                            <div class="form-row">
+                                                <div class="name">Business Name*</div>
+                                                <div class="value">
+                                                    <div class="input-group-desc">
+                                                        <input class="input--style-5" type="text" name="company_name" required="1"/>
+                                                        <!--                    <label class="label&#45;&#45;desc">required</label>-->
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="name">Your Name*</div>
+                                                <div class="value">
+                                                    <div class="input-group-desc">
+                                                        <input class="input--style-5" type="text" name="contact_name" required="1"/>
+                                                        <!--                    <label class="label&#45;&#45;desc">required</label>-->
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="name">Address</div>
+                                                <div class="value">
+                                                    <div class="input-group-desc">
+                                                        <input class="input--style-5" type="text" name="street"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row" style="align-items: baseline;">
+                                                <div class="name">Mobile Number</div>
+                                                <div class="value">
+                                                    <div class="row row-refine">
+                                                        <div class="col-3">
+                                                            <div class="input-group-desc">
+                                                                <input class="input--style-5" type="text" name="area_code" id="b" value="+1"
+                                                                       readonly="1"/>
+                                                                <!--                            <label class="label&#45;&#45;desc">Country Code</label>-->
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-9 pl-1">
+                                                            <div class="input-group-desc">
+                                                                <input class="input--style-5" type="text" name="mobile"
+                                                                       placeholder="xxxxxxxxxx"/>
+                                                                <!--                            <label class="label&#45;&#45;desc">Phone Number</label>-->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="name">Email*</div>
+                                                <div class="value">
+                                                    <div class="input-group-desc">
+                                                        <input class="input--style-5" type="email" name="email" required="1"/>
+                                                        <!--                    <label class="label&#45;&#45;desc">required</label>-->
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="name">Website</div>
+                                                <div class="value">
+                                                    <div class="input-group-desc">
+                                                        <input class="input--style-5" type="text" name="website"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="name"></div>
+                                                <div class="value">
+                                                    <script src='https://www.google.com/recaptcha/api.js'></script>
+                                                    <div id="captcha" class="imageContainer">
+                                                        <div class="g-recaptcha" data-sitekey="6Ldbe4waAAAAAM26blpmW9f7AxmUATGv9ebhkYHZ"
+                                                             data-callback="verifyRecaptchaCallback"
+                                                             data-expired-callback="expiredRecaptchaCallback"></div>
+                                                        <input class="form-control d-none" data-recaptcha="true" />
+                                                        <div class="help-block with-errors" id="err" style='color: red' required="required"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        <div class="row row-space mt-3">
+                                            <div class="col-12 text-center">
+
+      <button class="btn custom_them_primary font-weight-bold text-white" style="color: #ac1520;" type="submit">Submit</button>
+          
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <div class="align-items-center d-flex flex-column my-md-auto">
+                                            <a href="/web/login" style="color: #ac1520;font-size: calc(1em + 5px);" class="pb-2 text-sm-center"> Already an existing user? </a>
+
+                                            <p><b>OR</b></p>
+                                            <br/>
+
+        <button class="btn custom_them_primary font-weight-bold text-white" onclick="location.href='/shop';">Checkout as Guest</button>
+
+                                        
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                    </div>
+                </div>
+            </t>
+             </template>
+        
+<template
+        id="assets_frontend"
+        name="website_form_recaptcha Assets"
+        inherit_id="website.assets_frontend"
+    >
+    <xpath expr="." position="inside">
+        <script src="/superasiab2b_b2c/static/src/js/b2b_activation_recaptcha.js" />
+    </xpath>
+</template>
+
+
+
+
+<template id="b2cactivation">
+    <t t-call="website.layout">
+        <t t-set="additional_title">PortalUser</t>
+        <div id="wrap">
+            <div class="oe_structure">
+                <div class="servicecategory_header_text page_serviceheader_text">
+                    <img src="/superasiab2b_b2c/static/src/description/logosuperasia.png" class="img img-fluid" style="height:70px;">
+                        <span class="text1">Super Asia Foods</span>
+                    </img><br/>
+                    Create Your Account
+                </div>
+                <div class="">
+                    <style>
+                        row-centered {
+                            text-align: center;
+                        }
+
+                        .col-centered {
+                            float: none;
+                            margin: 0 auto;
+                        }
+                    </style>
+
+<div class="justify-content-center opportunitylinadd_details row">
+
+        <div class="col-md-8 col-sm-12 d-md-flex justify-content-end">
+            <form class="b2b_acc_signup_form mx-auto w-md-50" method="POST" action="/b2caccountactivation" enctype="multipart/form-data">
+
+                                <div class="form-row">
+                                    <div class="name">Name*</div>
+                                    <div class="value">
+                                        <div class="input-group-desc">
+                                            <input class="input--style-5" type="text" name="company_name" required="1"/>
+                        <!--                    <label class="label&#45;&#45;desc">required</label>-->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-row" style="align-items: baseline;">
+                                    <div class="name">Mobile Number</div>
+                                    <div class="value">
+                                        <div class="row row-refine">
+                                            <div class="col-3">
+                                                <div class="input-group-desc">
+                                                    <input class="input--style-5" type="text" name="area_code" id="b" value="+1"
+                                                        readonly="1"/>
+                        <!--                            <label class="label&#45;&#45;desc">Country Code</label>-->
+                                                </div>
+                                            </div>
+                                            <div class="col-9 pl-1">
+                                                <div class="input-group-desc">
+                                                    <input class="input--style-5" type="text" name="mobile"
+                                                        placeholder="xxxxxxxxxx"/>
+                        <!--                            <label class="label&#45;&#45;desc">Phone Number</label>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="name">Email*</div>
+                                    <div class="value">
+                                        <div class="input-group-desc">
+                                            <input class="input--style-5" type="email" name="email" required="1"/>
+                        <!--                    <label class="label&#45;&#45;desc">required</label>-->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="name">Password*</div>
+                                    <div class="value">
+                                        <div class="input-group-desc">
+                                            <input class="input--style-5" type="password" name="password" required="1"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="name">Confirm Password*</div>
+                                    <div class="value">
+                                        <div class="input-group-desc">
+                                            <input class="input--style-5" type="password" name="confirmpassword" required="1"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                        <div class="row row-space mt-3">
+                        <div class="col-12 text-center">
+
+      <button class="btn custom_them_primary font-weight-bold text-white" style="color: #ac1520;" type="submit">Submit</button>
+          
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <div class="align-items-center d-flex flex-column my-md-auto">
+                                            <a href="/web/login" style="color: #ac1520;font-size: calc(1em + 5px);" class="pb-2 text-sm-center"> Already an existing user? </a>
+
+                                            <p><b>OR</b></p>
+                                            <br/>
+
+        <button class="btn custom_them_primary font-weight-bold text-white" onclick="location.href='/shop';">Checkout as Guest</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                    </div>
+                </div>
+            </t>
+             </template>
+        
+
+<template id="repeat_user">
+    <t t-call="website.layout">
+<t t-set="additional_title">User</t>
+
+        <div id="wrap">
+            <div class="oe_structure">
+                <div class="container">
+                    <br/>
+                    
+                    <p>
+<b>This User account is already activated.</b><br/>
+                    </p>
+                    <br/>
+                    <br/>
+                    <p>
+                       <b> Thank you,</b><br/>
+                      <b>  System Administrator</b>
+                    </p>
+                    
+      <div class="col-md-6 col-sm-4 col-centered">
+<button class="btn custom_them_primary font-weight-bold text-white" style="color: #ac1520;" type="submit" onclick="goBack()">Go Back</button>
+
+                  </div>         
+                   
+                    
+                
+                </div>
+               
+            </div>
+        </div>
+    </t>
+</template>
+
+
+<template id="confirmpassword">
+    <t t-call="website.layout">
+    <t t-set="additional_title">PortalUser</t>
+
+        <div id="wrap">
+            <div class="oe_structure">
+                <div class="container">
+                    <br/>
+                    
+                    <p>
+                    <b> Your Passwords doesn't match!</b>
+                    </p>
+                    <br/>
+      <div class="col-md-6 col-sm-4 col-centered">
+<button class="btn custom_them_primary font-weight-bold text-white" style="color: #ac1520;" type="submit" onclick="goBack()">Go Back</button>
+                  </div>         
+                   
+                    
+                
+                </div>
+               
+            </div>
+        </div>
+    </t>
+</template>
+
+
+<template id="accountexist">
+    <t t-call="website.layout">
+    <t t-set="additional_title">PortalUser</t>
+
+        <div id="wrap">
+            <div class="oe_structure">
+                <div class="container">
+                    <br/>
+                    
+                    <p>
+                    <b> Already a Registered Account!</b>
+                    </p>
+                    <br/>
+      <div class="col-md-6 col-sm-4 col-centered">
+<button class="btn custom_them_primary font-weight-bold text-white" style="color: #ac1520;" type="submit" onclick="goBack()">Go Back</button>
+                  </div>         
+                   
+                    
+                
+                </div>
+               
+            </div>
+        </div>
+    </t>
+</template>
+
+
+<template id="portaluserexist">
+    <t t-call="website.layout">
+    <t t-set="additional_title">PortalUser</t>
+
+        <div id="wrap">
+            <div class="oe_structure">
+                <div class="container">
+                    <br/>
+                    
+                    <p>
+                    <b> User Account exists already!</b>
+                    </p>
+                    <br/>
+      <div class="col-md-6 col-sm-4 col-centered">
+<button class="btn custom_them_primary font-weight-bold text-white" style="color: #ac1520;" type="submit" onclick="goBack()">Go Back</button>
+                  </div>         
+                   
+                    
+                
+                </div>
+               
+            </div>
+        </div>
+    </t>
+</template>
+
+
+<template id="invalidemail">
+    <t t-call="website.layout">
+    <t t-set="additional_title">PortalUser</t>
+
+        <div id="wrap">
+            <div class="oe_structure">
+                <div class="container">
+                    <br/>
+                    
+                    <p>
+                    <b>Invalid Email!</b>
+                    </p>
+                    <br/>
+      <div class="col-md-6 col-sm-4 col-centered">
+<button class="btn custom_them_primary font-weight-bold text-white" style="color: #ac1520;" type="submit" onclick="goBack()">Go Back</button>
+                  </div>         
+                   
+                    
+                
+                </div>
+               
+            </div>
+        </div>
+    </t>
+</template>
+
+</data>
+</odoo>

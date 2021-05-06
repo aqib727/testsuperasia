@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_customer_review_user,customer.review.user,model_customer_review,base.group_user,1,0,0,0
+access_customer_review_salemanager,customer.review.salemanager,model_customer_review,sales_team.group_sale_manager,1,1,1,1

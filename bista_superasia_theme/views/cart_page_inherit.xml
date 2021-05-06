@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Inherited template from base -->
+
+
+    <template id="short_cart_summary_inherite" inherit_id="website_sale.short_cart_summary" name="Cart Short Summary">
+        <xpath expr="//h4[hasclass('d-none', 'd-xl-block')]" position="attributes">
+            <attribute name="class">d-none d-xl-block font-weight-bold</attribute>
+        </xpath>
+        <xpath expr="//a[hasclass('btn', 'btn-secondary', 'float-right', 'd-none', 'd-xl-inline-block')]" position="attributes">
+            <attribute name="style">background: #BE222B;</attribute>
+        </xpath>
+    </template>
+    <template id="cart_lines_inherite" inherit_id="website_sale.cart_lines" name="cart_lines inherit">
+        <xpath expr="//td[hasclass('text-center', 'td-price')]" position="attributes">
+            <attribute name="class">font-weight-bold</attribute>
+        </xpath>
+         <xpath expr="//td[hasclass('td-action')]" position="replace">
+             <td class="td-action">
+                 <a href='#' aria-label="Remove from cart" title="Remove from cart" class='js_delete_product no-decoration link-dark'> <i class='fa fa-trash-o'></i></a>
+             </td>
+         </xpath>
+
+    </template>
+
+    <template id="cart_line_product_link_inherite" inherit_id="website_sale.cart_line_product_link" name="Cart Line Inherit">
+        <xpath expr="//a[@t-att-href='line.product_id.website_url']" position="attributes">
+            <attribute name="class">font-weight-bold text-dark</attribute>
+        </xpath>
+    </template>
+
+    <template id="wizard_checkout_inherite" inherit_id="website_sale.wizard_checkout" name="wizard_checkout Inherit">
+<!--        <xpath expr="//div[hasclass('text-center', 'progress-wizard-steplabel')]" position="attributes">-->
+<!--            <attribute name="class">text-center progress-wizard-steplabel text-white</attribute>-->
+<!--        </xpath>-->
+
+
+        <xpath expr="//div[hasclass('col-xl')]" position="attributes">
+            <attribute name="class">col-xl pb-4</attribute>
+        </xpath>
+    </template>
+    <template id="cart_inherite" inherit_id="website_sale.cart"  name="Cart Inherit">
+        <xpath expr="//div[hasclass('col-12', 'col-xl-8', 'oe_cart')]" position="attributes">
+            <attribute name="class">col-12 col-xl-7 oe_cart</attribute>
+        </xpath>
+        <xpath expr="//div[@id='o_cart_summary']" position="attributes">
+            <attribute name="class">col-12 col-xl-5</attribute>
+        </xpath>
+        <xpath expr="//a[hasclass('btn', 'btn-secondary', 'mb32', 'd-none', 'd-xl-inline-block')]" position="attributes">
+            <attribute name="class">border-beta btn d-none d-xl-inline-block mb32</attribute>
+        </xpath>
+        <xpath expr="//a[hasclass('btn', 'btn-primary', 'float-right', 'd-none', 'd-xl-inline-block')]" position="attributes">
+            <attribute name="class">btn float-right d-none d-xl-inline-block custom_them_primary text-white</attribute>
+        </xpath>
+    </template>
+
+    <template id="short_cart_summary_inherite" inherit_id="website_sale.short_cart_summary" name="short_cart_summary Inherit">
+        <xpath expr="//div[hasclass('card', 'js_cart_summary')]" position="attributes">
+            <attribute name="class">bg-secondary border-0 card js_cart_summary</attribute>
+        </xpath>
+        <xpath expr="//a[@t-if='website_sale_order and website_sale_order.website_order_line']" position="attributes">
+            <attribute name="class">btn custom_them_primary d-none d-xl-inline-block float-right text-white</attribute>
+        </xpath>
+    </template>
+    <template id="total_inherite" inherit_id="website_sale.total" name="Cart Total Inherit">
+        <xpath expr="//div[@id='cart_total']" position="replace">
+            <div id="cart_total" t-att-class="extra_class or ''" t-if="website_sale_order and website_sale_order.website_order_line">
+            <table class="table border-0">
+                  <tr id="empty">
+                      <t t-if='not no_rowspan'><td rowspan="10" class="border-0"/></t>
+                      <td class="col-md-2 col-3 border-0"></td>
+                      <td class="col-md-2 col-3 border-0" ></td>
+                  </tr>
+                  <tr id="order_total_untaxed" class="border-bottom">
+                      <td class="text-center border-0 text-secondary font-weight-bold">Subtotal:</td>
+                      <td class="text-xl-center border-0" >
+                          <span t-field="website_sale_order.amount_untaxed" class="monetary_field text-secondary font-monospace" style="white-space: nowrap;" t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>
+                      </td>
+                  </tr>
+                  <tr id="order_total_taxes" class="border-bottom">
+                      <td class="text-center border-0 text-secondary font-weight-bold">Taxes:</td>
+                      <td class="text-xl-center border-0">
+                           <span t-field="website_sale_order.amount_tax" class="monetary_field text-secondary font-monospace" style="white-space: nowrap;" t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}" />
+                      </td>
+                  </tr>
+                  <tr id="order_total" class="border-bottom">
+                      <td class="text-center font-weight-bold"><strong>Total:</strong></td>
+                      <td class="text-xl-center">
+                          <strong t-field="website_sale_order.amount_total" class="monetary_field"
+                              t-options='{"widget": "monetary", "display_currency": website_sale_order.pricelist_id.currency_id}'/>
+                      </td>
+                  </tr>
+            </table>
+        </div>
+        </xpath>
+    </template>
+    <template id="bista_superasia_reduction_code" inherit_id="bista_superasia_theme.total_inherite" customize_show="True" name="SuperAsia Promo Code">
+        <xpath expr="//div[@id='cart_total']//table/tr[last()]" position="after">
+            <tr t-if="not hide_coupon">
+                <td colspan="3" class="text-center text-xl-right border-0">
+                <span class=''>
+                    <t t-set='force_coupon' t-value="website_sale_order.pricelist_id.code or request.params.get('code_not_available')"/>
+                    <t t-if="not force_coupon">
+                        <a href="#" class="show_coupon" style="color: #bb0000;
+    font-weight: 600;">I have a promo code</a>
+                    </t>
+                    <div t-attf-class="coupon_form #{not force_coupon and 'd-none'}">
+                        <t t-call="website_sale.coupon_form"/>
+                    </div>
+                </span>
+                </td>
+            </tr>
+        </xpath>
+    </template>
+    <template id="checkout_inherite" inherit_id="website_sale.checkout" name="Checkout Inherit">
+        <xpath expr="//a[hasclass('btn', 'btn-secondary', 'mb32')]" position="attributes">
+            <attribute name="class">border-beta btn mb32</attribute>
+        </xpath>
+        <xpath expr="//a[hasclass('btn', 'btn-primary', 'mb32')]" position="attributes">
+            <attribute name="class">btn mb32 custom_them_primary text-white</attribute>
+        </xpath>
+        <xpath expr="//a[hasclass('a-submit', 'btn', 'btn-secondary', 'mb16', 'btn-block')]" position="attributes">
+            <attribute name="class">a-submit btn mb16 btn-block custom_them_primary text-white</attribute>
+        </xpath>
+
+<!--        <xpath expr="//div[hasclass('col-12', 'col-xl-auto', 'order-xl-2', 'd-none', 'd-xl-block')]" position="attributes">-->
+<!--            <attribute name="class">col-12 col-xl-5 d-none d-xl-block offset-xl-2 order-xl-2</attribute>-->
+<!--        </xpath>-->
+        <xpath expr="//div[hasclass('col-12', 'col-xl-auto', 'order-xl-2', 'd-none', 'd-xl-block')]" position="attributes">
+            <attribute name="class">col-12 col-xl-5 d-none d-xl-block offset-xl-2 order-xl-2</attribute>
+        </xpath>
+        <xpath expr="//div[hasclass('col-lg-6', 'one_kanban')]" position="attributes">
+            <attribute name="class">one_kanban</attribute>
+        </xpath>
+        <xpath expr="//div[hasclass('col-md-12', 'col-lg-6', 'one_kanban')]" position="attributes">
+            <attribute name="class">col-md-12 one_kanban</attribute>
+        </xpath>
+    </template>
+    <template id="extra_info_inherite" inherit_id="website_sale.extra_info" name="Extra_info Inherit">
+        <xpath expr="//div[hasclass('col-12', 'col-xl-auto', 'order-xl-2', 'd-none', 'd-xl-block')]" position="attributes">
+            <attribute name="class">class="col-12 col-xl-5 d-none d-xl-block offset-xl-2 order-xl-2"</attribute>
+        </xpath>
+        <xpath expr="//div[hasclass('col-12', 'col-xl', 'order-xl-1', 'oe_cart')]" position="attributes">
+            <attribute name="class">col-12 col-xl-5 oe_cart order-xl-1</attribute>
+        </xpath>
+    </template>
+
+    <template id="address_inherite" inherit_id="website_sale.address" name="Address Inherit">
+        <xpath expr="//div[hasclass('col-12', 'col-xl-auto', 'order-xl-2', 'd-none', 'd-xl-block')]" position="attributes">
+            <attribute name="class">col-12 col-xl-5 d-none d-xl-block mt-xl-5 offset-xl-2 order-xl-2</attribute>
+        </xpath>
+        <xpath expr="//div[hasclass('col-12', 'col-xl', 'order-xl-1', 'oe_cart')]" position="attributes">
+            <attribute name="class">col-12 col-xl-5 order-xl-1 oe_cart</attribute>
+        </xpath>
+        <xpath expr="//a[hasclass('btn', 'btn-primary', 'mb32', 'a-submit', 'a-submit-disable', 'a-submit-loading')]" position="attributes">
+            <attribute name="class">a-submit a-submit-disable a-submit-loading btn custom_them_primary mb32 text-white</attribute>
+        </xpath>
+        <xpath expr="//a[contains(@style, 'margin-top: -11px')]" position="attributes">
+            <attribute name="class">btn custom_them_primary pl-3 text-white</attribute>
+        </xpath>
+    </template>
+    <template id="payment_inherite" inherit_id="website_sale.payment" name="Payment Inherit">
+        <xpath expr="//div[hasclass('col-12', 'col-xl-auto', 'order-xl-2')]" position="attributes">
+            <attribute name="class">col-12 col-xl-5 order-xl-1 oe_cart</attribute>
+        </xpath>
+        <xpath expr="//div[hasclass('col-12', 'col-xl', 'order-xl-1', 'oe_cart')]" position="attributes">
+            <attribute name="class">col-12 col-xl-5 offset-xl-2 order-xl-1 oe_cart</attribute>
+        </xpath>
+    </template>
+
+    <template id="confirmation_inherite" inherit_id="website_sale.confirmation" name="Confirmation Inherit">
+        <xpath expr="//div[hasclass('col-12', 'col-xl')]" position="attributes">
+            <attribute name="class">col-12 col-xl-5</attribute>
+        </xpath>
+        <xpath expr="//div[hasclass('col-12', 'col-xl-auto')]" position="attributes">
+            <attribute name="class">col-12 col-xl-5 offset-xl-2 pt-xl-5</attribute>
+        </xpath>
+    </template>
+
+
+
+
+</odoo>

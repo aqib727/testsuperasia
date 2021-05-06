@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_backorder_confirmation_inherited">
+        <field name="name">stock.backorder.confirmation</field>
+        <field name="model">stock.backorder.confirmation</field>
+        <field name="inherit_id"
+               ref="stock.view_backorder_confirmation"/>
+        <field name="arch" type="xml">
+            <xpath expr="//p" position="replace">
+                <p>
+                    You have processed less products than the initial demand.
+                     <field name="product_name"/>
+                </p>
+            </xpath>
+        </field>
+    </record>
+</odoo>

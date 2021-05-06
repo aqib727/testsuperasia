@@ -1,0 +1,168 @@
+<odoo>
+    <template id="bista_auth_signup.signup_hide" inherit_id="auth_signup.signup" name="OAuth Signup buttons">
+        <xpath expr="//button[@type='submit']" position="replace">
+            <div class="clearfix oe_login_buttons">
+                <button id="signupButton" type="submit" class="btn btn-primary">Sign up</button>
+            </div>
+        </xpath>
+    </template>
+    <template id="bista_auth_signup.signup" inherit_id="auth_signup.fields" name="sign up layout">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/bista_auth_signup/static/src/js/captcha_index.js"/>
+            <script src="/web/static/lib/jquery/jquery.js" type="text/javascript"/>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    //Disable cut copy paste
+                    // $('body').bind('cut copy paste', function (e) {
+                    //     e.preventDefault();
+                    // });
+                    //Disable mouse right click
+                    $("body").on("contextmenu",function(e){
+                        return false;
+                    });
+                });
+                $(document).mousedown(function(e){
+                    if(e.which === 2 || e.which === 3){
+                        return false; // Or e.preventDefault()
+                    }
+                });
+            </script>
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $("#customer_type").change(function() {
+                        $(this).find("option:selected").each(function() {
+                            var optionValue = $(this).attr("value");
+                            if(optionValue=='company') {
+                                $(".cc_info").show();
+                                $("#city").attr('required', '');
+                                $("#state_id").attr('required', '');
+                                $("#company_name").attr('required', '');
+                            }
+                            else {
+                                $(".cc_info").hide();
+                                $("#city").removeAttr('required');
+                                $("#state_id").removeAttr('required');
+                                $("#company_name").removeAttr('required');
+                            }
+                        })
+                    }).change();
+
+                    // $(".oe_login_buttons button.btn").addClass("disabled");
+                    // $(".oe_login_buttons button.btn").attr("disabled","disabled");
+                    // $("#terms_and_conditions").change(function() {
+                    //     if($("#terms_and_conditions").prop('checked') == true){
+                    //         $(".oe_login_buttons button.btn").removeClass("disabled");
+                    //         $(".oe_login_buttons button.btn").removeAttr("disabled","disabled");
+                    //     }
+                    //     else {
+                    //         $(".oe_login_buttons button.btn").addClass("disabled");
+                    //         $(".oe_login_buttons button.btn").attr("disabled","disabled");
+                    //     }
+                    // }).change();
+                });
+            </script>
+            <link rel="stylesheet" href="/bista_auth_signup/static/src/css/index.css"/>
+            <div class="form-group form-customer_type">
+                <label class="control-label">Signup As</label>
+                <select id="customer_type" name="customer_type">
+                    <option value="person">Individual</option>
+                    <option value="company">Company</option>
+                </select>
+            </div>
+            <div class="cc_info">
+                <div t-if="auth_signup_with_phone" class="form-group" id="auth_signup_with_phone_view">
+                    <label for="phone" class="control-label">Phone</label>
+                    <input type="tel" name="phone" id="phone" class="form-control" autocapitalize="on"
+                           placeholder="Phone number"/>
+                </div>
+<!--                <div t-if="auth_signup_with_date_of_birth" id="auth_signup_with_date_of_birth_view">-->
+<!--                    <div t-if="not token" class="form-group">-->
+<!--                        <label for="date_of_birth" class="control-label">Date of Birth</label>-->
+<!--                        <input type="date" name="date_of_birth" id="date_of_birth" class="form-control"-->
+<!--                               required="required"/>-->
+<!--                    </div>-->
+<!--                </div>-->
+                <div t-if="auth_signup_with_address" id="auth_signup_with_address_view">
+                    <div t-if="not token" class="form-group">
+                        <label for="street" class="control-label">Address</label>
+                        <input type="text" name="street" id="street" class="form-control" autocapitalize="on"
+                               placeholder="Address line 1"/>
+                    </div>
+                    <div t-if="not token" class="form-group">
+                        <input type="text" name="street2" id="street2" class="form-control" autocapitalize="on"
+                               placeholder="Address line 2"/>
+                    </div>
+                    <div t-if="not token" class="form-group">
+                        <input type="text" name="city" id="city" class="form-control" autocapitalize="on"
+                               placeholder="City"/>
+                    </div>
+                    <div t-if="not token" class="form-group">
+                        <select name="state_id" id="state_id" class="form-control">
+                            <option value="">Province</option>
+                            <t t-foreach="states or []" t-as="state">
+                                <option t-att-value="state.id">
+                                    <t t-esc="state.name"/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+    <!--                <div t-if="not token" class="form-group">-->
+    <!--                    <select name="country_id" id="country_id" class="form-control">-->
+    <!--                        <option value="">Country...</option>-->
+    <!--                        <t t-foreach="countries or []" t-as="country">-->
+    <!--                            <option t-att-value="country.id">-->
+    <!--                                <t t-esc="country.name"/>-->
+    <!--                            </option>-->
+    <!--                        </t>-->
+    <!--                    </select>-->
+    <!--                </div>-->
+                    <div t-if="not token" class="form-group">
+                        <input type="text" name="zip" id="zip" class="form-control" placeholder="Zipcode"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="company_name" class="control-label">Company Name</label>
+                    <input type="text" name="company_name" id="company_name" class="form-control" autocapitalize="off"
+                           placeholder="Company Name"/>
+                </div>
+                <div class="form-group">
+                    <label for="tax_hst_num" class="control-label">Tax/HST Number</label>
+                    <input type="text" name="tax_hst_num" id="tax_hst_num" class="form-control" autocapitalize="off"
+                           placeholder="Tax/HST Number"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="signup_refer" class="control-label">How did you hear about us?</label>
+                <input type="text" name="signup_refer" id="signup_refer" class="form-control" autocapitalize="off"
+                       placeholder="How did you hear about us?"/>
+            </div>
+            <div class="cc_info form-check mb-4">
+                <input class="form-check-input" type="checkbox" value="" id="news_letter_check" name="news_letter_check"/>
+                <label class="form-check-label" for="news_letter_check">
+                    Sign up for newsletter?
+                </label>
+            </div>
+            <div t-if="auth_signup_with_captcha" id="auth_signup_with_captcha"
+                 onload="generateCaptcha();">
+                <div class="input-container">
+                    <input type="text" class="input-field captcha" id="mainCaptcha" disabled="disabled"
+                           onclick="generateCaptcha();" readonly="readonly"/>
+                </div>
+                <div class="input-container">
+                    <input class="input-field" type="text" onKeyUp="onChangeTest()" placeholder="Enter Captcha"
+                           name="captcha" id="txtInput" onfocus="generateCaptcha();" required="required"/>
+                    <i class="fa fa-refresh icon" id="refresh_icon" onclick="generateCaptcha();"/>
+                </div>
+                <span id="success" style="color:green"/>
+                <span id="error" style="color:red"/>
+                <p class="alert alert-danger" t-if="error">
+                    <t t-esc="error"/>
+                </p>
+                <p class="alert alert-success" t-if="message">
+                    <t t-esc="message"/>
+                </p>
+                <input type="hidden" name="redirect" t-att-value="redirect"/>
+            </div>
+        </xpath>
+    </template>
+</odoo>

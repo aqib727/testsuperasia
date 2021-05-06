@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <record id="view_eshipper_product_packaging_form" model="ir.ui.view">
+       <field name="name">eshipper.product.packaging.form</field>
+       <field name="model">product.packaging</field>
+       <field name="inherit_id" ref="delivery.product_packaging_delivery_form"/>
+       <field name="arch" type="xml">
+       		<group name="delivery" position="before" >
+       			<group attrs="{'invisible':[('package_carrier_type','!=','eshipper')]}">
+	       			<div>
+	       				<p>
+	       					Height, Width and Length must be in 'inch'. Maximum weight must be in lbs
+	       					as it is only option accepted by eshipper with API request and response.
+	       				</p>
+	       			</div>
+       			</group>
+       		</group>
+      </field>
+   </record>
+</odoo>

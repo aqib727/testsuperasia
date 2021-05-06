@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+<!--        <record id="menu_portaluser_activation" model="website.menu">-->
+<!--            <field name="name">Account Activation</field>-->
+<!--            <field name="url">/portaluser_activation</field>-->
+<!--            <field name="sequence" type="int">63</field>-->
+<!--        </record>-->
+
+   
+      
+    </data>
+</openerp>

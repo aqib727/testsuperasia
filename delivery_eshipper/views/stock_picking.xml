@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <record id="view_eshipper_stock_picking_form" model="ir.ui.view">
+       <field name="name">eshipper.stock.picking.form.view</field>
+       <field name="model">stock.picking</field>
+       <field name="inherit_id" ref="delivery.view_picking_withcarrier_out_form"/>
+       <field name="arch" type="xml">
+       	<xpath expr="//div[@name='tracking']" position="after">
+         	<field name="eshipper_order_id" attrs="{'invisible':[('eshipper_order_id','=',False)]}"/>
+    	</xpath>
+      </field>
+   </record>
+</odoo>

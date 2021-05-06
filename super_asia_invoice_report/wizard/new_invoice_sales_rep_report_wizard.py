@@ -100,13 +100,17 @@ class AccountSalesRepReport(models.TransientModel):
             yellow_format = workbook.add_format(
                 {'bg_color': '#FFFF00', 'font_color': '#000000', 'bold': True,
                  'align': 'right', 'font_size': 11, 'border': 1})
-            red_format = workbook.add_format({'align': 'right','font_color': '#FF0000', 'border': 1})
+
+            red_format = workbook.add_format({'align': 'right', 'font_color': '#FF0000', 'border': 1})
+
             sheet1 = workbook.add_worksheet('Aged Data')
             sheet1.set_column('A:G', 15)
             sheet1.set_column('H:H', 20)
             sheet1.write(0, 0, 'Sales Rep', header_format1)
             sheet1.write(0, 1, 'Name', header_format1)
-            sheet1.write(0, 2, '1-30 Days', header_format1)
+
+            sheet1.write(0, 2, '0-30 Days', header_format1)
+
             sheet1.write(0, 3, '31-60 Days', header_format1)
             sheet1.write(0, 4, '61-90 Days', header_format1)
             sheet1.write(0, 5, '> 90 Days', header_format1)
@@ -149,7 +153,9 @@ class AccountSalesRepReport(models.TransientModel):
                     if inv.get('m2') != None:
                         m2_total += inv.get('m2')
 
-                if inv.get('m3') and inv.get('m3')> 0:
+
+                if inv.get('m3') and inv.get('m3') > 0:
+
                     sheet1.write(i, 4, inv.get('m3'), yellow_format)
                     if inv.get('m3') != None:
                         m3_total += inv.get('m3')
@@ -264,24 +270,26 @@ class AccountSalesRepReport(models.TransientModel):
                 from res_users as ru where ru.id = i.sales_name) as sales_name 
                 from(SELECT cust.name as name,
                         CASE 
-                            WHEN aml.date_maturity <= current_date - interval '1' day 
+
+                            WHEN aml.date_maturity <= current_date - interval '0' day 
                             AND aml.date_maturity >= current_date - interval '30' day
-                            THEN sum(am.amount_residual) END as m1,
+                            THEN sum(am.amount_residual_signed) END as m1,
                         CASE 
                             WHEN aml.date_maturity <= current_date - interval '31' day 
                             AND aml.date_maturity >= current_date - interval '60' day
-                            THEN sum(am.amount_residual) END as m2,
+                            THEN sum(am.amount_residual_signed) END as m2,
                         CASE 
                             WHEN aml.date_maturity <= current_date - interval '61' day 
                             AND aml.date_maturity >= current_date - interval '90' day
-                            THEN sum(am.amount_residual) END as m3,
+                            THEN sum(am.amount_residual_signed) END as m3,
                         CASE 
                             WHEN aml.date_maturity <= current_date - interval '91' day 
                             AND aml.date_maturity >= current_date - interval '120' day
-                            THEN sum(am.amount_residual) END as m4,
+                            THEN sum(am.amount_residual_signed) END as m4,
                         CASE 
                             WHEN aml.date_maturity < current_date - interval '120' day
-                            THEN sum(am.amount_residual)
+                            THEN sum(am.amount_residual_signed)
+
                             END as m5,
                             am.invoice_user_id as sales_name
                     FROM 
@@ -442,4 +450,6 @@ class AccountSalesRepReport(models.TransientModel):
     def sales_rep_invoice_closing_report_excel(self):
         data = self.invoice_report()
         data = {'closing_data': data.get('closing_data')}
+
         return self.generate_xlsx_report(data)
+

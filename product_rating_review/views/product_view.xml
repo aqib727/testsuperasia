@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record id="product_template_form_view_avg_rating_button" model="ir.ui.view">
+			<field name="name">product.template.avg.rating</field>
+			<field name="model">product.template</field>
+			<field name="inherit_id" ref="product.product_template_only_form_view"/>
+			<field name="arch" type="xml">
+				<data>
+					<div name="button_box" position="inside">
+						<button class="oe_stat_button" icon="fa-star" name="action_view_reviews" type="object">
+							<field name="review_count" string="Avg. Rating" widget="statinfo"/>
+						</button>
+					</div>
+					<xpath expr="//page[@name='sales']" position="after">
+						<page string="Customer Reviews">
+							<field mode="tree" name="reviewer_line_ids" nolabel="1" readonly="1" widget="one2many_list">
+								<tree editable="bottom" string="Reviewer Lines">
+									<field name="customer_id"/>
+									<field name="email"/>
+									<field name="name"/>
+									<field name="rating"/>
+									<field name="date"/>
+								</tree>
+							</field>
+						</page>
+					</xpath>
+				</data>
+			</field>
+		</record>
+
+		<record id="action_product_reviewer_list" model="ir.actions.act_window">
+			<field name="name">Customer Review Lines</field>
+			<field name="res_model">customer.review</field>
+		</record>
+
+		<record id="view_review_tree" model="ir.ui.view">
+            <field name="name">customer.review.tree</field>
+            <field name="model">customer.review</field>
+            <field name="arch" type="xml">
+                <tree string="Customer Reviews" create="false">
+                    <field name="customer_id"/>
+					<field name="email"/>
+					<field name="name"/>
+					<field name="rating"/>
+					<field name="date"/>
+                </tree>
+            </field>
+        </record>
+
+
+	</data>
+</odoo>

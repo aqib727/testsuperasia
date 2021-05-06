@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record id="product_template_form_inherit" model="ir.ui.view">
+			<field name="name">product.template.seo.metadata.form</field>
+			<field name="model">product.template</field>
+			<field name="inherit_id" ref="website_sale.product_template_form_view"/>
+			<field name="priority" eval="8"/>
+			<field name="arch" type="xml">
+<xpath expr="//field[@name='uom_id']" position="after">
+<field name="b2buom_id"/>
+      </xpath>
+				<xpath expr="//page[@name='shop']" position="after">
+					<page name="seo_metadata" string="SEO Data" attrs="{'invisible': [('sale_ok','=',False)]}">
+	                    <group name="seo_data" string="SEO Data">
+		                    <field name="website_meta_title" />
+		                    <field name="website_meta_keywords" />
+	                        <field name="website_meta_og_img" />
+	                        <field name="website_meta_description" />
+	                    </group>
+					</page>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

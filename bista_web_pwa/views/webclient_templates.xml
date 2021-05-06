@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="web_layout_pwa" name="Web layout PWA" inherit_id="web.layout">
+        <xpath expr="//meta[@name='viewport']" position="after">
+            <!-- Add link rel manifest -->
+            <link rel="manifest" href="/bista_web_pwa/manifest.json" />
+            <!-- Add iOS meta tags and icons -->
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+            <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+            <meta name="apple-mobile-web-app-title" content="Super Asia" />
+            <link
+                rel="apple-touch-icon"
+                href="/bista_web_pwa/static/img/icons/icon-152x152.png"
+            />
+            <!-- Add meta theme-color -->
+            <meta name="theme-color" content="#2E69B5" />
+        </xpath>
+    </template>
+    <template id="pwa_assets_backend" name="PWA assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script
+                type="text/javascript"
+                src="/bista_web_pwa/static/src/js/pwa_install.js"
+            />
+        </xpath>
+    </template>
+    <template id="pwa_assets_frontend" name="PWA assets" inherit_id="web.assets_frontend_minimal_js">
+        <xpath expr="." position="inside">
+            <script
+                type="text/javascript"
+                src="/bista_web_pwa/static/src/js/pwa_install.js"
+            />
+        </xpath>
+    </template>
+    <template id="service_worker" name="PWA service worker">
+'use strict';
+const CACHE_NAME = '<t t-esc="pwa_cache_name" />';
+const DYNAMIC_CACHE_NAME = 'dynamic-' + '<t t-esc="pwa_cache_name" />';
+const FILES_TO_CACHE = [
+  <t t-foreach="pwa_files_to_cache" t-as="file_to_cache">
+      '<t t-esc="file_to_cache" />',
+  </t><![CDATA[
+];
+FILES_TO_CACHE.push("https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&display=swap");
+// cache size limit function
+const limitCacheSize = (name, size) => {
+    caches.open(name).then(cache => {
+        cache.keys().then(keys => {
+            if(keys.length > size){
+                cache.delete(keys[0]).then(limitCacheSize(name, size));
+            }
+        });
+    });
+};
+
+self.addEventListener('install', function (evt) {
+  console.log('[ServiceWorker] Install');
+  evt.waitUntil(
+   caches.open(CACHE_NAME).then(function (cache) {
+       console.log('[ServiceWorker] Pre-caching offline page');
+       return cache.addAll(FILES_TO_CACHE);
+   })
+  );
+  self.skipWaiting();
+});
+
+self.addEventListener('activate', function(evt) {
+  console.log('[ServiceWorker] Activate');
+   evt.waitUntil(
+       caches.keys().then(function(keyList) {
+           return Promise.all(keyList.map(function(key) {
+               if (key !== CACHE_NAME) {
+                   console.log('[ServiceWorker] Removing old cache', key);
+                   return caches.delete(key);
+               }
+           }));
+       })
+   );
+  self.clients.claim();
+});
+const regex = new RegExp("(editor)");
+const fileTypesToCacheRegex = new RegExp("/\.(gif|jpe?g|tiff?|png|webp|bmp|xml|woff|eot|woff2|ttf|svg)$/i")
+self.addEventListener('fetch', function(evt) {
+    // if (evt.request.cache === 'only-if-cached' && evt.request.mode !== 'same-origin') {
+    //   return;
+    // }
+    console.log('[ServiceWorker] Fetch', evt.request.url);
+    evt.respondWith(
+       caches.match(evt.request)
+        .then(cacheRes => {
+            return cacheRes || fetch(evt.request).then(fetchRes => {
+                return caches.open(DYNAMIC_CACHE_NAME).then(cache => {
+                    // if (!regex.test(evt.request.url)) {
+                        if((/\.(gif|jpe?g|tiff?|png|webp|bmp|xml|woff|eot|woff2|ttf|svg)$/i).test(evt.request.url)){
+                            cache.put(evt.request.url, fetchRes.clone());
+                            // check cached items size
+                            limitCacheSize(DYNAMIC_CACHE_NAME, 50);
+                        }
+                    // }
+                    return fetchRes;
+                });
+            })
+            .catch(() => {
+                console.log('[ServiceWorker] Offline fetch event')
+                return caches.match('/offline-fallback');
+            });
+        })
+    );
+});
+
+// self.addEventListener('fetch', function(evt) {
+//   if (evt.request.cache === 'only-if-cached' && evt.request.mode !== 'same-origin') {
+//     return;
+//   }
+//   console.log('[ServiceWorker] Fetch', evt.request.url);
+//    evt.respondWith(
+//        caches.open(CACHE_NAME).then(function(cache) {
+//            return cache.match(evt.request)
+//                .then(function(response) {
+//                    return response || fetch(evt.request);
+//                 });
+//        })
+//    );
+// });
+    ]]></template>
+    <template id="manifest" name="PWA manifest">
+{
+  "name": "<t t-esc="pwa_name" />",
+  "short_name": "<t t-esc="pwa_short_name" />",
+  "icons": [{
+    "src": "<t t-esc="icon128x128" />",
+      "sizes": "128x128",
+      "type": "image/png"
+    }, {
+      "src": "<t t-esc="maskable_icon_x128" />",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable"
+    }, {
+      "src": "<t t-esc="icon144x144" />",
+      "sizes": "144x144",
+      "type": "image/png"
+    }, {
+      "src": "<t t-esc="maskable_icon_x144" />",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable"
+    }, {
+      "src": "<t t-esc="icon152x152" />",
+      "sizes": "152x152",
+      "type": "image/png"
+    }, {
+      "src": "<t t-esc="maskable_icon_x152" />",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable"
+    }, {
+      "src": "<t t-esc="icon192x192" />",
+      "sizes": "192x192",
+      "type": "image/png"
+    }, {
+      "src": "<t t-esc="maskable_icon_x192" />",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    }, {
+      "src": "<t t-esc="icon256x256" />",
+      "sizes": "256x256",
+      "type": "image/png"
+    }, {
+      "src": "<t t-esc="maskable_icon_x256" />",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "maskable"
+    }, {
+      "src": "<t t-esc="icon512x512" />",
+      "sizes": "512x512",
+      "type": "image/png"
+    }, {
+      "src": "<t t-esc="maskable_icon_x512" />",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }],
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "<t t-esc="background_color" />",
+  "theme_color": "<t t-esc="theme_color" />"
+}
+    </template>
+    <template id="pwa_frontend_layout" name="PWA Frontend Layout" inherit_id="portal.frontend_layout">
+<!--        <xpath expr="//ul[@id='top_menu']" position="inside">-->
+<!--            <li class="nav-item divider" groups="base.group_public"/>-->
+<!--            <li groups="base.group_public" class="nav-item">-->
+<!--                <a t-attf-href="#"-->
+<!--                   class="nav-link install_pwa_btn" role="menuitem"-->
+<!--                   id="pwa_install_button_header"-->
+<!--                   data-menu="installpwa"-->
+<!--                >-->
+<!--                    Install-->
+<!--                </a>-->
+<!--            </li>-->
+<!--        </xpath>-->
+
+        <xpath expr="//div[@id='wrapwrap']/main" position="inside">
+            <style>
+                .icon-bar {
+                  position: fixed;
+                  top: 50%;
+                  right: 0%;
+                  -webkit-transform: translateY(-50%);
+                  -ms-transform: translateY(-50%);
+                  transform: translateY(-50%);
+                  z-index: 1000;
+                }
+
+                .icon-bar a {
+                  display: block;
+                  text-align: center;
+                  padding: 16px;
+                  transition: all 0.3s ease;
+                  color: white;
+                  font-size: 20px;
+                }
+
+                .icon-bar a:hover {
+                  background-color: #000;
+                }
+
+                .download-btn {
+                  background: #bb0000;
+                  color: white;
+                }
+                </style>
+            <div class="icon-bar">
+                <a t-attf-href="#"
+                   class="download-btn install_pwa_btn"
+                   role="menuitem"
+                   id="pwa_install_download_button"
+                   data-menu="installpwa"
+                >
+                    <i class="fa fa-download"></i>
+                </a>
+            </div>
+        </xpath>
+
+    </template>
+</odoo>

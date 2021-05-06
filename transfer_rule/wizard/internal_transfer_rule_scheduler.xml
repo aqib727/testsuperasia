@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_internal_transfer_scheduler_run" model="ir.ui.view">
+        <field name="name">Run Schedulers Manually</field>
+        <field name="model">internal.scheduler.compute</field>
+        <field name="arch" type="xml">
+            <form string="Parameters">
+                <p>
+                The stock will be reserved for operations waiting for availability and the internal reordering rules will be triggered.
+                </p>
+                <footer>
+                    <button name="internal_transfer" string="Run Scheduler" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_internal_transfer_run_wizard" model="ir.actions.act_window">
+        <field name="name">Run IOP Scheduler</field>
+        <field name="res_model">internal.scheduler.compute</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem
+            id="menu_internal_stock_reordering_rules_config_iop"
+            action="action_internal_transfer_run_wizard"
+            name="Run IOP Scheduler" parent="stock.menu_stock_warehouse_mgmt" sequence="140"/>
+</odoo>

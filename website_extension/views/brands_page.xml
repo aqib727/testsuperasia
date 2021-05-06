@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="brands_page">
+		<t t-call="website.layout">
+			<t t-set="title">Brands</t>
+
+			<style>
+				.card a .brand-name {
+					color: #fff;
+					font-weight: bold;
+					text-decoration: none;
+					padding: 5px;
+					border-radius: 3px;
+					opacity: 1;
+					background-color: #BE222B !important;
+					-webkit-transition: all 0.5s ease-out;
+					-moz-transition: all 0.5s ease-out;
+					-o-transition: all 0.5s ease-out;
+					transition: all 0.5s ease-out;
+				}
+
+				.card a:hover .brand-name {
+					opacity: 0.85;
+					text-decoration: underline;
+				}
+
+				.brand-card {
+					height: 250px;
+				}
+			</style>
+			<div id="wrap">
+				<div class="oe_structure">
+					<div class="container">
+						<h1 class="text-center mb-3 font-weight-bold text-uppercase">Brands</h1>
+
+						<div class="row px-3">
+							<t t-set="brands_ids" t-value="request.env['product.attribute.value'].search([('attribute_id.name', 'ilike', '%brand%')])"/>
+							<t t-foreach="brands_ids" t-as="brand">
+								<div class="col-6 col-sm-6 col-md-2 text-center border-0 my-3">
+									<div class="brand-card o_wsale_product_grid_wrapper o_wsale_product_grid_wrapper_1_1 mb-4">
+										<div t-att-href="'/shop?search=&amp;attrib=' + str(brand.attribute_id.id) + '-' + str(brand.id)"
+										   class="card oe_product_cart" style="height: 100%;">
+											<div class="card-body p-1 oe_product_image">
+												<a class="d-block h-100 img-box"
+												   t-att-href="'/shop?search=&amp;attrib=' + str(brand.attribute_id.id) + '-' + str(brand.id)">
+													<span class="d-flex h-100 justify-content-center align-items-center">
+														<img t-att-src="'/website/image/product.attribute.value/' + str(brand.id) + '/image'"
+														     class="img img-fluid" t-att-alt="brand.name"/>
+													</span>
+												</a>
+											</div>
+											<div class="p-0 text-center">
+												<div class="p-2 o_wsale_product_information_text">
+													<div class="mt-1">
+														<a role="button" class="btn btn-cart mb-2 text-center text-uppercase text-white add_to_crt"
+														   t-att-href="'/shop?search=&amp;attrib=' + str(brand.attribute_id.id) + '-' + str(brand.id)"
+														   style="padding: 2% 5%; font-size: 1rem;">
+															<t t-esc="brand.name"/>
+														</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</t>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</t>
+	</template>
+</odoo>
